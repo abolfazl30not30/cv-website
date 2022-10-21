@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import "../style/body.css"
-
+import { NavLink } from 'react-router-dom';
 class Navbar extends Component {
     state = {}
     render() {
@@ -15,25 +15,25 @@ class Navbar extends Component {
                     <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
                         <ul className="navbar-nav mx-3">
                             <li className="nav-item">
-                                <a className="nav-link active" href="#">About Me</a>
+                                <NavLink to="/about-me" className="nav-link"  href="#">About Me</NavLink>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Publication</a>
+                                <NavLink to="/publications" className="nav-link"  activeClassName='active' href="#">Publications</NavLink>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link " href="#">Books</a>
+                                <NavLink to="/books" className="nav-link " activeClassName='active' href="#">Books</NavLink>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link " href="#">Research</a>
+                                <NavLink to="/Researches" className="nav-link " activeClassName='active' href="#">Researches</NavLink>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link " href="#">Course</a>
+                                <NavLink to="/courses" className="nav-link " activeClassName='active' href="#">Courses</NavLink>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link " href="#">Project</a>
+                                <NavLink to="/projects" className="nav-link " activeClassName='active' href="#">Projects</NavLink>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link " href="#">Contact</a>
+                                <NavLink to="/contact" className="nav-link " activeClassName='active' href="#">Contact</NavLink>
                             </li>
 
                         </ul>

@@ -1,5 +1,16 @@
+
+@font-face {
+    font-family: montserrat;
+    src: url(../font/Montserrat-VariableFont_wght.ttf) ;
+}
+
 body{
-    background-color: #f9f9f9;
+    background-color: #007ced !important;
+    position: relative;
+    font-family: montserrat !important;
+}
+.mainBody{
+
 }
 .logo{
     font-size: 20px;
@@ -9,7 +20,7 @@ body{
     border-radius: 7px;
 }
 .navbar{
-    box-shadow: 0px 0px 5px 0px #00000047;
+    border-radius: 20px;
 }
 .active{
     color: #357BE3 !important;

@@ -1,17 +1,22 @@
+@font-face {
+    font-family: montserrat;
+    src: url(../font/Montserrat-VariableFont_wght.ttf) ;
+}
 .card-contain{}
 .card-contain .mainImgContain{
     margin-right: 60px;
 }
 .card-contain .mainImgContain .mainImg{
-    width: 300px;
-    height: 300px;
+    width: 320px;
+    height: 320px;
     border-radius: 100%;
     border: 6px solid #fff;
-    box-shadow: 0px 0px 5px 2px #0000005c;
+    box-shadow: 0px 0px 5px 2px #0000001a;
 }
 .card-contain .cv-text{
     width: 35%;
 }
+
 .card-contain .cv-text h5{
     font-size: 13px;
     background: #357BE3;
@@ -20,6 +25,7 @@
     border-radius: 7px;
 }
 .card-contain .cv-text h2{
+    font-size: 40px;
     margin-left: 10px;
     font-weight: bold;
     margin-bottom: 15px;
@@ -28,19 +34,106 @@
     font-size: 15px;
 }
 .card-contain .cv-text p{
-    font-size: 17px;
+    font-size: 14px;
     color: #7c7c7c;
 }
 .card-contain .cv-text .cv-btn{
+    font-weight: bold;
     margin: 5px;
-    background-color: #fff;
+    background-color: #f9f9f9;
     padding: 10px 35px;
-    border: 2px solid #357BE3;
+    border: 2px solid #007ced;
     border-radius: 37px;
     font-size: 13px;
-    box-shadow: 0px 0px 5px 0px #0003;
+    box-shadow: 0 0 5px 0 #0003;
 }
 .card-contain .cv-text .cv-btn:hover{
-    background-color: #f5f5f5;
-    border: 2px solid #357BE3;
+    background-color: #007ced;
+    color: #ffffff;
+}
+
+.interested{}
+.interested .interested-title{
+    margin-top: 50px;
+    margin-bottom: 35px;
+}
+.interested .interested-title h3{
+    font-size: 24px;
+    border-left: 4px solid #007ced;
+    padding-left: 11px;
+}
+.interested .interested-card{
+    background: #f9f9f9;
+    border-radius: 16px;
+    padding: 20px;
+    height: 370px;
+    box-shadow: 0 0 6px 0px #00000021;
+}
+.interested .interested-card:hover{
+    box-shadow: 0 0 6px 0px #0000004f;
+}
+.interested .interested-card .icon{
+    font-size: 64px;
+    display: flex;
+    justify-content: center;
+    margin: 26px 0 40px 0;
+    color: #007ced;
+}
+.interested .interested-card .title{
+    margin-bottom: 18px;
+}
+.interested .interested-card .title h4{
+    font-size: 19px;
+    font-weight: bold;
+}
+.interested .interested-card .text{}
+.interested .interested-card .text p{
+    font-size: 14px;
+    color: #4b4b4b;
+
+}
+
+
+.activities .activities-title{
+    margin-top: 50px;
+    margin-bottom: 35px;
+}
+.activities .activities-title h3{
+    font-size: 24px;
+    border-left: 4px solid #007ced;
+    padding-left: 11px;
+}
+.activities .activities-card{
+    background: #f9f9f9;
+    border-radius: 16px;
+    padding: 20px;
+    height: 260px;
+    border:2px solid #d5d5d5;
+
+}
+.activities .activities-card:hover{
+    box-shadow: 0 0 6px 0px #00000021;
+}
+.activities .activities-card .icon{
+    font-size: 64px;
+    display: flex;
+    justify-content: center;
+    margin: 26px 0 40px 0;
+    color: #737373;
+}
+.activities .activities-card .title{
+    text-align: center;
+    margin-bottom: 18px;
+}
+.activities .activities-card .title h4{
+    font-size: 19px;
+    font-weight: bold;
+}
+.activities .activities-card .text{
+    text-align: center;
+}
+.activities .activities-card .text span{
+    font-size: 27px;
+    font-weight: bold;
+    color: #007ced;
 }
