@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import mainImg from "../img/main_photo.jpg"
-import '../style/home.css'
+import mainImg from "../../img/main_photo.jpg"
+import '../../style/home.css'
 import {TbCloudComputing} from 'react-icons/tb'
 import {TfiPencil} from 'react-icons/tfi'
 import {IoIosGitNetwork,} from "react-icons/io"
@@ -8,11 +8,13 @@ import {TbMathFunction} from "react-icons/tb"
 import {RiArticleLine,RiBookMarkLine} from "react-icons/ri"
 import {BiChalkboard} from "react-icons/bi"
 import {BsPeople} from "react-icons/bs"
+import { useTranslation } from 'react-i18next'
+import {Link} from "react-router-dom"
+import i18next from 'i18next'
 
-class Home extends Component {
-    state = {}
 
-    render() {
+function Home(){
+        const { t } = useTranslation();
         return (
             <>
                 <div className="d-flex justify-content-center align-items-start mt-5 card-contain ">
@@ -21,7 +23,7 @@ class Home extends Component {
                     </div>
                     <div className="cv-text mt-4">
                         <h5>Spectral Methods, ODEs, PDEs And Scientific Computing</h5>
-                        <h2 className="my-4">Dr. Kourosh Parand</h2>
+                        <h2 className="my-4">{t("title")}</h2>
                         <h6>
                             I am Professor @ Department of Computer Sciences,
                             Faculty of Mathematical Sciences, Shahid Beheshti University
@@ -32,8 +34,9 @@ class Home extends Component {
                             Neuroscience Modeling.
                         </p>
                         <div className="d-flex justify-content-center">
-                            <button className="cv-btn">Download CV</button>
-                            <button className="cv-btn">Contact</button>
+
+                            <a className="cv-btn">Download CV</a>
+                            <Link to="/contact" className="cv-btn">Contact</Link>
                         </div>
                     </div>
                 </div>
@@ -176,8 +179,7 @@ class Home extends Component {
                     </div>
                 </div>
             </>
-        );
-    }
+        )
 }
 
 export default Home;

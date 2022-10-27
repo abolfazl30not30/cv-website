@@ -1,0 +1,36 @@
+
+.contact-container{
+    font-size: 25px;
+    margin:18px 0;
+    color:#007ced;
+}
+
+.contact-container h4{
+    color: #000;
+    font-weight: bold;
+    font-size: 16px;
+    margin-left: 13px;
+}
+.submit-btn{
+    color:#000;
+    font-weight: bold;
+    margin: 5px;
+    background-color: #ffffff;
+    padding: 10px 35px;
+    border: 2px solid #007ced;
+    border-radius: 37px;
+    font-size: 13px;
+    box-shadow: 0 0 5px 0 #0003;
+}
+.submit-btn:hover{
+    background-color: #007ced;
+    color: #fff;
+}
+.contact-icons a{
+    color: #737373;
+    font-size: 35px;
+    margin: 0 5px;
+}
+.contact-icons a:hover{
+    color: #007ced;
+}

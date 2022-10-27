@@ -38,6 +38,9 @@
     color: #7c7c7c;
 }
 .card-contain .cv-text .cv-btn{
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
     font-weight: bold;
     margin: 5px;
     background-color: #f9f9f9;

@@ -1,0 +1,21 @@
+{
+  "title" : "دکتر کوروش پرند",
+  "publications" : "انتشارات",
+  "about-me": "درباره من",
+  "books" : "کتاب ها",
+  "conferences": "کنفرانس ها",
+  "courses" : "دوره ها",
+  "projects": "پروژه ها",
+  "contact": "تماس با من",
+  "phoneNumber": "+9821 29903003",
+  "email": "k_parand@sbu.ac.ir",
+  "address": "Faculty of Mathematical Sciences, Shahid Beheshti University,Shahriyari Sq. Evin, Tehran",
+  "publication-list" : [
+    {
+      "title":"An approximation algorithm for the solution of the nonlinear Lane–Emden type equations arising in astrophysics using Hermite functions collocation method",
+      "year" : "2010",
+      "writer": "K Parand, M Dehghan, AR Rezaei, SM Ghaderi",
+      "description": "Computer Physics Communications 181 (6), 1096-1108"
+    }
+  ]
+}

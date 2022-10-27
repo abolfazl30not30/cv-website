@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import "../style/mainPage.css"
 import Navbar from "./Navbar";
-import Home from "./Home";
+import Home from "./pages/Home";
 import backSvg from "../img/background.svg"
 import { Routes, Route } from 'react-router-dom';
-class mainPage extends Component {
-    state = {}
-    render() {
+import Publications from "./pages/Publications";
+import Books from "./pages/Books";
+import Contact from "./pages/Contact";
+import Conferences from "./pages/Conferences";
+
+function mainPage() {
+
         return (
             <>
                 <img src={backSvg} className="back-svg-1"/>
@@ -17,12 +21,15 @@ class mainPage extends Component {
                     <div>
                         <Routes>
                             <Route path="/about-me" element={(<Home />)} />
+                            <Route path="/publications" element={(<Publications />)} />
+                            <Route path="/books" element={(<Books />)} />
+                            <Route path="/conferences" element={(<Conferences />)} />
+                            <Route path="/contact" element={(<Contact />)} />
                         </Routes>
                     </div>
                 </div>
             </>
         );
-    }
 }
 
 export default mainPage
