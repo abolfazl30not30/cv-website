@@ -6,12 +6,15 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "animate.css": "^4.1.1",
     "bootstrap": "^5.2.2",
+    "google-scholar": "^1.5.1",
     "i18next": "^22.0.2",
     "i18next-browser-languagedetector": "^6.1.8",
     "i18next-http-backend": "^1.4.4",
     "i18next-resources-to-backend": "^1.0.0",
     "react": "^18.2.0",
+    "react-animation-on-scroll": "^5.1.0",
     "react-bootstrap": "^2.5.0",
     "react-countup": "^6.3.2",
     "react-dom": "^18.2.0",
@@ -20,6 +23,7 @@
     "react-icons": "^4.6.0",
     "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
+    "react-scroll-motion": "^0.3.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

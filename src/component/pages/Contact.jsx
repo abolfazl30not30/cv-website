@@ -20,7 +20,7 @@ function Contact() {
                     <h3>{t("contact")}</h3>
                 </div>
                 <div className="row mt-4 p-5">
-                    <div className="col-5 d-flex flex-column justify-content-center">
+                    <div className="col-md-5 col-sm-5 col-xs-12 d-flex flex-column justify-content-center">
                         <div className="contact-container d-flex align-items-center">
                                 <BsFillTelephoneFill/>
                                 <h4>{t("phoneNumber")}</h4>
@@ -34,15 +34,15 @@ function Contact() {
                             <h4>{t("address")}</h4>
                         </div>
                         <div className="contact-icons d-flex align-items-center justify-content-center">
-                            <a href="#"><AiOutlineInstagram/></a>
-                            <a href="#"><AiFillLinkedin/></a>
+                            <a href="https://www.linkedin.com/in/kourosh-parand" target="_blank"><AiOutlineInstagram/></a>
+                            <a href="https://www.linkedin.com/in/kourosh-parand" target="_blank"><AiFillLinkedin/></a>
                         </div>
                     </div>
-                    <div className="col-7">
+                    <div className="col-md-7 col-sm-7 col-xs-12">
                         <div className="row">
-                            <div className="col-5">
+                            <div className="col-md-5 col-sm-5 col-xs-12">
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                                    <Form.Label>Your Name :</Form.Label>
+                                    <Form.Label>Full Name :</Form.Label>
                                     <Form.Control type="text"  />
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -55,7 +55,7 @@ function Contact() {
                                 </Form.Group>
                                 <Button className="btn submit-btn">Submit</Button>
                             </div>
-                            <div className="col-7">
+                            <div className="col-md-7 col-sm-7 col-xs-12">
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                                     <Form.Label>Your Massage :</Form.Label>
                                     <Form.Control as="textarea" rows={8} />

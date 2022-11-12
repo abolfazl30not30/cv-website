@@ -2,7 +2,6 @@
     font-family: montserrat;
     src: url(../font/Montserrat-VariableFont_wght.ttf) ;
 }
-.card-contain{}
 .card-contain .mainImgContain{
     margin-right: 60px;
 }
@@ -139,4 +138,97 @@
     font-size: 27px;
     font-weight: bold;
     color: #007ced;
+}
+.education-box{
+    border-left: 2px solid #cbcbcb;
+    padding: 15px;
+}
+.education-box:first-child{
+    padding-top:0px
+}
+.education-box:last-child{
+    padding-bottom:0px;
+    position: relative;
+}
+.education-box span{
+    margin-left: -14px;
+    font-size: 13px;
+    margin-right: 15px;
+    padding: 5px 10px;
+    border: 2px solid #007ced;
+    border-radius: 19px;
+    font-weight: bold;
+}
+.education-box::before{
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-top:11px;
+    position: absolute;
+    left: -6px;
+    border-radius: 10px;
+    background-color: #007ced;
+}
+.education-box h6{
+    font-size: 14px;
+    color:#575757;
+}
+.education-box h4{
+    font-size: 17px;
+    margin-top: 12px;
+    font-weight: bold;
+}
+.teaching-box h4{
+    font-size: 16px;
+    font-weight: bold;
+}
+.cooperation-box{
+    margin:7px
+}
+
+.cooperation-title{
+    font-size: 21px;
+    border-left: 4px solid #007ced;
+    padding-left: 11px;
+}
+.cooperation-box h5{
+    margin-left: 5px;
+    font-size: 18px;
+}
+.cooperation-box h6{
+    margin-left: 13px;
+    font-size: 14px;
+}
+.postdoc-box h4{
+    font-size: 14px;
+    font-weight: bold;
+}
+.postdoc-box p{
+    font-size:13px;
+}
+.cooperationAli-box span{
+    margin-left: -16px;
+    font-size: 13px;
+    margin-right: 15px;
+    padding: 5px 10px;
+    border: 2px solid #007ced;
+    border-radius: 19px;
+    font-weight: bold;
+}
+.cooperationAli-box h6{
+    font-size: 13px;
+}
+@media screen and (max-width: 768px){
+    .card-contain{
+        flex-direction: column;
+        align-items: center;
+    }
+    .cv-text{
+        width: 70% !important;
+        margin: auto;
+    }
+    .mainImgContain{
+        margin: auto;
+    }
 }

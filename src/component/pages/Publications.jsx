@@ -5,18 +5,21 @@ import "./../../style/pages.css"
 
 function Publications() {
 
-    const {t} = useTranslation();
-    const [publication, setPublication] = useState([]);
 
-    useEffect(() => {
+    const {t} = useTranslation();
+    const [publication, setPublication] = useState([])
+
+     useEffect  ( () => {
+
         let publicationList = t('publication-list', {returnObjects: true})
         setPublication(publicationList)
+
     });
     return (
         <>
             <div>
                 <div className="main-title">
-                    <h3>{t("publications")}</h3>
+                    <h3>{t("articles")}</h3>
                 </div>
                 <div className="mt-5 mx-3">
                     {
