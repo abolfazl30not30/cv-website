@@ -8,13 +8,17 @@ import {TbMathFunction} from "react-icons/tb"
 import {RiArticleLine, RiBookMarkLine} from "react-icons/ri"
 import {BiChalkboard} from "react-icons/bi";
 import {GoPrimitiveDot} from "react-icons/go"
-
+import img from "../../img/member-scientometrics-logo.png"
 import {BsPeople} from "react-icons/bs"
 import {useTranslation} from 'react-i18next'
 import {Link} from "react-router-dom"
 import i18next from 'i18next'
 import "animate.css/animate.min.css";
 import {AnimationOnScroll} from 'react-animation-on-scroll';
+import {SiGooglescholar} from "react-icons/si";
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
+import {Overlay} from "react-bootstrap";
 
 function Home() {
     const {t} = useTranslation();
@@ -65,10 +69,32 @@ function Home() {
                         and Computational
                         Neuroscience Modeling.
                     </p>
-                    <div className="d-flex justify-content-center">
-
+                    <div className="d-flex justify-content-center align-items-center">
                         <a className="cv-btn">Download CV</a>
                         <Link to="/contact" className="cv-btn">Contact</Link>
+                        <OverlayTrigger
+                            placement="bottom"
+                            overlay={
+                                <Tooltip className="deleteTooltip">
+                                    Google Scholar
+                                </Tooltip>
+                            }
+                        ><a className="mx-2" href="https://scholar.google.com/citations?user=44wzW2AAAAAJ&hl=en"
+                            target="_blank"><SiGooglescholar fontSize="30px"/></a>
+                        </OverlayTrigger>
+                        <OverlayTrigger
+                            placement="bottom"
+                            overlay={
+                                <Tooltip className="deleteTooltip">
+                                    Scientific evaluation system of faculty members
+                                </Tooltip>
+                            }
+                        ><a href="http://scimet.sbu.ac.ir/Kourosh_Parand" target="_blank"><img src={img} style={{
+                            width: "30px",
+                            height: "30px"
+                        }}/></a>
+                        </OverlayTrigger>
+
                     </div>
                 </div>
             </div>
@@ -172,7 +198,7 @@ function Home() {
                                     <h4>Articles</h4>
                                 </div>
                                 <div className="text">
-                                    <span>1003</span>
+                                    <span>247</span>
                                 </div>
                             </div>
                         </div>
@@ -185,7 +211,7 @@ function Home() {
                                     <h4>Conferances</h4>
                                 </div>
                                 <div className="text">
-                                    <span>1520</span>
+                                    <span></span>
                                 </div>
                             </div>
                         </div>
@@ -198,7 +224,7 @@ function Home() {
                                     <h4>Books</h4>
                                 </div>
                                 <div className="text">
-                                    <span>1403</span>
+                                    <span></span>
                                 </div>
                             </div>
                         </div>
@@ -211,7 +237,7 @@ function Home() {
                                     <h4>Phd & Msc</h4>
                                 </div>
                                 <div className="text">
-                                    <span>1002</span>
+                                    <span></span>
                                 </div>
                             </div>
                         </div>
@@ -279,15 +305,13 @@ function Home() {
                         </div>
                         <div className="col-md-6 col-sm-6 col-xs-12">
                             <div className="activities-title">
-                                <h3 style={{fontSize: "21px"}}>Cooperating with Prof.Ali Ghodsi</h3>
+                                <h3>Postdoc</h3>
                             </div>
                             <div>
-                                {cooperationAli.map((co) => (
-                                    <div className="cooperationAli-box d-flex align-items-center my-4">
-                                        <span>{co.year}</span>
-                                        <h6>{co.description}</h6>
-                                    </div>
-                                ))}
+                                <div className="postdoc-box">
+                                    <h4>{t("postdoc.title")}</h4>
+                                    <p>{t("postdoc.students")}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -307,7 +331,9 @@ function Home() {
                             <div className="teaching-box">
                                 <div className="d-flex align-items-center my-4">
                                     <GoPrimitiveDot color="#007ced"/>
-                                    <a href="https://cmcma.sbu.ac.ir/" target="_blank" style={{fontSize: '13px',textDecoration:"none"}}>Computational Mathematics and Computer Modeling with
+                                    <a href="https://cmcma.sbu.ac.ir/" target="_blank"
+                                       style={{fontSize: '13px', textDecoration: "none"}}>Computational Mathematics and
+                                        Computer Modeling with
                                         Applications (CMCMA)</a>
                                 </div>
                                 <h5>Managing Editor:</h5>
@@ -340,17 +366,6 @@ function Home() {
             <div className="mx-5 activities mb-5 row">
                 <AnimationOnScroll animateIn="animate__fadeIn">
                     <div className="row">
-                        <div className="col-md-6 col-sm-6 col-xs-12">
-                            <div className="activities-title">
-                                <h3>Postdoc</h3>
-                            </div>
-                            <div>
-                                <div className="postdoc-box">
-                                    <h4>{t("postdoc.title")}</h4>
-                                    <p>{t("postdoc.students")}</p>
-                                </div>
-                            </div>
-                        </div>
                         <div className="col-md-6 col-sm-6 col-xs-12">
                             <div className="activities-title">
                                 <h3>Honors and Awards</h3>

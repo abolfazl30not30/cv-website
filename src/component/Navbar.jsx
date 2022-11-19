@@ -41,11 +41,11 @@ function MainNavbar() {
                             </li>
                             <li className="nav-item">
                                 <NavLink to="/courses" className="nav-link "
-                                         activeClassName='active'>{t("courses")}</NavLink>
+                                         activeClassName='active' style={{pointerEvents:"none",color:"#b3b3b3"}}>{t("courses")}</NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink to="/projects" className="nav-link "
-                                         activeClassName='active'>{t("projects")}</NavLink>
+                                         activeClassName='active' style={{pointerEvents:"none",color:"#b3b3b3"}}>{t("projects")}</NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink to="/contact" className="nav-link "
@@ -54,7 +54,7 @@ function MainNavbar() {
                         </ul>
                         <div className="mx-3">
                             <Form.Select aria-label="Default select example" value={language} size="sm"
-                                         onChange={(e) => handleLanguage(e)}>
+                                         onChange={(e) => handleLanguage(e)} disabled>
                                 <option value="en">English</option>
                                 <option value="fa">فارسی</option>
                             </Form.Select>
