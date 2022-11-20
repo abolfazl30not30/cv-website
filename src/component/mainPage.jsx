@@ -21,7 +21,7 @@ function mainPage() {
                     <MainNavbar/>
                     <div>
                         <Routes>
-                            <Route path="/about-me" element={(<Home />)} />
+                            <Route path="/" element={(<Home />)} />
                             <Route path="/articles" element={(<Publications />)} />
                             <Route path="/books" element={(<Books />)} />
                             <Route path="/conferences" element={(<Conferences />)} />

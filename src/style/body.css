@@ -22,7 +22,3 @@ body{
 .navbar{
     border-radius: 20px;
 }
-.active{
-    color: #357BE3 !important;
-    border-bottom: 1px solid;
-}

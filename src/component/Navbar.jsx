@@ -26,7 +26,7 @@ function MainNavbar() {
                     <Nav className="">
                         <ul className="navbar-nav mx-3">
                             <li className="nav-item">
-                                <NavLink to="/about-me" className="nav-link" activeClassName='active'>{t("about-me")}</NavLink>
+                                <NavLink to="/" className="nav-link" activeClassName='active'>{t("about-me")}</NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink to="/articles" className="nav-link"
