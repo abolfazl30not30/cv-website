@@ -13,6 +13,7 @@
     "i18next-browser-languagedetector": "^6.1.8",
     "i18next-http-backend": "^1.4.4",
     "i18next-resources-to-backend": "^1.0.0",
+    "node-sass": "^7.0.3",
     "react": "^18.2.0",
     "react-animation-on-scroll": "^5.1.0",
     "react-bootstrap": "^2.5.0",
@@ -24,6 +25,8 @@
     "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
     "react-scroll-motion": "^0.3.0",
+    "sass-loader": "^13.2.0",
+    "scss-loader": "^0.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -49,5 +52,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "sass": "^1.56.1"
   }
 }

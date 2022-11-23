@@ -9,6 +9,7 @@ import Books from "./pages/Books";
 import Contact from "./pages/Contact";
 import Conferences from "./pages/Conferences";
 import MainNavbar from "./Navbar";
+import Course from "./pages/Course";
 
 function mainPage() {
 
@@ -21,10 +22,11 @@ function mainPage() {
                     <MainNavbar/>
                     <div>
                         <Routes>
-                            <Route path="/about-me" element={(<Home />)} />
+                            <Route exact path="/" element={(<Home />)} />
                             <Route path="/articles" element={(<Publications />)} />
                             <Route path="/books" element={(<Books />)} />
                             <Route path="/conferences" element={(<Conferences />)} />
+                            <Route path="/courses" element={(<Course />)} />
                             <Route path="/contact" element={(<Contact />)} />
                         </Routes>
                     </div>
