@@ -25,7 +25,7 @@ function Conferences() {
                         <Link >
                             <div className='card' style={{backgroundImage:`url(${img})`}}>
                                 <div className='info'>
-                                    <h1 className='title'>SVM</h1>
+                                    <h1 className='title'>Data Mining</h1>
                                     <p className='description'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius esse
                                         corporis, velit porro impedit laudantium accusamus! Id velit, illum magni rem mollitia
                                         blanditiis iste maiores optio ipsa, est dolorem fugit</p>

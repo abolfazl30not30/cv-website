@@ -11,7 +11,7 @@ function Books() {
     useEffect(() => {
         let booksList = t('books-list', {returnObjects: true})
         setBooks(booksList)
-    });
+    },[]);
     return (
         <>
             <div>

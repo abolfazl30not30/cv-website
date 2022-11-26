@@ -14,7 +14,7 @@ function Publications() {
         let publicationList = t('publication-list', {returnObjects: true})
         setPublication(publicationList)
 
-    });
+    },[]);
     return (
         <>
             <div>

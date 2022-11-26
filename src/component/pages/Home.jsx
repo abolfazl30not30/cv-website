@@ -19,7 +19,7 @@ import {SiGooglescholar} from "react-icons/si";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import {Overlay} from "react-bootstrap";
-
+import file from "../../file/Kourosh Parand CV.pdf"
 function Home() {
     const {t} = useTranslation();
     const [education, setEducation] = useState([]);
@@ -67,7 +67,7 @@ function Home() {
                         Neuroscience Modeling.
                     </p>
                     <div className="d-flex justify-content-center align-items-center">
-                        <a className="cv-btn">Download CV</a>
+                        <a href={file} className="cv-btn">Download CV</a>
                         <Link to="/contact" className="cv-btn">Contact</Link>
                         <OverlayTrigger
                             placement="bottom"
@@ -100,7 +100,6 @@ function Home() {
                 <div className="interested-title">
                     <h3>Interested In</h3>
                 </div>
-                <AnimationOnScroll animateIn="animate__pulse">
                     <div className="row">
                         <div className="col-md-3 col-sm-6 col-xs-12">
                             <div className="interested-card">
@@ -176,7 +175,6 @@ function Home() {
                             </div>
                         </div>
                     </div>
-                </AnimationOnScroll>
             </div>
 
             <div className="mx-5 activities mb-5">
@@ -191,7 +189,7 @@ function Home() {
                                 <div className="icon">
                                     <RiArticleLine/>
                                 </div>
-                                <div className="title">
+                                <div className="title p-1">
                                     <h4>Articles</h4>
                                 </div>
                                 <div className="text">
@@ -204,7 +202,7 @@ function Home() {
                                 <div className="icon">
                                     <BiChalkboard/>
                                 </div>
-                                <div className="title">
+                                <div className="title ">
                                     <h4>Conferances</h4>
                                 </div>
                                 <div className="text">

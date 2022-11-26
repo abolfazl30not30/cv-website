@@ -11,7 +11,7 @@ function Conferences() {
     useEffect(() => {
         let conferencesList = t('conferences-list', {returnObjects: true})
         setConferences(conferencesList)
-    });
+    },[]);
     return (
         <>
             <div>
