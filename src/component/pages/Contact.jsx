@@ -27,7 +27,8 @@ function Contact() {
                         </div>
                         <div className="contact-container d-flex align-items-center">
                             <MdEmail/>
-                            <h4>{t("email")}</h4>
+                            <h4>{t("email1")}</h4>
+                            <h4>{t("email2")}</h4>
                         </div>
                         <div className="contact-container d-flex align-items-center">
                             <HiLocationMarker fontSize="55px"/>

@@ -12,7 +12,7 @@ function Conferences() {
     useEffect(() => {
         let conferencesList = t('conferences-list', {returnObjects: true})
         setConferences(conferencesList)
-    },[]);
+    }, []);
 
     return (
         <div>
@@ -22,13 +22,14 @@ function Conferences() {
             <div className="mt-5 mx-4 mb-5">
                 <div className="row">
                     <div className="col-4 px-4">
-                        <Link >
-                            <div className='card' style={{backgroundImage:`url(${img})`}}>
+                        <Link>
+                            <div className='card' style={{backgroundImage: `url(${img})`}}>
                                 <div className='info'>
-                                    <h1 className='title'>SVM</h1>
-                                    <p className='description'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius esse
-                                        corporis, velit porro impedit laudantium accusamus! Id velit, illum magni rem mollitia
-                                        blanditiis iste maiores optio ipsa, est dolorem fugit</p>
+                                    <h1 className='title'>Support vector machine and learning with kernels</h1>
+                                    <p className='description'>Familiarizing the student with the basic concepts of
+                                        machine learning, in-depth knowledge of the support vector machine model and its
+                                        types, the kernel trick and its importance, introducing support vector
+                                        regression and least squares regression/support vector machine.</p>
                                 </div>
                             </div>
                         </Link>
