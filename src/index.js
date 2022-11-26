@@ -2,10 +2,9 @@ import React,{Suspense} from "react";
 import ReactDOM from 'react-dom/client';
 import App from "./App";
 import 'bootstrap/dist/css/bootstrap.min.css'
-
 import { BrowserRouter } from "react-router-dom";
 import i18next from 'i18next'
-import { initReactI18next } from "react-i18next";
+import {I18nextProvider, initReactI18next} from "react-i18next";
 import LanguageDetector from 'i18next-browser-languagedetector';
 import resourcesToBackend from 'i18next-resources-to-backend';
 import HttpApi from 'i18next-http-backend';
@@ -24,29 +23,18 @@ i18next
     }))
     .init({
         supportedLngs:["en","fa"],
-        // resources: {
-        //     en: {
-        //         translation: {
-        //             "title": "Welcome to React and react-i18next"
-        //         }
-        //     },
-        //     fa: {
-        //         translation: {
-        //             "title": "سلام خوبی"
-        //         }
-        //     }
-        // },
         fallbackLng: "en",
         detection:{
             order: [ 'htmlTag','cookie', 'localStorage' , 'path', 'subdomain'],
             caches:['cookie']
         },
+
         debug: false,
         backend:{
             loadPath: `/assets/locales/{{lng}}/translation.json`,
         },
         react :{
-            useSuspense:false
+            useSuspense:true
         }
     });
 // ReactDOM.render(<React.StrictMode><BrowserRouter><App/></BrowserRouter></React.StrictMode>, document.getElementById("root"));

@@ -1,21 +1,844 @@
 {
-  "title" : "دکتر کوروش پرند",
+  "title": "دکتر کوروش پرند",
   "articles": "مقالات",
   "about-me": "درباره من",
-  "books" : "کتاب ها",
+  "books": "کتاب ها",
   "conferences": "کنفرانس ها",
-  "courses" : "دوره ها",
+  "courses": "دوره ها",
   "projects": "پروژه ها",
   "contact": "تماس با ما",
   "phoneNumber": "+9821 29903003",
   "email": "k_parand@sbu.ac.ir",
   "address": "Faculty of Mathematical Sciences, Shahid Beheshti University,Shahriyari Sq. Evin, Tehran",
-  "publication-list" : [
+  "publication-list": [
     {
-      "title":"An approximation algorithm for the solution of the nonlinear Lane–Emden type equations arising in astrophysics using Hermite functions collocation method",
-      "year" : "2010",
+      "title": "Exact Operational Matrices for Rational Bernstein Polynomials and its Application for Solving MHD Problem",
+      "year": "2022",
+      "writer": "F Salehi, SA Hossayni, K Parand",
+      "description": ""
+    },
+    {
+      "title": "NPDS toolbox: Neural population (De) synchronization toolbox for MATLAB",
+      "year": "2022",
+      "writer": "MM Moayeri, M Hemami, JA Rad, K Parand",
+      "description": "Neurocomputing 506, 206-212"
+    },
+    {
+      "title": "Efficient image denoising technique using the meshless method: Investigation of operator splitting RBF collocation method for two anisotropic diffusion-based PDEs",
+      "year": "2022",
+      "writer": "Y Lotfi, K Parand",
+      "description": "Computers & Mathematics with Applications 113, 315-331"
+    },
+    {
+      "title": "Anti-aliasing of gray-scale/color/outline images: Looking through the lens of numerical approaches for PDE-based models",
+      "year": "2022",
+      "writer": "Y Lotfi, K Parand",
+      "description": "Computers & Mathematics with Applications 113, 130-147"
+    },
+    {
+      "title": "A Novel Learning Approach for Different Profile Shapes of Convecting–Radiating Fins Based on Shifted Gegenbauer LSSVM",
+      "year": "2022",
+      "writer": "E Shivanian, Z Hajimohammadi, F Baharifard, K Parand, R Kazemi",
+      "description": "New Mathematics and Natural Computation, 1-21"
+    },
+    {
+      "title": "FPGA-orthopoly: a hardware implementation of orthogonal polynomials",
+      "year": "2022",
+      "writer": "M Asghari, AH Hadian Rasanan, S Gorgin, D Rahmati, K Parand",
+      "description": "Engineering with Computers, 1-20"
+    },
+    {
+      "title": "A machine learning approach for solving inverse Stefan problem",
+      "year": "2022",
+      "writer": "K Parand, GS Ghaemi Javid, M Jani",
+      "description": "International Journal of Nonlinear Analysis and Applications"
+    },
+    {
+      "title": "Fractional Chebyshev deep neural network (FCDNN) for solving differential models",
+      "year": "2021",
+      "writer": "Z Hajimohammadi, F Baharifard, A Ghodsi, K Parand",
+      "description": "Chaos, Solitons & Fractals 153, 111530"
+    },
+    {
+      "title": "Phase distribution control of neural oscillator populations using local radial basis function meshfree technique with application in epileptic seizures: A numerical simulation …",
+      "year": "2021",
+      "writer": "M Hemami, JA Rad, K Parand",
+      "description": "Communications in Nonlinear Science and Numerical Simulation 103, 105961"
+    },
+    {
+      "title": "Parallel LS-SVM for the numerical simulation of fractional Volterra’s population model",
+      "year": "2021",
+      "writer": "K Parand, AA Aghaei, M Jani, A Ghodsi",
+      "description": "Alexandria Engineering Journal 60 (6), 5637-5647"
+    },
+    {
+      "title": "Numerical simulation of Volterra–Fredholm integral equations using least squares support vector regression",
+      "year": "2021",
+      "writer": "K Parand, M Hasani, M Jani, H Yari",
+      "description": "Computational and Applied Mathematics 40 (7), 1-15"
+    },
+    {
+      "title": "Least squares support vector regression for differential equations on unbounded domains",
+      "year": "2021",
+      "writer": "A Pakniyat, K Parand, M Jani",
+      "description": "Chaos, Solitons & Fractals 151, 111232"
+    },
+    {
+      "title": "A new computational method based on fractional Lagrange functions to solve multi-term fractional differential equations",
+      "year": "2021",
+      "writer": "M Delkhosh, K Parand",
+      "description": "Numerical Algorithms 88 (2), 729-766"
+    },
+    {
+      "title": "Unsteady flow of gas in a semi-infinite porous medium: a numerical investigation by using RBF-DQM",
+      "year": "2021",
+      "writer": "K Parand, S Hashemi-Shahraki, M Hemami",
+      "description": "Indian Journal of Physics 95 (10), 2107-2114"
+    },
+    {
+      "title": "Recovering a moving boundary from Cauchy data in an inverse problem which arises in modeling brain tumor treatment: the (quasi) linearization idea combined with radial basis …",
+      "year": "2021",
+      "writer": "A Hajiollow, Y Lotfi, K Parand, AH Hadian, K Rashedi, JA Rad",
+      "description": "Engineering with Computers 37 (3), 1735-1749"
+    },
+    {
+      "title": "Legendre Deep Neural Network (LDNN) and its application for approximation of nonlinear Volterra Fredholm Hammerstein integral equations",
+      "year": "2021",
+      "writer": "Z Hajimohammadi, K Parand, A Ghodsi",
+      "description": "arXiv preprint arXiv:2106.14320"
+    },
+    {
+      "title": "A single layer fractional orthogonal neural network for solving various types of Lane–Emden equation",
+      "year": "2020",
+      "writer": "AH Hadian-Rasanan, D Rahmati, S Gorgin, K Parand",
+      "description": "New Astronomy 75, 101307"
+    },
+    {
+      "title": "Collocation method to solve inequality-constrained optimal control problems of arbitrary order",
+      "year": "2020",
+      "writer": "K Rabiei, K Parand",
+      "description": "Engineering with Computers 36 (1), 115-125"
+    },
+    {
+      "title": "Generalized pseudospectral method: theory and applications",
+      "year": "2019",
+      "writer": "M Delkhosh, K Parand",
+      "description": "Journal of Computational Science 34, 11-32"
+    },
+    {
+      "title": "Simulation of nonlinear fractional dynamics arising in the modeling of cognitive decision making using a new fractional neural network",
+      "year": "2019",
+      "writer": "AHH Rasanan, N Bajalan, K Parand, JA Rad",
+      "description": "Mathematical Methods in the Applied Sciences"
+    },
+    {
+      "title": "Numerical simulation of reaction–diffusion neural dynamics models and their synchronization/desynchronization: application to epileptic seizures",
+      "year": "2019",
+      "writer": "M Hemami, K Parand, JA Rad",
+      "description": "Computers & Mathematics with Applications 78 (11), 3644-3677"
+    },
+    {
+      "title": "An efficient numerical method to solve the boundary layer flow of an Eyring-Powell non-Newtonian fluid",
+      "year": "2019",
+      "writer": "M Delkhosh, K Parand, D Domiri Ganji",
+      "description": "Journal of Applied and Computational Mechanics 5 (2), 454-467"
+    },
+    {
+      "title": "An iterative reproducing kernel method in Hilbert space for the multi-point boundary value problems",
+      "year": "2018",
+      "writer": "B Azarnavid, K Parand",
+      "description": "Journal of Computational and Applied Mathematics"
+    },
+    {
+      "title": "An iterative kernel based method for fourth order nonlinear equation with nonlinear boundary condition",
+      "year": "2018",
+      "writer": "B Azarnavid, K Parand, S Abbasbandy",
+      "description": "Communications in Nonlinear Science and Numerical Simulation"
+    },
+    {
+      "title": "RBF-DQ method for solving non-linear differential equations of Lane-Emden type",
+      "year": "2018",
+      "writer": "K Parand, S Hashemi",
+      "description": "Ain Shams Engineering Journal"
+    },
+    {
+      "title": "Systems of nonlinear Volterra integro-differential equations of arbitrary order",
+      "year": "2018",
+      "writer": "K Parand, M Delkhosh",
+      "description": "Boletim da Sociedade Paranaense de Matemática 36 (4), 33-54"
+    },
+    {
+      "title": "Generalized Lagrange Jacobi Gauss-Lobatto (GLJGL) Collocation Method For Solving Linear and Nonlinear Fokker-Planck equations",
+      "year": "2018",
+      "writer": "K Parand, S Latifi, MM Moayeri, M Delkhosh",
+      "description": "Communications in Theoretical Physics"
+    },
+    {
+      "title": "Generalized Lagrangian Jacobi Gauss collocation method for solving unsteady isothermal gas through a micro-nano porous medium",
+      "year": "2018",
+      "writer": "K Parand, S Latifi, M Delkhosh, MM Moayeri",
+      "description": "The European Physical Journal Plus"
+    },
+    {
+      "title": "Accurate solution of the Thomas–Fermi equation using the fractional order of rational Chebyshev functions",
+      "year": "2017",
+      "writer": "K Parand, M Delkhosh",
+      "description": "Journal of Computational and Applied Mathematics"
+    },
+    {
+      "title": "Numerical Study of Astrophysics Equations by Meshless Collocation Method Based on Compactly Supported Radial Basis Function",
+      "year": "2017",
+      "writer": "K Parand, M Hemami",
+      "description": "International Journal of Applied and Computational Mathematics, 1-23"
+    },
+    {
+      "title": "Fractional order of rational Jacobi functions for solving the non-linear singular Thomas-Fermi equation",
+      "year": "2017",
+      "writer": "K Parand, P Mazaheri, H Yousefi, M Delkhosh",
+      "description": "The European Physical Journal Plus"
+    },
+    {
+      "title": "A Numerical Approach to Solve Lane-Emden Type Equations by the Fractional Order of Rational Bernoulli Functions",
+      "year": "2017",
+      "writer": "K Parand, H Yousefi, M Delkhosh",
+      "description": "Romanian Journal of Physics 62 (1)"
+    },
+    {
+      "title": "Solving the nonlinear Schlomilch’s integral equation arising in ionospheric problems",
+      "year": "2017",
+      "writer": "K Parand, M Delkhosh",
+      "description": "Afrika Matematika, 1-22"
+    },
+    {
+      "title": "A numerical investigation of the boundary layer flow of an Eyring-Powell fluid over a stretching sheet via rational Chebyshev functions",
+      "year": "2017",
+      "writer": "K Parand, M Mahdi Moayeri, S Latifi, M Delkhosh",
+      "description": "The European Physical Journal Plus 132 (7), 1-11"
+    },
+    {
+      "title": "An effective numerical method for solving the nonlinear singular Lane-Emden type equations of various orders",
+      "year": "2017",
+      "writer": "K Parand, M Delkhosh",
+      "description": "Jurnal Teknologi 79 (1), 25-36"
+    },
+    {
+      "title": "Novel orthogonal functions for solving differential equations of arbitrary order",
+      "year": "2017",
+      "writer": "K Parand, M Delkhosh, M Nikarya",
+      "description": "Tbilisi Mathematical Journal"
+    },
+    {
+      "title": "Numerical pricing of American options under two stochastic factor models with jumps using a meshless local Petrov-Galerkin method",
+      "year": "2017",
+      "writer": "JA Rad, K Parand",
+      "description": "Applied Numerical Mathematics"
+    },
+    {
+      "title": "New numerical solutions for solving Kidder equation by using the rational Jacobi functions",
+      "year": "2017",
+      "writer": "K Parand, P Mazaheri, M Delkhosh, A Ghaderi",
+      "description": "SeMA Journal"
+    },
+    {
+      "title": "An Efficient Numerical Solution of Nonlinear Hunter–Saxton Equation",
+      "year": "2017",
+      "writer": "K Parand, M Delkhosh",
+      "description": "Communications in Theoretical Physics 67 (5), 483-492"
+    },
+    {
+      "title": "An accurate numerical analysis of the laminar two-dimensional flow of an incompressible Eyring-Powell fluid over a linear stretching sheet",
+      "year": "2017",
+      "writer": "K Parand, Y Lotfi, J Amani Rad",
+      "description": "The European Physical Journal Plus 132 (9), 1-21"
+    },
+    {
+      "title": "The meshfree strong form methods for solving one dimensional inverse Cauchy-Stefan problem",
+      "year": "2017",
+      "writer": "JA Rad, K Rashedi, K Parand, H Adibi",
+      "description": "Engineering with Computers, 1-25"
+    },
+    {
+      "title": "Application of a Meshfree Method Based on a Compactly Supported Radial Basis Function for Solving Unsteady Isothermal Gas Through a Micro-Nano Porous Medium",
+      "year": "2017",
+      "writer": "K Parand, M Hemami",
+      "description": "Iranian Journal of Science and Technology, Transaction A: Science"
+    },
+    {
+      "title": "Pricing American options under jump-diffusion models using local weak form meshless techniques",
+      "year": "2017",
+      "writer": "J Amani Rad, K Parand",
+      "description": "International Journal of Computer Mathematics, 1-25"
+    },
+    {
+      "title": "Solving Volterra’s population growth model of arbitrary order using the generalized fractional order of the Chebyshev functions",
+      "year": "2016",
+      "writer": "K Parand, M Delkhosh",
+      "description": "Ricerche di Matematica 65 (1), 307-328"
+    },
+    {
+      "title": "The rational Chebyshev of second kind collocation method for solving a class of astrophysics problems",
+      "year": "2016",
+      "writer": "K Parand, S Khaleqi",
+      "description": "The European Physical Journal Plus"
+    },
+    {
+      "title": "An operation matrix method based on Bernstein polynomials for Riccati differential equation and Volterra population model",
+      "year": "2016",
+      "writer": "K Parand, SA Hossayni, JA Rad",
+      "description": "Applied Mathematical Modelling"
+    },
+    {
+      "title": "A novel numerical technique to obtain an accurate solution to the Thomas-Fermi equation",
+      "year": "2016",
+      "writer": "K Parand, H Yousefi, M Delkhosh, A Ghaderi",
+      "description": "The European Physical Journal Plus 131 (7), 1-16"
+    },
+    {
+      "title": "A new approach for solving nonlinear Thomas-Fermi equation based on fractional order of rational bessel functions",
+      "year": "2016",
+      "writer": "K Parand, A Ghaderi, H Yousefi, M Delkhosh",
+      "description": "Electronic Journal of Differential Equations 2016, 1-18"
+    },
+    {
+      "title": "Rational and Exponential Legendre Tau Method on Steady Flow of a Third Grade Fluid in a Porous Half Space",
+      "year": "2016",
+      "writer": "F Baharifard, S Kazem, K Parand",
+      "description": "International Journal of Applied and Computational Mathematics, 1-20"
+    },
+    {
+      "title": "Operational matrices to solve nonlinear Volterra-Fredholm integro-differential equations of multi-arbitrary order",
+      "year": "2016",
+      "writer": "K Parand, M Delkhosh",
+      "description": "Gazi University Journal of Science 29 (4), 895-907"
+    },
+    {
+      "title": "Pricing European and American options by radial basis point interpolation",
+      "year": "2015",
+      "writer": "JA Rad, K Parand, LV Ballestra",
+      "description": "Applied Mathematics and Computation 251, 363-377"
+    },
+    {
+      "title": "Local weak form meshless techniques based on the radial point interpolation (RPI) method and local boundary integral equation (LBIE) method to evaluate European and American …",
+      "year": "2015",
+      "writer": "JA Rad, K Parand, S Abbasbandy",
+      "description": "Communications in Nonlinear Science and Numerical Simulation 22 (1-3), 1178-1200"
+    },
+    {
+      "title": "Pricing European and American options using a very fast and accurate scheme: the meshless local Petrov–Galerkin method",
+      "year": "2015",
+      "writer": "JA Rad, K Parand, S Abbasbandy",
+      "description": "Proceedings of the National Academy of Sciences, India Section A: Physical …"
+    },
+    {
+      "title": "Numerical solution of fractional differential equations with a Tau method based on Legendre and Bernstein polynomials",
+      "year": "2014",
+      "writer": "JA Rad, S Kazem, M Shaban, K Parand, A Yildirim",
+      "description": "Mathematical Methods in the Applied Sciences 37 (3), 329-342"
+    },
+    {
+      "title": "Optimal control of a parabolic distributed parameter system via radial basis functions",
+      "year": "2014",
+      "writer": "JA Rad, S Kazem, K Parand",
+      "description": "Communications in Nonlinear Science and Numerical Simulation 19 (8), 2559-2567"
+    },
+    {
+      "title": "Application of Bessel functions for solving differential and integro-differential equations of the fractional order",
+      "year": "2014",
+      "writer": "K Parand, M Nikarya",
+      "description": "Applied Mathematical Modelling 38 (15-16), 4137-4147"
+    },
+    {
+      "title": "Application of meshfree methods for solving the inverse one-dimensional Stefan problem",
+      "year": "2014",
+      "writer": "K Rashedi, H Adibi, JA Rad, K Parand",
+      "description": "Engineering Analysis with Boundary Elements 40, 1-21"
+    },
+    {
+      "title": "Solving the unsteady isothermal gas through a micro-nano porous medium via bessel function collocation method",
+      "year": "2014",
+      "writer": "K Parand, M Nikarya",
+      "description": "Journal of Computational and Theoretical Nanoscience 11 (1), 131-136"
+    },
+    {
+      "title": "Using hermite function for solving thomas-fermi equation",
+      "year": "2014",
+      "writer": "F Bayatbabolghani, K Parand",
+      "description": "International Journal of Mathematical, Computational, Physical, Electrical …"
+    },
+    {
+      "title": "The Sinc-collocation method for solving the Thomas–Fermi equation",
+      "year": "2013",
+      "writer": "K Parand, M Dehghan, A Pirkhedri",
+      "description": "Journal of Computational and Applied Mathematics 237 (1), 244-252"
+    },
+    {
+      "title": "Solving non-linear Lane–Emden type equations using Bessel orthogonal functions collocation method",
+      "year": "2013",
+      "writer": "K Parand, M Nikarya, JA Rad",
+      "description": "Celestial Mechanics and Dynamical Astronomy 116 (1), 97-107"
+    },
+    {
+      "title": "Solving a laminar boundary layer equation with the rational Gegenbauer functions",
+      "year": "2013",
+      "writer": "K Parand, M Dehghan, F Baharifard",
+      "description": "Applied Mathematical Modelling 37 (3), 851-863"
+    },
+    {
+      "title": "Kansa method for the solution of a parabolic equation with an unknown spacewise-dependent coefficient subject to an extra measurement",
+      "year": "2013",
+      "writer": "K Parand, JA Rad",
+      "description": "Computer Physics Communications 184 (3), 582-595"
+    },
+    {
+      "title": "Solving nonlinear Lane-Emden type equations with unsupervised combined artificial neural networks",
+      "year": "2013",
+      "writer": "K Parand, Z Roozbahani, BF BAYAT",
+      "description": "INTERNATIONAL JOURNAL OF INDUSTRIAL MATHEMATICS 5 (4), 355-366"
+    },
+    {
+      "title": "Numerical solution of nonlinear Volterra–Fredholm–Hammerstein integral equations via collocation method based on radial basis functions",
+      "year": "2012",
+      "writer": "K Parand, JA Rad",
+      "description": "Applied Mathematics and Computation 218 (9), 5292-5309"
+    },
+    {
+      "title": "Radial basis functions methods for solving Fokker–Planck equation",
+      "year": "2012",
+      "writer": "S Kazem, JA Rad, K Parand",
+      "description": "Engineering Analysis with Boundary Elements 36 (2), 181-189"
+    },
+    {
+      "title": "Exp-function method for some nonlinear PDE’s and a nonlinear ODE’s",
+      "year": "2012",
+      "writer": "K Parand, JA Rad",
+      "description": "Journal of King Saud University-Science 24 (1), 1-10"
+    },
+    {
+      "title": "A numerical solution of the nonlinear controlled Duffing oscillator by radial basis functions",
+      "year": "2012",
+      "writer": "JA Rad, S Kazem, K Parand",
+      "description": "Computers & Mathematics with Applications 64 (6), 2049-2065"
+    },
+    {
+      "title": "A meshless method on non-Fickian flows with mixing length growth in porous media based on radial basis functions: A comparative study",
+      "year": "2012",
+      "writer": "S Kazem, JA Rad, K Parand",
+      "description": "Computers & Mathematics with Applications 64 (4), 399-412"
+    },
+    {
+      "title": "The numerical study on the unsteady flow of gas in a semi-infinite porous medium using an RBF collocation method",
+      "year": "2012",
+      "writer": "S Kazem, JA Rad, K Parand, M Shaban, H Saberi",
+      "description": "International Journal of Computer Mathematics 89 (16), 2240-2258"
+    },
+    {
+      "title": "The use of Sinc‐collocation method for solving Falkner–Skan boundary‐layer equation",
+      "year": "2012",
+      "writer": "K Parand, M Dehghan, A Pirkhedri",
+      "description": "International journal for numerical methods in fluids 68 (1), 36-47"
+    },
+    {
+      "title": "A new reliable numerical algorithm based on the first kind of Bessel functions to solve Prandtl–Blasius laminar viscous flow over a semi-infinite flat plate",
+      "year": "2012",
+      "writer": "K Parand, M Nikarya, JA Rad, F Baharifard",
+      "description": "Zeitschrift für Naturforschung A 67 (12), 665-673"
+    },
+    {
+      "title": "A novel application of radial basis functions for solving a model of first-order integro-ordinary differential equation",
+      "year": "2011",
+      "writer": "K Parand, S Abbasbandy, S Kazem, JA Rad",
+      "description": "Communications in Nonlinear Science and Numerical Simulation 16 (11), 4250-4258"
+    },
+    {
+      "title": "An improved numerical method for a class of astrophysics problems based on radial basis functions",
+      "year": "2011",
+      "writer": "K Parand, S Abbasbandy, S Kazem, AR Rezaei",
+      "description": "Physica Scripta 83 (1), 015011"
+    },
+    {
+      "title": "Collocation method using sinc and Rational Legendre functions for solving Volterra’s population model",
+      "year": "2011",
+      "writer": "K Parand, Z Delafkar, N Pakniat, A Pirkhedri, MK Haji",
+      "description": "Communications in Nonlinear Science and Numerical Simulation 16 (4), 1811-1819"
+    },
+    {
+      "title": "Comparison between two common collocation approaches based on radial basis functions for the case of heat transfer equations arising in porous medium",
+      "year": "2011",
+      "writer": "K Parand, S Abbasbandy, S Kazem, AR Rezaei",
+      "description": "Communications in Nonlinear Science and Numerical Simulation 16 (3), 1396-1407"
+    },
+    {
+      "title": "An approximate solution of the MHD Falkner–Skan flow by Hermite functions pseudospectral method",
+      "year": "2011",
+      "writer": "K Parand, AR Rezaei, SM Ghaderi",
+      "description": "Communications in Nonlinear Science and Numerical Simulation 16 (1), 274-283"
+    },
+    {
+      "title": "A new method for solving steady flow of a third-grade fluid in a porous half space based on radial basis functions",
+      "year": "2011",
+      "writer": "S Kazem, JA Rad, K Parand, S Abbasbandy",
+      "description": "Zeitschrift für Naturforschung A 66 (10-11), 591-598"
+    },
+    {
+      "title": "Numerical study on gas flow through a micro-nano porous media based on special functions",
+      "year": "2011",
+      "writer": "A Rezaei, K Parand, A Pirkhedri",
+      "description": "Journal of Computational and Theoretical Nanoscience 8 (2), 282-288"
+    },
+    {
+      "title": "An approximation algorithm for the solution of the singularly perturbed Volterra integro-differential and Volterra integral equations",
+      "year": "2011",
+      "writer": "K Parand, JA Rad",
+      "description": "Int. J. of Nonlinear Science 12 (4), 430-441"
+    },
+    {
+      "title": "An approximation algorithm for the solution of the nonlinear Lane–Emden type equations arising in astrophysics using Hermite functions collocation method",
+      "year": "2010",
       "writer": "K Parand, M Dehghan, AR Rezaei, SM Ghaderi",
       "description": "Computer Physics Communications 181 (6), 1096-1108"
+    },
+    {
+      "title": "Sinc-collocation method for solving astrophysics equations",
+      "year": "2010",
+      "writer": "K Parand, A Pirkhedri",
+      "description": "New Astronomy 15 (6), 533-537"
+    },
+    {
+      "title": "Lagrangian method for solving Lane–Emden type equation arising in astrophysics on semi-infinite domains",
+      "year": "2010",
+      "writer": "K Parand, AR Rezaei, A Taghavi",
+      "description": "Acta Astronautica 67 (7-8), 673-680"
+    },
+    {
+      "title": "Solution of a laminar boundary layer flow via a numerical method",
+      "year": "2010",
+      "writer": "K Parand, M Shahini, M Dehghan",
+      "description": "Communications in Nonlinear Science and Numerical Simulation 15 (2), 360-367"
+    },
+    {
+      "title": "Modified generalized Laguerre function Tau method for solving laminar viscous flow: The Blasius equation",
+      "year": "2010",
+      "writer": "K Parand, M Dehghan, A Taghavi",
+      "description": "International Journal of Numerical Methods for Heat & Fluid Flow"
+    },
+    {
+      "title": "Numerical approximations for population growth model by rational Chebyshev and Hermite functions collocation approach: a comparison",
+      "year": "2010",
+      "writer": "K Parand, AR Rezaei, A Taghavi",
+      "description": "Mathematical Methods in the Applied Sciences 33 (17), 2076-2086"
+    },
+    {
+      "title": "Quasilinearization approach for solving Volterra’s population model",
+      "year": "2010",
+      "writer": "K Parand, M Ghasemi, S Rezazadeh, A Peiravi, A Ghorbanpour, ...",
+      "description": "Appl. Comput. Math 9 (1), 95-103"
+    },
+    {
+      "title": "Some solitary wave solutions of generalized Pochhammer-Chree equation via Exp-function method",
+      "year": "2010",
+      "writer": "K Parand, JA Rad",
+      "description": "International Journal of Mathematical and Computational Sciences 4 (7), 991-996"
+    },
+    {
+      "title": "Rational Legendre pseudospectral approach for solving nonlinear differential equations of Lane–Emden type",
+      "year": "2009",
+      "writer": "K Parand, M Shahini, M Dehghan",
+      "description": "Journal of Computational Physics 228 (23), 8830-8840"
+    },
+    {
+      "title": "Sinc-collocation method for solving the Blasius equation",
+      "year": "2009",
+      "writer": "K Parand, M Dehghan, A Pirkhedri",
+      "description": "Physics Letters A 373 (44), 4060-4065"
+    },
+    {
+      "title": "Rational Chebyshev pseudospectral approach for solving Thomas–Fermi equation",
+      "year": "2009",
+      "writer": "K Parand, M Shahini",
+      "description": "Physics Letters A 373 (2), 210-213"
+    },
+    {
+      "title": "Rational scaled generalized Laguerre function collocation method for solving the Blasius equation",
+      "year": "2009",
+      "writer": "K Parand, A Taghavi",
+      "description": "Journal of Computational and Applied Mathematics 233 (4), 980-989"
+    },
+    {
+      "title": "COMPARISON BETWEEN RATIONAL CHEBYSHEV AND MODIFIED GENERALIZED LAGUERRE FUNCTIONS PSEUDOSPECTRAL METHODS FOR SOLVING LANE-EMDEN AND UNSTEADY GAS EQUATIONS.",
+      "year": "2009",
+      "writer": "K Parand, A Taghavi, M Shahini",
+      "description": "Acta Physica Polonica B 40 (6)"
+    },
+    {
+      "title": "Generalized Laguerre polynomials and rational Chebyshev collocation method for solving unsteady gas equation",
+      "year": "2009",
+      "writer": "K Parand, M Shahini, A Taghavi",
+      "description": "Int. J. Contemp. Math. Sci 4 (21), 1005-1011"
+    },
+    {
+      "title": "Lagrangian method for solving unsteady gas equation",
+      "year": "2009",
+      "writer": "A Taghavi, H Fani",
+      "description": "International Journal of Physical and Mathematical Sciences 3 (11), 991-995"
+    },
+    {
+      "title": "Solving Volterra’s population model using new second derivative multistep methods",
+      "year": "2008",
+      "writer": "K Parand, G Hojjati",
+      "description": "American Journal of Applied Sciences 5 (8), 1019-1022"
+    },
+    {
+      "title": "Generalized Laguerre polynomials collocation method for solving Lane-Emden equation",
+      "year": "2008",
+      "writer": "K Parand, A Taghavi",
+      "description": "Applied mathematical sciences 2 (60), 2955-2961"
+    },
+    {
+      "title": "Rational Legendre approximation for solving some physical problems on semi-infinite intervals",
+      "year": "2004",
+      "writer": "K Parand, M Razzaghi",
+      "description": "Physica scripta 69 (5), 353"
+    },
+    {
+      "title": "Rational Chebyshev tau method for solving higher-order ordinary differential equations",
+      "year": "2004",
+      "writer": "K Parand, M Razzaghi",
+      "description": "International Journal of Computer Mathematics 81 (1), 73-80"
+    },
+    {
+      "title": "Rational Chebyshev tau method for solving Volterra’s population model",
+      "year": "2004",
+      "writer": "K Parand, M Razzaghi",
+      "description": "Applied Mathematics and Computation 149 (3), 893-900"
+    },
+    {
+      "title": "Quasilinearization–Barycentric approach for numerical investigation of the boundary value Fin problem",
+      "year": "",
+      "writer": "A Rezaei, F Baharifard, K Parand",
+      "description": "World Academy of Science, Engineering and Technology 5, 723-730"
+    }
+  ],
+  "books-list": [
+    {
+      "title": "New Trends of Spectral Methods in Scientific Computing: Theory and Application",
+      "year": "2019",
+      "writer": "Kourosh Parand, Mohsen Razzaghi, Jamal Amani Rad, Mehdi Delkhosh, Mohammad M. Moayeri",
+      "description": "In Persian"
+    },
+    {
+      "title": "A New Approach for Solving Nonlinear Ordinary Differential Equations on a Semi-Infinite Interval",
+      "year": "2014",
+      "writer": "Kourosh Parand",
+      "description": "The Academic Center for Education, Culture and Research In Persian"
+    },
+    {
+      "title": "Choosing a field, choosing the future, National Organization of Educational Testing",
+      "year": "2013",
+      "writer": "Kourosh Parand, Gholamreza Yadegarzade, Ebrahim Khodaee",
+      "description": "In Persian"
+    },
+    {
+      "title": "Adomian Decomposition Methods",
+      "year": "2013",
+      "writer": "K.Parand, J.A.Rad",
+      "description": "The Academic Center for Education, Culture and Research In Persian"
+    },
+    {
+      "title": "Maple for common mathematics 1",
+      "year": "2011",
+      "writer": "Kourosh Parand, Maryam Tahmasebi",
+      "description": "The Iran Technical and Vocational Training Organization In Persian"
+    },
+    {
+      "title": "ICDL",
+      "year": "2013",
+      "writer": "Kourosh Parand, Salehe Mahmoudi, Fattaneh Bayatbabolghani",
+      "description": "Employees Cooperative of Technical and Professional Organization of the country In Persian"
+    }
+  ],
+  "conferences-list": [
+    {
+      "title": "Application of Physics-Informed Neural Networks in numerical in the simulation of epidemic models; Case Study: Covid-19, National Conference on Applied Researches in Basic Sciences (Mathematics, Chemistry, and Physics)",
+      "year": "2022",
+      "writer": "Aghaei, Babaei, Parand"
+    },
+    {
+      "title": "Increasing accuracy of machine learning methods using Kernel PCA, the 9th seminar on Numerical Analysis and Its Applications",
+      "year": "2022",
+      "writer": "Z Behruzeh, Aghaei, Parand, Hajjarian"
+    },
+    {
+      "title": "Numerical solution of the Fisher's equation using Legendre Deep Neural Network (LDNN), the 9th seminar on Numerical Analysis and Its Applications",
+      "year": "2022",
+      "writer": "Babei, Aghaei, Parand"
+    },
+    {
+      "title": "Using single value analysis in the convolutional neural network to improve accuracy in brain tumor diagnosis, The 11th Seminar on Linear Algebra and its Applications",
+      "year": "2022",
+      "writer": "M Babei, Hajimohammadi, Parand"
+    },
+    {
+      "title": "Nystrom low-rank approximation for computing orthogonal Legendre kernel to increase the accuracy of covid-19 early detection, The 11th Seminar on Linear Algebra and its Applications",
+      "year": "2022",
+      "writer": "Aghaei, Parand"
+    },
+    {
+      "title": "Investigating Effect of Published News for Cryptocurrency Price Prediction, The 2nd Seminar of Artificial Intelligence and Soft Computing in Humanities",
+      "year": "2022",
+      "writer": "M Shayesteh, AA Aghaei, K Parand"
+    },
+    {
+      "title": "A GPU-based parallel algorithm for computing the kernel matrix in machine learning methods, 7th national and first international conference on Distributed Computing and Big Data Processing",
+      "year": "2022",
+      "writer": "M Movahedian, AA Aghaei, K Parand"
+    },
+    {
+      "title": "Covid-19 Vaccination Analysis based on Unsupervised Machine Learning Algorithm, 6th International Conference on Physics, Mathematics, and Development of Basic Science",
+      "year": "2022",
+      "writer": "P Ahadian, Parand"
+    },
+    {
+      "title": "Desynchronization of neural oscillator populations using least squares support vector machines, 51st Annual Iranian Mathematics Conference",
+      "year": "2021",
+      "writer": "Moayeri, Parand, Amani Rad"
+    },
+    {
+      "title": "An efficient meshfree machine learning approach to simulate the generalized Fitzhugh-Nagumo equation inspired by neuroscience, 51st Annual Iranian Mathematics Conference",
+      "year": "2021",
+      "writer": "Hemami, Parand, Amani Rad"
+    },
+    {
+      "title": "Machine learning-based clustering analysis for the effects of cardiac arrest on the brain intracellular pH levels, 8th International Human Brain Mapping Congress",
+      "year": "2021",
+      "writer": "P Ahadian, Parand"
+    }
+  ],
+  "education": [
+    {
+      "year": "1997-2000",
+      "country": "Tehran, IRI",
+      "university": "Msc. in Tarbiat Modares University"
+    },
+    {
+      "year": "2000-2004",
+      "country": "Tehran, IRI",
+      "university": "PhD. in Applied Mathematics, Amirkabir University of Technology"
+    },
+    {
+      "year": "2003-2004",
+      "country": "Alberta, Canada",
+      "university": "University of Alberta Visiting Scholar"
+    },
+    {
+      "year": "2019-2020",
+      "country": "Ontario, Canada",
+      "university": "University of Waterloo Visiting Scholar"
+    }
+  ],
+  "teachUndergraduate": "Numerical Analysis, Operations Research, Calculus, Numerical Linear Algebra, Linear Algebra, Differential Equations, Partial Differential Equation, Data Structure, Advanced Programming, Basic Programming, Operation Research I & II. ",
+  "teachGraduate": "Optimal Control, Spectral Methods, Orthogonal Polynomials, Data Envelopment Analysis, Operations Research, Special Topics in ODEs and PDEs, Topics in Scientific Computing, Advanced Operations Research, Advanced Computational Physics, Advanced Numerical Analysis, Mathematics Software, Approximation Theory, Advanced Linear Programming, Computational Data Mining, Neural Networks, Data Mining.",
+  "cooperation": [
+    {
+      "name": "UNESCO",
+      "description": " "
+    },
+    {
+      "name": "UNHCR",
+      "description": "(Austria, German and Danish Refugee Council)"
+    },
+    {
+      "name": "UNDP",
+      "description": " "
+    },
+    {
+      "name": "UNFPA",
+      "description": " "
+    },
+    {
+      "name": "IDB",
+      "description": "Islamic Development Bank"
+    },
+    {
+      "name": "KOICA",
+      "description": "Korea International Cooperation Agency"
+    },
+    {
+      "name": "JICA",
+      "description": "Japan International Cooperation Agency"
+    }
+  ],
+  "award": [
+    {
+      "title": "Iran’s Best researcher Award in 2013"
+    },
+    {
+      "title": "Best Researcher Award at Shahid Beheshti University in 2009, 2014 & 2019"
+    },
+    {
+      "title": "Best Teacher Award at Shahid Beheshti University in 2018"
+    }
+  ],
+  "journal1": [
+    {
+      "title": "Computers and Mathematics with Applications (ISI)"
+    },
+    {
+      "title": "Journal of Computational and Applied Mathematics (ISI)"
+    },
+    {
+      "title": "Applied Mathematical Modelling (ISI)"
+    },
+    {
+      "title": "Celestial Mechanics and Dynamical Astronomy (CELE) (ISI)"
+    },
+    {
+      "title": "Applied Mathematics and Computation (ISI)"
+    }
+  ],
+  "journal2": [
+    {
+      "title": "Journal of Vibration and Control (ISI)"
+    },
+    {
+      "title": "Mathematical Problems in Engineering (ISI)"
+    },
+    {
+      "title": "Journal of Applied Mathematics and Computing (JAMC)"
+    },
+    {
+      "title": "International Journal of Industrial Mathematics"
+    },
+    {
+      "title": "International Journal of Nonlinear Science (IJNS)"
+    },
+    {
+      "title": "Communications in Nonlinear Science and Numerical Simulation(CNSNS)"
+    }
+  ],
+  "postdoc": {
+    "title": "Postdoc Students :",
+    "students": "Simin Shekarpaz, Inverse problems, and Spectral Methods Babak Azarnavid, Reproducing Kernel Hilbert Space Rabiei, Optimal Control Problems Mostafa Jani, Sub-diffusion Process and Spectral Methods"
+  },
+  "cooperation-ali": [
+    {
+      "year": "2021",
+      "description": "K.Parand, A.Aghaei, M.Jani, A.Ghodsi \"A new approach to the numerical solution of Fredholm integral equations using least squares-support vector regression.\" Mathematics and Computers in Simulation 180: 114-128"
+    },
+    {
+      "year": "2021",
+      "description": "K.Parand, A.Aghaei, M.Jani, A.Ghodsi. \"Parallel LS-SVM for the numerical simulation of fractional Volterra’s population model.\" Alexandria Engineering Journal 60.6 : : 5637-5647"
+    },
+    {
+      "year": "2021",
+      "description": "Zeinab Hajimohammadi, Fatemeh Baharifard, Ali Ghodsi, Kourosh Parand. \"Fractional Chebyshev deep neural network (FCDNN) for solving differential models.\" Chaos, Solitons & Fractals 153 : 111530"
+    },
+    {
+      "year": "2020",
+      "description": "Panju, Maysum, Kourosh Parand, and Ali Ghodsi. \"Symbolically Solving Partial Differential Equations using Deep Learning.\" arXiv preprint arXiv:2011.06673"
+    },
+    {
+      "year": "2020",
+      "description": "Parand, Kourosh, Zeinab Hajimohammadi, and Ali Ghodsi. \"Legendre Deep Neural Network (LDNN) and its application for approximation of nonlinear Volterra–Fredholm–Hammerstein integral equations.\""
     }
   ]
 }

@@ -10,7 +10,7 @@ import {BiChalkboard} from "react-icons/bi";
 import {GoPrimitiveDot} from "react-icons/go"
 import img from "../../img/member-scientometrics-logo.png"
 import {BsPeople} from "react-icons/bs"
-import {useTranslation} from 'react-i18next'
+import {useTranslation,} from 'react-i18next'
 import {Link} from "react-router-dom"
 import i18next from 'i18next'
 import "animate.css/animate.min.css";
@@ -24,29 +24,26 @@ function Home() {
     const {t} = useTranslation();
     const [education, setEducation] = useState([]);
     const [cooperation, setCooperation] = useState([]);
-    const [cooperationAli, setCooperationAli] = useState([]);
     const [award, setAward] = useState([]);
     const [journal1, setjournal1] = useState([]);
     const [journal2, setjournal2] = useState([]);
 
     useEffect(() => {
-        let educationList = t('education', {returnObjects: true});
+        let educationList = i18next.t('education',{ returnObjects: true })
         setEducation(educationList);
 
-        let cooperationList = t('cooperation', {returnObjects: true});
+        let cooperationList = i18next.t('cooperation', {returnObjects: true});
         setCooperation(cooperationList);
 
-        let cooperationAliList = t('cooperation-ali', {returnObjects: true});
-        setCooperationAli(cooperationAliList);
-
-        let journalList1 = t('journal1', {returnObjects: true});
+        let journalList1 = i18next.t('journal1', {returnObjects: true});
         setjournal1(journalList1);
-        let journalList2 = t('journal2', {returnObjects: true});
+
+        let journalList2 = i18next.t('journal2', {returnObjects: true});
         setjournal2(journalList2);
 
-        let awardList = t('award', {returnObjects: true});
+        let awardList = i18next.t('award', {returnObjects: true});
         setAward(awardList);
-    }, [1]);
+    },[]);
 
     return (
         <>
