@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
-import Navbar from './component/Navbar'
-import Home from "./component/pages/Home";
-import MainPage from "./component/mainPage";
-import { useTranslation } from 'react-i18next'
-import i18next from 'i18next'
+import {Route, Routes} from "react-router-dom";
+import MainWebsite from "./component/MainWebsite";
+import Admin from "./component/admin/Admin";
 
 function App(){
-    const {t} = useTranslation();
+
         return (
             <>
-                <div className="d-flex justify-content-center align-items-center mainBody">
-                    <MainPage/>
-                </div>
+                <Routes>
+                    <Route exact path="/*" element={(<MainWebsite />)} />
+                    <Route path="/admin/*" element={(<Admin/>)} />
+                </Routes>
             </>
         );
 }
