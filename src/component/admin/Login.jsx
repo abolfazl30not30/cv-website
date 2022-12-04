@@ -10,7 +10,7 @@ function Login() {
             <img src={backSvg} className="back-svg-2"/>
             <img src={backSvg} className="back-svg-3"/>
 
-            <div className="main-container">
+            <div className="login-container">
                 <div className="container">
                     <div className="screen">
                         <div className="screen__content">
