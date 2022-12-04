@@ -10,6 +10,7 @@ import Contact from "./pages/Contact";
 import Conferences from "./pages/Conferences";
 import MainNavbar from "./Navbar";
 import Course from "./pages/Course";
+import Setting from "./pages/Setting";
 
 function mainPage() {
 
@@ -28,6 +29,7 @@ function mainPage() {
                             <Route path="/conferences" element={(<Conferences />)} />
                             <Route path="/courses" element={(<Course />)} />
                             <Route path="/contact" element={(<Contact />)} />
+                            <Route path="/setting" element={(<Setting />)} />
                         </Routes>
                     </div>
                 </div>

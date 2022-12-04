@@ -51,6 +51,10 @@ function MainNavbar() {
                                 <NavLink to="/contact" className="nav-link "
                                          activeClassName='active'>{t("contact")}</NavLink>
                             </li>
+                            <li className="nav-item">
+                                <NavLink to="/setting" className="nav-link "
+                                         activeClassName='active'>{t("setting")}</NavLink>
+                            </li>
                         </ul>
                         <div className="mx-3">
                             <Form.Select aria-label="Default select example" value={language} size="sm"
