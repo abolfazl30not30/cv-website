@@ -11,6 +11,59 @@ import {Button} from "react-bootstrap";
 import "../../style/contact.css";
 
 function Contact() {
+    const [fullName, setFullName] = useState('')
+    const [textMessage, setTextMessage] = useState('')
+    const [emailAddress, setEmailAddress] = useState('')
+    const [subject, setSubject] = useState('')
+
+    const [validation, setValidation] = useState({
+        fullNameReg: '',
+        textMessageReg: '',
+        emailAddressReg: '',
+        subjectReg: '',
+    })
+
+    const handleFields = () => {
+        let requiredReg = /^\s*$/;
+
+        let fullNameReg = !requiredReg.test(fullName);
+        let textMessageReg = !requiredReg.test(textMessage);
+        let emailAddressReg = !requiredReg.test(emailAddress);
+        let subjectReg = !requiredReg.test(subject);
+
+        setValidation({
+            ...validation,
+            fullNameReg: fullNameReg,
+            textMessageReg: textMessageReg,
+            emailAddressReg: emailAddressReg,
+            subjectReg: subjectReg,
+
+        })
+
+        if (fullNameReg && textMessageReg && emailAddressReg && subjectReg) {
+            postMessage();
+            // console.log(textMessage, emailAddress, subject, fullName)
+        }
+
+        return fullNameReg && textMessageReg && emailAddressReg && subjectReg;
+    }
+
+    const postMessage = async () => {
+
+        const postMessage = await fetch('http://localhost:8089/api/v1/public/save/message', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                fullName: fullName,
+                textMessage:  textMessage,
+                emailAddress: emailAddress,
+                subject: subject,
+            })
+        });
+    }
 
     const {t} = useTranslation();
     return (
@@ -44,22 +97,44 @@ function Contact() {
                             <div className="col-md-5 col-sm-5 col-xs-12">
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
                                     <Form.Label>Full Name :</Form.Label>
-                                    <Form.Control type="text"  />
+                                    <Form.Control
+                                        className={`${validation.fullNameReg === false ? "is-invalid" : ""}`}
+                                        type="text"
+                                        onChange={(e) => setFullName(e.target.value)}
+                                    />
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
                                     <Form.Label>Email address :</Form.Label>
-                                    <Form.Control type="text"  />
+                                    <Form.Control
+                                        className={`${validation.emailAddressReg === false ? "is-invalid" : ""}`}
+                                        type="text"
+                                        onChange={(e) => setEmailAddress(e.target.value)}
+                                    />
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
                                     <Form.Label>Subject :</Form.Label>
-                                    <Form.Control type="text"  />
+                                    <Form.Control
+                                        className={`${validation.subjectReg === false ? "is-invalid" : ""}`}
+                                        type="text"
+                                        onChange={(e) => setSubject(e.target.value)}
+                                    />
                                 </Form.Group>
-                                <Button className="btn submit-btn">Submit</Button>
+                                <Button
+                                    className="btn submit-btn"
+                                    onClick={() => handleFields()}
+                                >
+                                    Submit
+                                </Button>
                             </div>
                             <div className="col-md-7 col-sm-7 col-xs-12">
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                                     <Form.Label>Your Massage :</Form.Label>
-                                    <Form.Control as="textarea" rows={8} />
+                                    <Form.Control
+                                        className={`${validation.textMessageReg === false ? "is-invalid" : ""}`}
+                                        as="textarea"
+                                        rows={8}
+                                        onChange={(e) => setTextMessage(e.target.value)}
+                                    />
                                 </Form.Group>
                             </div>
                         </div>

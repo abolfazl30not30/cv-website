@@ -2,16 +2,25 @@ import React, {useState, useEffect} from 'react';
 import '../../style/home.css'
 import {useTranslation} from 'react-i18next'
 import "./../../style/pages.css"
+import axios from "axios";
 
 function Books() {
 
     const {t} = useTranslation();
     const [books, setBooks] = useState([]);
 
-    useEffect(() => {
+    useEffect( () => {
         let booksList = t('books-list', {returnObjects: true})
         setBooks(booksList)
+
+        // const getData = fetch('http://localhost:8089/api/v1/public/book').then((response) => response.json())
+        //     .then((data) => setBooks(data));
+
+        // const {data} = axios.get(`http://localhost:8089/api/v1/public/book`);
+        // setBooks(data);
+
     },[]);
+
     return (
         <>
             <div>
@@ -20,20 +29,20 @@ function Books() {
                 </div>
                 <div className="mt-5 mx-3">
                     {
-                        books.map((p) => (
+                        books.map((book) => (
                             <div className="research mb-4">
                                 <div>
-                                    <h5 style={{fontWeight:"bold"}}>{p.title}</h5>
+                                    <h5 style={{fontWeight:"bold"}}>{book.title}</h5>
                                     <p>
-                                        {p.writer}
+                                        {book.authors}
                                     </p>
                                 </div>
                                 <div className="d-flex align-items-center mb-2">
                                     <span>
-                                         {p.year}
+                                         {book.year}
                                     </span>
                                     <h6>
-                                        {p.description}
+                                        {book.description}
                                     </h6>
                                 </div>
                             </div>
@@ -43,6 +52,8 @@ function Books() {
             </div>
         </>
     )
+
+
 }
 
 export default Books;
