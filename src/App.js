@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Route, Routes} from "react-router-dom";
 import MainWebsite from "./component/MainWebsite";
 import Admin from "./component/admin/Admin";
+import 'bootstrap/dist/css/bootstrap.css';
 
 function App(){
 

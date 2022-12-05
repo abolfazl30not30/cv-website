@@ -3,6 +3,7 @@
     width: 90%;
     margin-top:30px;
     border-radius: 20px;
+    z-index: 2;
 }
 .back-svg-1{
     z-index: -1;
