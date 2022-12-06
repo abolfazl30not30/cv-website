@@ -103,7 +103,7 @@ function EditBooks() {
     return (
         <>
             <div>
-                <div className="main-title">
+                <div className="page-title">
                     <h3>{t("books")}</h3>
                 </div>
                 <div className={'d-flex justify-content-center'}>
@@ -111,10 +111,10 @@ function EditBooks() {
                         <IoIosAddCircle size={50}/>
                     </IconButton>
                 </div>
-                <div className="mt-5 mx-3">
+                <div className="mx-3 d-flex flex-column" style={{overflowY: "scroll", height: window.innerHeight*0.78, width: "100%"}}>
                     {
                         books.map((p) => (
-                            <div className="research mb-4">
+                            <div className="research mb-4 p-3" style={{borderRadius: "10px", backgroundColor: "#fff"}}>
                                 <div>
                                     <h5 style={{fontWeight:"bold"}}>{p.title}</h5>
                                     <p>
