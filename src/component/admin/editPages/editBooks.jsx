@@ -18,13 +18,6 @@ function EditBooks() {
     const [details, setDetails] = useState('');
     const [authors, setAuthors] = useState('');
 
-    const [tmpBook, setTmpBook] = useState({
-        year: '',
-        title: '',
-        details: '',
-        authors: ''
-    });
-
     const [validation, setValidation] = useState({
         yearReg: '',
         titleReg: '',
@@ -73,6 +66,24 @@ function EditBooks() {
         setShowAddModal(false)
     }
 
+    const handleOpenType = () => {
+        setShowAddModal(true)
+
+        setAuthors('')
+        setYear('')
+        setTitle('')
+        setDetails('')
+
+        setValidation({
+            ...validation,
+            yearReg: '',
+            titleReg: '',
+            detailsReg: '',
+            authorsReg: '',
+
+        })
+    }
+
     const postBook = async () => {
         const postBook = await fetch('http://localhost:8089/api/v1/admin/save/book', {
             method: 'POST',
@@ -96,7 +107,7 @@ function EditBooks() {
                     <h3>{t("books")}</h3>
                 </div>
                 <div className={'d-flex justify-content-center'}>
-                    <IconButton onClick={() => setShowAddModal(true)}>
+                    <IconButton onClick={() => handleOpenType()}>
                         <IoIosAddCircle size={50}/>
                     </IconButton>
                 </div>
@@ -126,12 +137,13 @@ function EditBooks() {
 
             <Modal centered show={showAddModal} onHide={() => handleCloseType()}>
                 <Modal.Header closeButton>
-                    Add Book
+                    Add book
                 </Modal.Header>
                 <Modal.Body>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>year :</Form.Label>
                         <Form.Control
+                            value={year}
                             className={`${validation.yearReg === false ? "is-invalid" : ""}`}
                             type="text"
                             onChange={(e) => setYear(e.target.value)}
@@ -140,6 +152,7 @@ function EditBooks() {
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>title :</Form.Label>
                         <Form.Control
+                            value={title}
                             className={`${validation.titleReg === false ? "is-invalid" : ""}`}
                             type="text"
                             onChange={(e) => setTitle(e.target.value)}
@@ -148,6 +161,7 @@ function EditBooks() {
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>details :</Form.Label>
                         <Form.Control
+                            value={details}
                             className={`${validation.detailsReg === false ? "is-invalid" : ""}`}
                             type="text"
                             onChange={(e) => setDetails(e.target.value)}
@@ -156,6 +170,7 @@ function EditBooks() {
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>authors :</Form.Label>
                         <Form.Control
+                            value={authors}
                             className={`${validation.authorsReg === false ? "is-invalid" : ""}`}
                             type="text"
                             onChange={(e) => setAuthors(e.target.value)}
