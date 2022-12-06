@@ -13,8 +13,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
 import {t} from "i18next";
-// import { Slide } from '@mui/material';
-
+import Hamburger from 'hamburger-react';
 
 function Dashboard () {
     const [activeMenu, setActiveMenu] = useState(false)
@@ -25,32 +24,30 @@ function Dashboard () {
                 <img src={backSvg} className="back-svg-1"/>
                 <img src={backSvg} className="back-svg-2"/>
                 <img src={backSvg} className="back-svg-3"/>
-                <div className={"main-container"} style={{overflow: 'hidden', display: "flex"}}>
-                    <div className="hamburger-menu" style={{height: '100%', position: 'sticky'}}>
-                        <input id="menu__toggle" type="checkbox" onChange={() => {setActiveMenu(!activeMenu)}}/>
-                        <label className="menu__btn" htmlFor="menu__toggle">
-                            <span></span>
-                        </label>
-
-                        <ul className="menu__box" style={{width: activeMenu ? "300px" : "100px"}}>
-                            <li><button className="menu__item" onClick={() => setSelectedLink('articles')}>Articles</button></li>
-                            <li><button className="menu__item" onClick={() => setSelectedLink('books')}>Books</button></li>
-                            <li><button className="menu__item" onClick={() => setSelectedLink('courses')}>Courses</button></li>
-                            <li><button className="menu__item" onClick={() => setSelectedLink('conferences')}>Conferences</button></li>
+                <div className={"main-container"} style={{overflow: 'hidden', display: "flex", height: window.innerHeight*0.93, backgroundColor: "#eee"}}>
+                    <div className="hamburger-menu" style={{height: '105%', position: 'sticky'}}>
+                        <Hamburger toggled={activeMenu} toggle={setActiveMenu} />
+                        <ul className="menu__box" style={{width: activeMenu ? "300px" : 0, left: activeMenu ? 0 : "-500%"}}>
+                            <li><button style={{width: "300px", textAlign: "left"}} className="menu__item" onClick={() => setSelectedLink('articles')}>Articles</button></li>
+                            <li><button style={{width: "300px", textAlign: "left"}} className="menu__item" onClick={() => setSelectedLink('books')}>Books</button></li>
+                            <li><button style={{width: "300px", textAlign: "left"}} className="menu__item" onClick={() => setSelectedLink('courses')}>Courses</button></li>
+                            <li><button style={{width: "300px", textAlign: "left"}} className="menu__item" onClick={() => setSelectedLink('conferences')}>Conferences</button></li>
                         </ul>
                     </div>
-
-                    {
-                        selectedLink === "articles"
-                        ? <EditArticles />
-                            : selectedLink === "books"
-                        ? <EditBooks />
-                            : selectedLink === "courses"
-                        ? <EditCourses />
-                            : selectedLink === "conferences"
-                        ? <EditConferences />
+                    <div>
+                        {
+                            selectedLink === "articles"
+                                ? <EditArticles />
+                                    : selectedLink === "books"
+                                ? <EditBooks />
+                                    : selectedLink === "courses"
+                                ? <EditCourses />
+                                    : selectedLink === "conferences"
+                                ? <EditConferences />
                                     : null
-                    }
+                        }
+                    </div>
+
                     {/*<Main />*/}
                 </div>
             </>
