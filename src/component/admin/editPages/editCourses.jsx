@@ -8,6 +8,8 @@ import {IconButton} from "@mui/material";
 import {IoIosAddCircle} from "react-icons/io";
 import {Modal} from "react-bootstrap";
 import Form from "react-bootstrap/Form";
+import {IoClose} from "react-icons/io5";
+import {AiOutlineLink} from "react-icons/ai"
 
 function EditCourses() {
     const {t} = useTranslation();
@@ -88,7 +90,7 @@ function EditCourses() {
    }
 
     const postCourse = async () => {
-        const postBook = await fetch('http://localhost:8089/api/v1/admin/save/course', {
+        await fetch('http://localhost:8089/api/v1/admin/save/course', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -99,7 +101,37 @@ function EditCourses() {
                 title: title,
                 text: text,
             })
+        }).then((response) => response.json()).then((response) => {
+            handleCloseType();
+
+            let updatedCourses = [...courses];
+            updatedCourses.push({
+                id: response.id,
+                url: url,
+                title: title,
+                text: text
+            })
+            setCourses(updatedCourses)
         });
+    }
+
+    const handleDeleteCourse = async (course) => {
+        await fetch(`http://localhost:8089/api/v1/admin/delete/course/${course.id}`, {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+        }).then(() => {
+            let updatedCourses = [...courses];
+            updatedCourses = updatedCourses.filter((c) => c.id !== course.id)
+            setCourses(updatedCourses)
+        });
+
+        // const getCourse = fetch('http://localhost:8089/api/v1/public/conference').then((response) => response.json())
+        //     .then((data) => setCourses(data));
+
+        console.log(course)
     }
 
     return (
@@ -118,8 +150,20 @@ function EditCourses() {
                         {
                             courses.map((course) => (
                                 <div className={'col mb-3'}>
-                                    <Link className={''}>
+                                    <div className={''}>
                                         <div className='card' style={{backgroundImage: `url(${img})`}}>
+                                            <div className={'d-flex justify-content-between'}>
+                                                <Link>
+                                                    <IconButton color={'info'}>
+                                                        <AiOutlineLink size={30}/>
+                                                    </IconButton>
+                                                </Link>
+                                                <div className={''}>
+                                                    <IconButton color={'warning'} onClick={() => handleDeleteCourse(course)}>
+                                                        <IoClose size={20}/>
+                                                    </IconButton>
+                                                </div>
+                                            </div>
                                             <div className='info'>
                                                 <h1 className='title'>{course.title}</h1>
                                                 {/*<p className='description'>Familiarizing the student with the basic concepts of*/}
@@ -131,7 +175,7 @@ function EditCourses() {
                                                 </p>
                                             </div>
                                         </div>
-                                    </Link>
+                                    </div>
                                 </div>
                             ))
                         }

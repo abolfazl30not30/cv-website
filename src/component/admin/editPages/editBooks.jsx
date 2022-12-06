@@ -6,6 +6,7 @@ import {Modal} from "react-bootstrap";
 import {IconButton} from "@mui/material";
 import { IoIosAddCircle } from "react-icons/io";
 import Form from "react-bootstrap/Form";
+import { IoClose } from "react-icons/io5";
 
 function EditBooks() {
 
@@ -26,11 +27,11 @@ function EditBooks() {
     })
 
     useEffect( () => {
-        let booksList = t('books-list', {returnObjects: true})
-        setBooks(booksList)
+        // let booksList = t('books-list', {returnObjects: true})
+        // setBooks(booksList)
 
-        // const getData = fetch('http://localhost:8089/api/v1/public/book').then((response) => response.json())
-        //     .then((data) => setBooks(data));
+        const getData = fetch('http://localhost:8089/api/v1/public/book').then((response) => response.json())
+            .then((data) => setBooks(data));
 
         // const {data} = axios.get(`http://localhost:8089/api/v1/public/book`);
         // setBooks(data);
@@ -85,7 +86,7 @@ function EditBooks() {
     }
 
     const postBook = async () => {
-        const postBook = await fetch('http://localhost:8089/api/v1/admin/save/book', {
+        await fetch('http://localhost:8089/api/v1/admin/save/book', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -97,7 +98,39 @@ function EditBooks() {
                 details: details,
                 authors: authors,
             })
+        }).then((response) => response.json()).then((response) => {
+            handleCloseType();
+
+            let updatedBooks = [...books];
+            updatedBooks.push({
+                id: response.id,
+                year: year,
+                title: title,
+                details: details,
+                authors: authors
+            })
+            setBooks(updatedBooks)
         });
+
+        // const getBook = fetch('http://localhost:8089/api/v1/public/conference').then((response) => response.json())
+        //     .then((data) => setBooks(data));
+    }
+
+    const handleDeleteBook = async (book) => {
+        await fetch(`http://localhost:8089/api/v1/admin/delete/book/${book.id}`, {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+        }).then(() => {
+            let updatedBooks = [...books];
+            updatedBooks = updatedBooks.filter((b) => b.id !== book.id)
+            setBooks(updatedBooks)
+        });
+
+        // const getBook = fetch('http://localhost:8089/api/v1/public/conference').then((response) => response.json())
+        //     .then((data) => setBooks(data));
     }
 
     return (
@@ -113,23 +146,30 @@ function EditBooks() {
                 </div>
                 <div className="mx-3 d-flex flex-column" style={{overflowY: "scroll", height: window.innerHeight*0.78, width: "100%"}}>
                     {
-                        books.map((p) => (
-                            <div className="research mb-4 p-3" style={{borderRadius: "10px", backgroundColor: "#fff"}}>
-                                <div>
-                                    <h5 style={{fontWeight:"bold"}}>{p.title}</h5>
-                                    <p>
-                                        {p.writer}
-                                    </p>
+                        books.map((b) => (
+                            <>
+                                <div className={'d-flex justify-content-end'}>
+                                    <IconButton color={'warning'} onClick={() => handleDeleteBook(b)}>
+                                        <IoClose size={20}/>
+                                    </IconButton>
                                 </div>
-                                <div className="d-flex align-items-center mb-2">
+                                <div className="research mb-4 p-3" style={{borderRadius: "10px", backgroundColor: "#fff"}}>
+                                    <div>
+                                        <h5 style={{fontWeight:"bold"}}>{b.title}</h5>
+                                        <p>
+                                            {b.writer}
+                                        </p>
+                                    </div>
+                                    <div className="d-flex align-items-center mb-2">
                                     <span>
-                                         {p.year}
+                                         {b.year}
                                     </span>
-                                    <h6>
-                                        {p.description}
-                                    </h6>
+                                        <h6>
+                                            {b.description}
+                                        </h6>
+                                    </div>
                                 </div>
-                            </div>
+                            </>
                         ))
                     }
                 </div>

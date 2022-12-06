@@ -6,6 +6,7 @@ import {IconButton} from "@mui/material";
 import {IoIosAddCircle} from "react-icons/io";
 import {Modal} from "react-bootstrap";
 import Form from "react-bootstrap/Form";
+import {IoClose} from "react-icons/io5";
 
 function EditConferences() {
 
@@ -72,7 +73,6 @@ function EditConferences() {
         if (yearReg && titleReg  && authorsReg) {
             postConference();
             setShowAddModal(false)
-            // console.log(textMessage, emailAddress, subject, fullName)
 
             let updatedConferences = [...conferences]
 
@@ -90,7 +90,7 @@ function EditConferences() {
     }
 
     const postConference = async () => {
-        const postConference = await fetch('http://localhost:8089/api/v1/admin/save/conference', {
+        await fetch('http://localhost:8089/api/v1/admin/save/conference', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -101,6 +101,31 @@ function EditConferences() {
                 title: title,
                 authors: authors,
             })
+        }).then((response) => response.json()).then((response) => {
+            handleCloseType();
+
+            let updatedConferences = [...conferences];
+            updatedConferences.push({
+                id: response.id,
+                year: year,
+                title: title,
+                authors: authors
+            })
+            setConferences(updatedConferences)
+        });
+    }
+
+    const handleDeleteConference = async (conference) => {
+        await fetch(`http://localhost:8089/api/v1/admin/delete/conference/${conference.id}`, {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+        }).then(() => {
+            let updatedConferences = [...conferences];
+            updatedConferences = updatedConferences.filter((c) => c.id !== conference.id)
+            setConferences(updatedConferences)
         });
     }
     return (
@@ -117,19 +142,26 @@ function EditConferences() {
                 <div className="mt-5 mx-3">
                     {
                         conferences.map((p) => (
-                            <div className="research mb-4">
-                                <div className="d-flex align-items-center mb-2">
+                            <>
+                                <div className={'d-flex justify-content-end'}>
+                                    <IconButton color={'warning'} onClick={() => handleDeleteConference(p)}>
+                                        <IoClose size={20}/>
+                                    </IconButton>
+                                </div>
+                                <div className="research mb-4">
+                                    <div className="d-flex align-items-center mb-2">
                                     <span style={{backgroundColor:"#007ced",color:"#fff"}}>
                                          {p.year}
                                     </span>
+                                    </div>
+                                    <div>
+                                        <h5 style={{fontWeight:"bold"}}>{p.title}</h5>
+                                        <p>
+                                            {p.authors}
+                                        </p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h5 style={{fontWeight:"bold"}}>{p.title}</h5>
-                                    <p>
-                                        {p.authors}
-                                    </p>
-                                </div>
-                            </div>
+                            </>
                         ))
                     }
                 </div>
