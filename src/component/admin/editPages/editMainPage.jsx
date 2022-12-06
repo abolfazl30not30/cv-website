@@ -3,7 +3,7 @@ import mainImg from "../../../img/main_photo.jpg"
 import '../../../style/home.css'
 import {TbCloudComputing} from 'react-icons/tb'
 import {TfiPencil} from 'react-icons/tfi'
-import {IoIosGitNetwork,} from "react-icons/io"
+import {IoIosAddCircle, IoIosGitNetwork,} from "react-icons/io"
 import {TbMathFunction} from "react-icons/tb"
 import {RiArticleLine, RiBookMarkLine} from "react-icons/ri"
 import {BiChalkboard} from "react-icons/bi";
@@ -18,15 +18,47 @@ import {AnimationOnScroll} from 'react-animation-on-scroll';
 import {SiGooglescholar} from "react-icons/si";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-import {Overlay} from "react-bootstrap";
+import {Modal, Overlay} from "react-bootstrap";
 import file from "../../../file/Kourosh Parand CV.pdf"
+import {Button, IconButton} from "@mui/material";
+import EdiText from 'react-editext'
+import Form from "react-bootstrap/Form";
+
 function EditMainPage() {
+    const [showModal, setShowModal] = useState(false);
+
+    const [tmpFields, setTmpFields] = useState({
+        year: '',
+        header: '',
+        title: '',
+        text: '',
+        picture: ''
+    })
+
+    //headers
+    const [sections, setSections] = useState([
+        {
+            year: '',
+            header: '',
+            title: '',
+            text: '',
+            picture: ''
+        }
+    ])
+
     const {t} = useTranslation();
     const [education, setEducation] = useState([]);
     const [cooperation, setCooperation] = useState([]);
     const [award, setAward] = useState([]);
     const [journal1, setjournal1] = useState([]);
     const [journal2, setjournal2] = useState([]);
+
+    // const [interestedinFields, setInterestedinFields] = useState([]);
+    // const [myActivitiesFields, setMyActivitiesFields] = useState([]);
+    // const [educationFields, setEducationFields] = useState([]);
+    // const [teachingFields, setTeachingFields] = useState([]);
+    // const [interestedinFields, setInterestedinFields] = useState([]);
+    // const [interestedinFields, setInterestedinFields] = useState([]);
 
     useEffect(() => {
         let educationList = i18next.t('education',{ returnObjects: true })
@@ -45,340 +77,613 @@ function EditMainPage() {
         setAward(awardList);
     },[]);
 
+    const handleSubmitType = () => {
+        setShowModal(false);
+
+        let updateSections = [...sections];
+        updateSections.push({
+            year: tmpFields.year,
+            header: tmpFields.header,
+            title: tmpFields.title,
+            text: tmpFields.text,
+            picture: tmpFields.picture
+        })
+
+        setSections(updateSections)
+    }
+
+    const handleOpenType = () => {
+        setShowModal(true);
+
+
+        setTmpFields({
+            year: '',
+            header: '',
+            title: '',
+            text: '',
+            picture: ''
+        })
+    }
+
+    const handleCloseType = () => {
+        setShowModal(false);
+
+    }
+
+    const handleTmpValues = (value, fieldName) => {
+        let updatedTmpFields = {...tmpFields};
+        updatedTmpFields[fieldName] = value
+        setTmpFields(updatedTmpFields);
+    }
+
     return (
         <>
 
-            <div
-                className="d-flex justify-content-center align-items-start mt-5 card-contain animate__animated animate__fadeInDown">
-                <div className="mainImgContain">
-                    <img src={mainImg} className="mainImg"/>
-                </div>
-                <div className="cv-text mt-4">
-                    <h5>Spectral Methods, ODEs, PDEs And Scientific Computing</h5>
-                    <h2 className="my-4">{t("title")}</h2>
-                    <h6>
-                        I am Professor @ Department of Computer and Data Sciences,
-                        Faculty of Mathematical Sciences, Shahid Beheshti University
-                    </h6>
-                    <p>
-                        My main research field is Scientific Computing, Spectral Methods, Meshless methods, Ordinary
-                        Differential Equations(ODEs), Partial Differential Equations(PDEs),Data Mining,Machine Learning
-                        and Computational
-                        Neuroscience Modeling.
-                    </p>
-                    <div className="d-flex justify-content-center align-items-center">
-                        <a href={file} className="cv-btn">Download CV</a>
-                        <Link to="/contact" className="cv-btn">Contact</Link>
-                        <OverlayTrigger
-                            placement="bottom"
-                            overlay={
-                                <Tooltip className="deleteTooltip">
-                                    Google Scholar
-                                </Tooltip>
-                            }
-                        ><a className="mx-2" href="https://scholar.google.com/citations?user=44wzW2AAAAAJ&hl=en"
-                            target="_blank"><SiGooglescholar fontSize="30px"/></a>
-                        </OverlayTrigger>
-                        <OverlayTrigger
-                            placement="bottom"
-                            overlay={
-                                <Tooltip className="deleteTooltip">
-                                    Scientific evaluation system of faculty members
-                                </Tooltip>
-                            }
-                        ><a href="http://scimet.sbu.ac.ir/Kourosh_Parand" target="_blank"><img src={img} style={{
-                            width: "30px",
-                            height: "30px"
-                        }}/></a>
-                        </OverlayTrigger>
+            <div style={{overflowY: "scroll", height: window.innerHeight*0.95}}>
+                <div
+                    className="d-flex justify-content-center align-items-start mt-5 card-contain animate__animated animate__fadeInDown">
+                    <div className="mainImgContain">
+                        <img src={mainImg} className="mainImg"/>
+                    </div>
+                    <div className="cv-text mt-4">
+                        <h5>Spectral Methods, ODEs, PDEs And Scientific Computing</h5>
+                        <h2 className="my-4">{t("title")}</h2>
+                        <h6>
+                            I am Professor @ Department of Computer and Data Sciences,
+                            Faculty of Mathematical Sciences, Shahid Beheshti University
+                        </h6>
+                        <p>
+                            My main research field is Scientific Computing, Spectral Methods, Meshless methods, Ordinary
+                            Differential Equations(ODEs), Partial Differential Equations(PDEs),Data Mining,Machine Learning
+                            and Computational
+                            Neuroscience Modeling.
+                        </p>
+                        <div className="d-flex justify-content-center align-items-center">
+                            <a href={file} className="cv-btn">Download CV</a>
+                            <Link to="/contact" className="cv-btn">Contact</Link>
+                            <OverlayTrigger
+                                placement="bottom"
+                                overlay={
+                                    <Tooltip className="deleteTooltip">
+                                        Google Scholar
+                                    </Tooltip>
+                                }
+                            ><a className="mx-2" href="https://scholar.google.com/citations?user=44wzW2AAAAAJ&hl=en"
+                                target="_blank"><SiGooglescholar fontSize="30px"/></a>
+                            </OverlayTrigger>
+                            <OverlayTrigger
+                                placement="bottom"
+                                overlay={
+                                    <Tooltip className="deleteTooltip">
+                                        Scientific evaluation system of faculty members
+                                    </Tooltip>
+                                }
+                            ><a href="http://scimet.sbu.ac.ir/Kourosh_Parand" target="_blank"><img src={img} style={{
+                                width: "30px",
+                                height: "30px"
+                            }}/></a>
+                            </OverlayTrigger>
 
-                    </div>
-                </div>
-            </div>
-
-            <div className="mx-5 interested mb-5">
-                <div className="interested-title">
-                    <h3>Interested In</h3>
-                </div>
-                <div className="row">
-                    <div className="col-md-3 col-sm-6 col-xs-12">
-                        <div className="interested-card">
-                            <div className="icon">
-                                <TbCloudComputing/>
-                            </div>
-                            <div className="title">
-                                <h4>Scientific Computing</h4>
-                            </div>
-                            <div className="text">
-                                <p>
-                                    is a rapidly growing multidisciplinary field that uses advanced computing
-                                    capabilities
-                                    to understand and solve complex problems.
-                                </p>
-                            </div>
                         </div>
                     </div>
-                    <div className="col-md-3 col-sm-6 col-xs-12 ">
-                        <div className='interested-card'>
-                            <div className="icon">
-                                <TfiPencil/>
-                            </div>
-                            <div className="title">
-                                <h4>Spectral Methods</h4>
-                            </div>
-                            <div className="text">
-                                <p>
-                                    are a class of techniques used in apply mathemathic and scientific computing to
-                                    numerically solve certain differential equations, potentially involving the use
-                                    of
-                                    the
-                                    Fast Fourier Transform.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-3 col-sm-6 col-xs-12">
-                        <div className="interested-card">
-                            <div className="icon">
-                                <TbMathFunction/>
-                            </div>
-                            <div className="title">
-                                <h4>Meshless methods</h4>
-                            </div>
-                            <div className="text">
-                                <p>
-                                    are uniquely simple, yet provide solution accuracies for certain classes of
-                                    equations
-                                    that rival those of finite elements and boundary elements, without requiring the
-                                    need
-                                    for mesh connectivity.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-3 col-sm-6 col-xs-12">
-                        <div className="interested-card">
-                            <div className="icon">
-                                <IoIosGitNetwork/>
-                            </div>
-                            <div className="title">
-                                <h4>Neuroscience Modeling</h4>
-                            </div>
-                            <div className="text">
-                                <p>
-                                    is a branch of neuroscience which employs mathematical models, theoretical
-                                    analysis
-                                    and
-                                    abstractions of the brain to understand the principles of the nervous system.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div className="mx-5 activities mb-5">
-                <div className="activities-title">
-                    <h3>My Activities</h3>
                 </div>
 
-                <AnimationOnScroll animateIn="animate__zoomIn">
-                    <div className="row">
-                        <div className="col-md-3 col-sm-6 col-xs-12">
-                            <div className="activities-card">
-                                <div className="icon">
-                                    <RiArticleLine/>
-                                </div>
-                                <div className="title p-1">
-                                    <h4>Articles</h4>
-                                </div>
-                                <div className="text">
-                                    <span>247</span>
-                                </div>
+                <div className={'d-flex justify-content-center mt-5'} style={{marginBottom: '-10%'}}>
+                    <button className={'btn btn-primary'} onClick={() => handleOpenType()}>
+                        Add New Section
+                    </button>
+                </div>
+                {
+                    sections.map((section) => (
+                        <div className="mx-5 interested mb-5">
+                            <div className="interested-title">
+                                <h3>{section.header}</h3>
                             </div>
-                        </div>
-                        <div className="col-md-3 col-sm-6 col-xs-12">
-                            <div className='activities-card'>
-                                <div className="icon">
-                                    <BiChalkboard/>
-                                </div>
-                                <div className="title ">
-                                    <h4>Conferances</h4>
-                                </div>
-                                <div className="text">
-                                    <span></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-3 col-sm-6 col-xs-12">
-                            <div className="activities-card">
-                                <div className="icon">
-                                    <RiBookMarkLine/>
-                                </div>
-                                <div className="title">
-                                    <h4>Books</h4>
-                                </div>
-                                <div className="text">
-                                    <span></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-3 col-sm-6 col-xs-12">
-                            <div className="activities-card">
-                                <div className="icon">
-                                    <BsPeople/>
-                                </div>
-                                <div className="title">
-                                    <h4>Phd & Msc</h4>
-                                </div>
-                                <div className="text">
-                                    <span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </AnimationOnScroll>
-            </div>
-            <div className="mx-5 activities mb-5">
-                <AnimationOnScroll animateIn="animate__pulse">
-                    <div className="row">
-                        <div className="col-md-6 col-sm-6 col-xs-12">
-                            <div className="activities-title">
-                                <h3>Education</h3>
-                            </div>
-                            <div>
-                                {education.map((edu) => (
-                                    <div className="education-box">
-                                        <div className="d-flex align-items-center">
-                                            <span>{edu.year}</span>
-                                            <h6>{edu.country}</h6>
+                            <div className="row">
+                                {
+                                    section.header === 'Interested In'
+                                    ? <div className="col-md-3 col-sm-6 col-xs-12">
+                                            <div className="interested-card">
+                                                <div className="icon">
+                                                    <TbCloudComputing/>
+                                                </div>
+                                                <div className="title">
+                                                    <h4>{section.title}</h4>
+                                                </div>
+                                                <div className="text">
+                                                    <p>
+                                                        {section.text}
+                                                    </p>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <h4>{edu.university}</h4>
-                                    </div>
-                                ))}
+                                        : section.header === 'Education'
+                                    ? <div className="education-box">
+                                                <div className="d-flex align-items-center">
+                                                    <span>{section.year}</span>
+                                                    <h6>{section.title}</h6>
+                                                </div>
+                                                <h4>{section.text}</h4>
+                                            </div>
+                                        : section.header === 'Teaching'
+                                    ? <div className="teaching-box">
+                                            <div>
+                                                <h4>{section.title}</h4>
+                                                <p>
+                                                    {section.text}
+                                                </p>
+                                            </div>
+                                        </div>
+                                            : section.header === 'CooperationWithInternationalOrganizations'
+                                    ? <div className="cooperation-box d-flex align-items-center">
+                                            <GoPrimitiveDot color="#007ced"/>
+                                            <h5>{section.title}</h5>
+                                            <h6>{section.text}</h6>
+                                        </div>
+                                            : section.header === 'Postdoc'
+                                    ? <div className="postdoc-box">
+                                            <h4>{section.title}</h4>
+                                            <p>{section.text}</p>
+                                        </div>
+                                            : section.header === 'InTheFollowingJournal'
+                                    ? <>
+                                        <div>
+                                            <h5>{section.title}</h5>
+                                        </div>
+                                        <div className="teaching-box">
+                                            <div className="d-flex align-items-center my-4">
+                                                <GoPrimitiveDot color="#007ced"/>
+                                                <p>
+                                                    {section.text}
+                                                </p>
+                                            </div>
+                                        </div>
+                                      </>
+                                            : section.header === 'HonorsAndAwards'
+                                    ?  <div className="teaching-box">
+                                            <div className="d-flex align-items-center my-4">
+                                                <GoPrimitiveDot color="#007ced"/>
+                                                <h4 style={{fontSize: '13px'}}>{section.text}</h4>
+                                            </div>
+                                       </div>
+                                        : null
+                                }
+                                {/*<div className="col-md-3 col-sm-6 col-xs-12">*/}
+                                {/*    <div className="interested-card">*/}
+                                {/*        <div className="icon">*/}
+                                {/*            <TbCloudComputing/>*/}
+                                {/*        </div>*/}
+                                {/*        <div className="title">*/}
+                                {/*            <h4>Scientific Computing</h4>*/}
+                                {/*        </div>*/}
+                                {/*        <div className="text">*/}
+                                {/*            <p>*/}
+                                {/*                is a rapidly growing multidisciplinary field that uses advanced computing*/}
+                                {/*                capabilities*/}
+                                {/*                to understand and solve complex problems.*/}
+                                {/*            </p>*/}
+                                {/*        </div>*/}
+                                {/*    </div>*/}
+                                {/*</div>*/}
+                                {/*<div className="col-md-3 col-sm-6 col-xs-12 ">*/}
+                                {/*    <div className='interested-card'>*/}
+                                {/*        <div className="icon">*/}
+                                {/*            <TfiPencil/>*/}
+                                {/*        </div>*/}
+                                {/*        <div className="title">*/}
+                                {/*            <h4>Spectral Methods</h4>*/}
+                                {/*        </div>*/}
+                                {/*        <div className="text">*/}
+                                {/*            <p>*/}
+                                {/*                are a class of techniques used in apply mathemathic and scientific computing to*/}
+                                {/*                numerically solve certain differential equations, potentially involving the use*/}
+                                {/*                of*/}
+                                {/*                the*/}
+                                {/*                Fast Fourier Transform.*/}
+                                {/*            </p>*/}
+                                {/*        </div>*/}
+                                {/*    </div>*/}
+                                {/*</div>*/}
+                                {/*<div className="col-md-3 col-sm-6 col-xs-12">*/}
+                                {/*    <div className="interested-card">*/}
+                                {/*        <div className="icon">*/}
+                                {/*            <TbMathFunction/>*/}
+                                {/*        </div>*/}
+                                {/*        <div className="title">*/}
+                                {/*            <h4>Meshless methods</h4>*/}
+                                {/*        </div>*/}
+                                {/*        <div className="text">*/}
+                                {/*            <p>*/}
+                                {/*                are uniquely simple, yet provide solution accuracies for certain classes of*/}
+                                {/*                equations*/}
+                                {/*                that rival those of finite elements and boundary elements, without requiring the*/}
+                                {/*                need*/}
+                                {/*                for mesh connectivity.*/}
+                                {/*            </p>*/}
+                                {/*        </div>*/}
+                                {/*    </div>*/}
+                                {/*</div>*/}
+                                {/*<div className="col-md-3 col-sm-6 col-xs-12">*/}
+                                {/*    <div className="interested-card">*/}
+                                {/*        <div className="icon">*/}
+                                {/*            <IoIosGitNetwork/>*/}
+                                {/*        </div>*/}
+                                {/*        <div className="title">*/}
+                                {/*            <h4>Neuroscience Modeling</h4>*/}
+                                {/*        </div>*/}
+                                {/*        <div className="text">*/}
+                                {/*            <p>*/}
+                                {/*                is a branch of neuroscience which employs mathematical models, theoretical*/}
+                                {/*                analysis*/}
+                                {/*                and*/}
+                                {/*                abstractions of the brain to understand the principles of the nervous system.*/}
+                                {/*            </p>*/}
+                                {/*        </div>*/}
+                                {/*    </div>*/}
+                                {/*</div>*/}
                             </div>
                         </div>
-
-                        <div className="col-md-6 col-sm-6 col-xs-12">
-                            <div className="activities-title">
-                                <h3>Teaching</h3>
-                            </div>
-                            <div className="teaching-box">
-                                <div>
-                                    <h4>Graduate</h4>
+                    ))
+                }
+                <div className="mx-5 interested mb-5">
+                    <div className="interested-title">
+                        <h3>Interested In</h3>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-3 col-sm-6 col-xs-12">
+                            <div className="interested-card">
+                                <div className="icon">
+                                    <TbCloudComputing/>
+                                </div>
+                                <div className="title">
+                                    <h4>Scientific Computing</h4>
+                                </div>
+                                <div className="text">
                                     <p>
-                                        {t("teachGraduate")}
+                                        is a rapidly growing multidisciplinary field that uses advanced computing
+                                        capabilities
+                                        to understand and solve complex problems.
                                     </p>
                                 </div>
-                                <div>
-                                    <h4>Undergraduate</h4>
+                            </div>
+                        </div>
+                        <div className="col-md-3 col-sm-6 col-xs-12 ">
+                            <div className='interested-card'>
+                                <div className="icon">
+                                    <TfiPencil/>
+                                </div>
+                                <div className="title">
+                                    <h4>Spectral Methods</h4>
+                                </div>
+                                <div className="text">
                                     <p>
-                                        {t("teachUndergraduate")}
+                                        are a class of techniques used in apply mathemathic and scientific computing to
+                                        numerically solve certain differential equations, potentially involving the use
+                                        of
+                                        the
+                                        Fast Fourier Transform.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-md-3 col-sm-6 col-xs-12">
+                            <div className="interested-card">
+                                <div className="icon">
+                                    <TbMathFunction/>
+                                </div>
+                                <div className="title">
+                                    <h4>Meshless methods</h4>
+                                </div>
+                                <div className="text">
+                                    <p>
+                                        are uniquely simple, yet provide solution accuracies for certain classes of
+                                        equations
+                                        that rival those of finite elements and boundary elements, without requiring the
+                                        need
+                                        for mesh connectivity.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-md-3 col-sm-6 col-xs-12">
+                            <div className="interested-card">
+                                <div className="icon">
+                                    <IoIosGitNetwork/>
+                                </div>
+                                <div className="title">
+                                    <h4>Neuroscience Modeling</h4>
+                                </div>
+                                <div className="text">
+                                    <p>
+                                        is a branch of neuroscience which employs mathematical models, theoretical
+                                        analysis
+                                        and
+                                        abstractions of the brain to understand the principles of the nervous system.
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </AnimationOnScroll>
-            </div>
-            <div className="mx-5 activities mb-5 ">
-                <AnimationOnScroll animateIn="animate__zoomIn">
-                    <div className="row">
-                        <div className="col-md-6 col-sm-6 col-xs-12">
-                            <div className="activities-title">
-                                <h3 style={{fontSize: "21px"}}>Cooperation with international organizations</h3>
+                </div>
+
+                <div className="mx-5 activities mb-5">
+                    <div className="activities-title">
+                        <h3>My Activities</h3>
+                    </div>
+
+                    <div>
+                        <div className="row">
+                            <div className="col-md-3 col-sm-6 col-xs-12">
+                                <div className="activities-card">
+                                    <div className="icon">
+                                        <RiArticleLine/>
+                                    </div>
+                                    <div className="title p-1">
+                                        <h4>Articles</h4>
+                                    </div>
+                                    <div className="text">
+                                        <span>247</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                {cooperation.map((co) => (
-                                    <div className="cooperation-box d-flex align-items-center">
+                            <div className="col-md-3 col-sm-6 col-xs-12">
+                                <div className='activities-card'>
+                                    <div className="icon">
+                                        <BiChalkboard/>
+                                    </div>
+                                    <div className="title ">
+                                        <h4>Conferances</h4>
+                                    </div>
+                                    <div className="text">
+                                        <span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-md-3 col-sm-6 col-xs-12">
+                                <div className="activities-card">
+                                    <div className="icon">
+                                        <RiBookMarkLine/>
+                                    </div>
+                                    <div className="title">
+                                        <h4>Books</h4>
+                                    </div>
+                                    <div className="text">
+                                        <span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-md-3 col-sm-6 col-xs-12">
+                                <div className="activities-card">
+                                    <div className="icon">
+                                        <BsPeople/>
+                                    </div>
+                                    <div className="title">
+                                        <h4>Phd & Msc</h4>
+                                    </div>
+                                    <div className="text">
+                                        <span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="mx-5 activities mb-5">
+                    <div>
+                        <div className="row">
+                            <div className="col-md-6 col-sm-6 col-xs-12">
+                                <div className="d-flex activities-title align-items-center">
+                                    <h3>Education</h3>
+                                    {/*<div className={'d-flex justify-content-start'}>*/}
+                                    {/*    <IconButton onClick={() => setShowModal(true)}>*/}
+                                    {/*        <IoIosAddCircle size={30}/>*/}
+                                    {/*    </IconButton>*/}
+                                    {/*</div>*/}
+                                </div>
+                                <div>
+                                    {education.map((edu) => (
+                                        <div className="education-box">
+                                            <div className="d-flex align-items-center">
+                                                <span>{edu.year}</span>
+                                                <h6>{edu.country}</h6>
+                                            </div>
+                                            <h4>{edu.university}</h4>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="col-md-6 col-sm-6 col-xs-12">
+                                <div className="activities-title">
+                                    <h3>Teaching</h3>
+                                </div>
+                                <div className="teaching-box">
+                                    <div>
+                                        <h4>Graduate</h4>
+                                        <p>
+                                            {t("teachGraduate")}
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <h4>Undergraduate</h4>
+                                        <p>
+                                            {t("teachUndergraduate")}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="mx-5 activities mb-5 ">
+                    <div>
+                        <div className="row">
+                            <div className="col-md-6 col-sm-6 col-xs-12">
+                                <div className="activities-title">
+                                    <h3 style={{fontSize: "21px"}}>Cooperation with international organizations</h3>
+                                </div>
+                                <div>
+                                    {cooperation.map((co) => (
+                                        <div className="cooperation-box d-flex align-items-center">
+                                            <GoPrimitiveDot color="#007ced"/>
+                                            <h5>{co.name}</h5>
+                                            <h6>{co.description}</h6>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="col-md-6 col-sm-6 col-xs-12">
+                                <div className="activities-title">
+                                    <h3>Postdoc</h3>
+                                </div>
+                                <div>
+                                    <div className="postdoc-box">
+                                        <h4>{t("postdoc.title")}</h4>
+                                        <p>{t("postdoc.students")}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="mx-5 activities mb-5 row">
+                    <div>
+                        <div className="row">
+                            <div className="col-md-6 col-sm-6 col-xs-12">
+                                <div className="activities-title">
+                                    <h3>In the following journal</h3>
+                                </div>
+                                <div>
+                                    <h5>Editor-in-Chief:</h5>
+                                </div>
+                                <div className="teaching-box">
+                                    <div className="d-flex align-items-center my-4">
                                         <GoPrimitiveDot color="#007ced"/>
-                                        <h5>{co.name}</h5>
-                                        <h6>{co.description}</h6>
+                                        <a href="https://cmcma.sbu.ac.ir/" target="_blank"
+                                           style={{fontSize: '13px', textDecoration: "none"}}>Computational Mathematics and
+                                            Computer Modeling with
+                                            Applications (CMCMA)</a>
                                     </div>
-                                ))}
+                                    <h5>Managing Editor:</h5>
+                                    {
+                                        journal1.map((p) => (
+                                            <div className="d-flex align-items-center my-4">
+                                                <GoPrimitiveDot color="#007ced"/>
+                                                <h4 style={{fontSize: '13px'}}>{p.title}</h4>
+                                            </div>
+                                        ))
+                                    }
+                                </div>
                             </div>
-                        </div>
-                        <div className="col-md-6 col-sm-6 col-xs-12">
-                            <div className="activities-title">
-                                <h3>Postdoc</h3>
-                            </div>
-                            <div>
-                                <div className="postdoc-box">
-                                    <h4>{t("postdoc.title")}</h4>
-                                    <p>{t("postdoc.students")}</p>
+                            <div className="col-md-6 col-sm-6 col-xs-12 mt-sm-5">
+                                <div className="teaching-box mt-sm-5">
+                                    {
+                                        journal2.map((p) => (
+                                            <div className="d-flex align-items-center my-4">
+                                                <GoPrimitiveDot color="#007ced"/>
+                                                <h4 style={{fontSize: '13px'}}>{p.title}</h4>
+                                            </div>
+                                        ))
+                                    }
                                 </div>
                             </div>
                         </div>
                     </div>
-                </AnimationOnScroll>
-            </div>
+                </div>
 
-            <div className="mx-5 activities mb-5 row">
-                <AnimationOnScroll animateIn="animate__fadeInDown">
-                    <div className="row">
-                        <div className="col-md-6 col-sm-6 col-xs-12">
-                            <div className="activities-title">
-                                <h3>In the following journal</h3>
-                            </div>
-                            <div>
-                                <h5>Editor-in-Chief:</h5>
-                            </div>
-                            <div className="teaching-box">
-                                <div className="d-flex align-items-center my-4">
-                                    <GoPrimitiveDot color="#007ced"/>
-                                    <a href="https://cmcma.sbu.ac.ir/" target="_blank"
-                                       style={{fontSize: '13px', textDecoration: "none"}}>Computational Mathematics and
-                                        Computer Modeling with
-                                        Applications (CMCMA)</a>
+                <div className="mx-5 activities mb-5 row">
+                    <div>
+                        <div className="row">
+                            <div className="col-md-6 col-sm-6 col-xs-12">
+                                <div className="activities-title">
+                                    <h3>Honors and Awards</h3>
                                 </div>
-                                <h5>Managing Editor:</h5>
-                                {
-                                    journal1.map((p) => (
-                                        <div className="d-flex align-items-center my-4">
-                                            <GoPrimitiveDot color="#007ced"/>
-                                            <h4 style={{fontSize: '13px'}}>{p.title}</h4>
-                                        </div>
-                                    ))
-                                }
-                            </div>
-                        </div>
-                        <div className="col-md-6 col-sm-6 col-xs-12 mt-sm-5">
-                            <div className="teaching-box mt-sm-5">
-                                {
-                                    journal2.map((p) => (
-                                        <div className="d-flex align-items-center my-4">
-                                            <GoPrimitiveDot color="#007ced"/>
-                                            <h4 style={{fontSize: '13px'}}>{p.title}</h4>
-                                        </div>
-                                    ))
-                                }
+                                <div className="teaching-box">
+                                    {
+                                        award.map((p) => (
+                                            <div className="d-flex align-items-center my-4">
+                                                <GoPrimitiveDot color="#007ced"/>
+                                                <h4 style={{fontSize: '13px'}}>{p.title}</h4>
+                                            </div>
+                                        ))
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>
-                </AnimationOnScroll>
+                </div>
+
             </div>
 
-            <div className="mx-5 activities mb-5 row">
-                <AnimationOnScroll animateIn="animate__fadeIn">
-                    <div className="row">
-                        <div className="col-md-6 col-sm-6 col-xs-12">
-                            <div className="activities-title">
-                                <h3>Honors and Awards</h3>
-                            </div>
-                            <div className="teaching-box">
-                                {
-                                    award.map((p) => (
-                                        <div className="d-flex align-items-center my-4">
-                                            <GoPrimitiveDot color="#007ced"/>
-                                            <h4 style={{fontSize: '13px'}}>{p.title}</h4>
-                                        </div>
-                                    ))
-                                }
-                            </div>
-                        </div>
-                    </div>
-                </AnimationOnScroll>
-            </div>
+            <Modal show={showModal} onHide={() => setShowModal(false)}> {/* education add */}
+                <Modal.Header>
+                    Add New Header
+                </Modal.Header>
+                <Modal.Body>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>header :</Form.Label>
+                        <Form.Control
+                            value={tmpFields.header}
+                            // className={`${validation.yearReg === false ? "is-invalid" : ""}`}
+                            type="text"
+                            onChange={(e) =>
+                                handleTmpValues(e.target.value, 'header')
+                            }
+                        />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>title :</Form.Label>
+                        <Form.Control
+                            value={tmpFields.title}
+                            // className={`${validation.titleReg === false ? "is-invalid" : ""}`}
+                            type="text"
+                            onChange={(e) =>
+                                handleTmpValues(e.target.value, 'title')
+                            }
+                        />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>year :</Form.Label>
+                        <Form.Control
+                            value={tmpFields.year}
+                            // className={`${validation.authorsReg === false ? "is-invalid" : ""}`}
+                            type="text"
+                            onChange={(e) =>
+                                handleTmpValues(e.target.value, 'year')
+                            }
+                        />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>text :</Form.Label>
+                        <Form.Control
+                            value={tmpFields.text}
+                            // className={`${validation.authorsReg === false ? "is-invalid" : ""}`}
+                            type="text"
+                            onChange={(e) =>
+                                handleTmpValues(e.target.value, 'text')
+                            }
+                        />
+                    </Form.Group>
+                    {/*<Form.Group className="mb-3" controlId="formBasicEmail">*/}
+                    {/*    <Form.Label>picture :</Form.Label>*/}
+                    {/*    <Form.Control*/}
+                    {/*        value={picture}*/}
+                    {/*        // className={`${validation.authorsReg === false ? "is-invalid" : ""}`}*/}
+                    {/*        type="file"*/}
+                    {/*        onChange={(e) => setPicture(e.target.value)}*/}
+                    {/*    />*/}
+                    {/*</Form.Group>*/}
+                </Modal.Body>
+                <Modal.Footer>
+                    <button className="btn btn-success" onClick={() => handleSubmitType()}>
+                        submit
+                    </button>
+                    <button className="btn btn-light" onClick={() => handleCloseType()}>
+                        close
+                    </button>
+                </Modal.Footer>
+            </Modal>
         </>
     )
 }

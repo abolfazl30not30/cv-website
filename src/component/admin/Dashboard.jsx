@@ -33,7 +33,7 @@ function Dashboard () {
                             <li><button style={{width: "200px", textAlign: "left"}} className="menu__item" onClick={() => setSelectedLink('books')}>Books</button></li>
                             <li><button style={{width: "200px", textAlign: "left"}} className="menu__item" onClick={() => setSelectedLink('courses')}>Courses</button></li>
                             <li><button style={{width: "200px", textAlign: "left"}} className="menu__item" onClick={() => setSelectedLink('conferences')}>Conferences</button></li>
-                            {/*<li><button style={{width: "300px", textAlign: "left"}} className="menu__item" onClick={() => setSelectedLink('mainPage')}>Main Page</button></li>*/}
+                            <li><button style={{width: "200px", textAlign: "left"}} className="menu__item" onClick={() => setSelectedLink('mainPage')}>Main Page</button></li>
                         </ul>
                     </div>
                     <div className={"w-100"}>
@@ -46,8 +46,8 @@ function Dashboard () {
                                 ? <EditCourses />
                                     : selectedLink === "conferences"
                                 ? <EditConferences />
-                                    // : selectedLink === "mainPage"
-                                // ? <EditMainPage />
+                                    : selectedLink === "mainPage"
+                                ? <EditMainPage />
                                     : null
                         }
                     </div>
