@@ -8,12 +8,17 @@ import EditArticles from "./editPages/editArticles";
 import EditBooks from "./editPages/editBooks";
 import EditCourses from "./editPages/editCourses";
 import EditConferences from "./editPages/editConferences";
+import NavbarForEdit from "./NavbarForEdit";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import Form from "react-bootstrap/Form";
+import {t} from "i18next";
 // import { Slide } from '@mui/material';
 
 
 function Dashboard () {
     const [activeMenu, setActiveMenu] = useState(false)
-    const [selectedLink, setSelectedLink] = useState('')
+    const [selectedLink, setSelectedLink] = useState('articles')
 
         return (
             <>
