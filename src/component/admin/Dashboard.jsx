@@ -28,15 +28,15 @@ function Dashboard () {
                 <div className={"main-container"} style={{overflow: 'hidden', display: "flex", height: window.innerHeight*0.93, backgroundColor: "#eee"}}>
                     <div className="hamburger-menu" style={{height: '105%', position: 'sticky'}}>
                         <Hamburger toggled={activeMenu} toggle={setActiveMenu} />
-                        <ul className="menu__box" style={{width: activeMenu ? "300px" : 0, left: activeMenu ? 0 : "-500%"}}>
-                            <li><button style={{width: "300px", textAlign: "left"}} className="menu__item" onClick={() => setSelectedLink('articles')}>Articles</button></li>
-                            <li><button style={{width: "300px", textAlign: "left"}} className="menu__item" onClick={() => setSelectedLink('books')}>Books</button></li>
-                            <li><button style={{width: "300px", textAlign: "left"}} className="menu__item" onClick={() => setSelectedLink('courses')}>Courses</button></li>
-                            <li><button style={{width: "300px", textAlign: "left"}} className="menu__item" onClick={() => setSelectedLink('conferences')}>Conferences</button></li>
-                            <li><button style={{width: "300px", textAlign: "left"}} className="menu__item" onClick={() => setSelectedLink('mainPage')}>Main Page</button></li>
+                        <ul className="menu__box" style={{width: activeMenu ? "200px" : 0, left: activeMenu ? 0 : "-500%"}}>
+                            <li><button style={{width: "200px", textAlign: "left"}} className="menu__item" onClick={() => setSelectedLink('articles')}>Articles</button></li>
+                            <li><button style={{width: "200px", textAlign: "left"}} className="menu__item" onClick={() => setSelectedLink('books')}>Books</button></li>
+                            <li><button style={{width: "200px", textAlign: "left"}} className="menu__item" onClick={() => setSelectedLink('courses')}>Courses</button></li>
+                            <li><button style={{width: "200px", textAlign: "left"}} className="menu__item" onClick={() => setSelectedLink('conferences')}>Conferences</button></li>
+                            {/*<li><button style={{width: "300px", textAlign: "left"}} className="menu__item" onClick={() => setSelectedLink('mainPage')}>Main Page</button></li>*/}
                         </ul>
                     </div>
-                    <div>
+                    <div className={"w-100"}>
                         {
                             selectedLink === "articles"
                                 ? <EditArticles />
@@ -46,8 +46,8 @@ function Dashboard () {
                                 ? <EditCourses />
                                     : selectedLink === "conferences"
                                 ? <EditConferences />
-                                    : selectedLink === "mainPage"
-                                ? <EditMainPage />
+                                    // : selectedLink === "mainPage"
+                                // ? <EditMainPage />
                                     : null
                         }
                     </div>

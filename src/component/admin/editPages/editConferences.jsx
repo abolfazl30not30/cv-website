@@ -2,11 +2,12 @@ import React, {useState, useEffect} from 'react';
 import '../../../style/home.css'
 import {useTranslation} from 'react-i18next'
 import "./../../../style/pages.css"
-import {IconButton} from "@mui/material";
+import {IconButton, Typography} from "@mui/material";
 import {IoIosAddCircle} from "react-icons/io";
 import {Modal} from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import {IoClose} from "react-icons/io5";
+import "./../../../style/editPages.css"
 
 function EditConferences() {
 
@@ -131,7 +132,7 @@ function EditConferences() {
     return (
         <>
             <div>
-                <div className="main-title">
+                <div className="page-title">
                     <h3>{t("conferences")}</h3>
                 </div>
                 <div className={'d-flex justify-content-center'}>
@@ -139,7 +140,7 @@ function EditConferences() {
                         <IoIosAddCircle size={50}/>
                     </IconButton>
                 </div>
-                <div className="mt-5 mx-3">
+                <div className="mt-5 mx-3" style={{overflowY: "scroll", height: window.innerHeight*0.7}}>
                     {
                         conferences.map((p) => (
                             <>
@@ -148,14 +149,14 @@ function EditConferences() {
                                         <IoClose size={20}/>
                                     </IconButton>
                                 </div>
-                                <div className="research mb-4">
+                                <div className="section mb-4 p-3" style={{borderRadius: "10px", backgroundColor: "#fff"}}>
                                     <div className="d-flex align-items-center mb-2">
                                     <span style={{backgroundColor:"#007ced",color:"#fff"}}>
                                          {p.year}
                                     </span>
                                     </div>
                                     <div>
-                                        <h5 style={{fontWeight:"bold"}}>{p.title}</h5>
+                                        <Typography noWrap={true} style={{color: "black", display: "block", fontWeight:"bold"}}>{p.title}</Typography>
                                         <p>
                                             {p.authors}
                                         </p>

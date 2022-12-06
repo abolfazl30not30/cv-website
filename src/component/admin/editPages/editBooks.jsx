@@ -7,6 +7,7 @@ import {IconButton} from "@mui/material";
 import { IoIosAddCircle } from "react-icons/io";
 import Form from "react-bootstrap/Form";
 import { IoClose } from "react-icons/io5";
+import "./../../../style/editPages.css";
 
 function EditBooks() {
 
@@ -135,7 +136,7 @@ function EditBooks() {
 
     return (
         <>
-            <div>
+            <div className={"w-100"}>
                 <div className="page-title">
                     <h3>{t("books")}</h3>
                 </div>
@@ -144,7 +145,7 @@ function EditBooks() {
                         <IoIosAddCircle size={50}/>
                     </IconButton>
                 </div>
-                <div className="mx-3 d-flex flex-column" style={{overflowY: "scroll", height: window.innerHeight*0.78, width: "100%"}}>
+                <div className="mx-3 d-flex flex-column" style={{overflowY: "scroll", height: window.innerHeight*0.75}}>
                     {
                         books.map((b) => (
                             <>

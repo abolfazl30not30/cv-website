@@ -4,14 +4,20 @@ import {useTranslation} from 'react-i18next'
 import "../../style/card.scss"
 import {Link} from "react-router-dom"
 import img from "../../img/iStock-1221293664-1.jpg"
+import {IconButton} from "@mui/material";
+import {AiOutlineLink} from "react-icons/ai";
+import {IoClose} from "react-icons/io5";
 
 function Conferences() {
 
     const {t} = useTranslation();
-    const [conferences, setConferences] = useState([]);
+    const [courses, setCourses] = useState([]);
     useEffect(() => {
-        let conferencesList = t('conferences-list', {returnObjects: true})
-        setConferences(conferencesList)
+        // let conferencesList = t('conferences-list', {returnObjects: true})
+        // setConferences(conferencesList)
+
+        const getCourses = fetch('http://localhost:8089/api/v1/public/course').then((response) => response.json())
+            .then((data) => setCourses(data));
     }, []);
 
     return (
@@ -21,18 +27,34 @@ function Conferences() {
             </div>
             <div className="mt-5 mx-4 mb-5">
                 <div className="row">
-                    <div className="col-4 px-4">
-                        <Link>
-                            <div className='card' style={{backgroundImage: `url(${img})`}}>
-                                <div className='info'>
-                                    <h1 className='title'>Support vector machine and learning with kernels</h1>
-                                    <p className='description'>Familiarizing the student with the basic concepts of
-                                        machine learning, in-depth knowledge of the support vector machine model and its
-                                        types, the kernel trick and its importance, introducing support vector
-                                        regression and least squares regression/support vector machine.</p>
+                    <div className="row px-4">
+                        {
+                            courses.map((course) => (
+                                <div className={'col mb-3'}>
+                                    {/*<div className={''}>*/}
+                                        <div className='card' style={{backgroundImage: `url(${img})`}}>
+                                            <div className={'d-flex justify-content-between'}>
+                                                <Link>
+                                                    <IconButton color={'info'}>
+                                                        <AiOutlineLink size={30}/>
+                                                    </IconButton>
+                                                </Link>
+                                            </div>
+                                            <div className='info'>
+                                                <h1 className='title'>{course.title}</h1>
+                                                {/*<p className='description'>Familiarizing the student with the basic concepts of*/}
+                                                {/*    machine learning, in-depth knowledge of the support vector machine model and its*/}
+                                                {/*    types, the kernel trick and its importance, introducing support vector*/}
+                                                {/*    regression and least squares regression/support vector machine.</p>*/}
+                                                <p className='description'>
+                                                    {course.text}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    {/*</div>*/}
                                 </div>
-                            </div>
-                        </Link>
+                            ))
+                        }
                     </div>
                 </div>
             </div>

@@ -3,12 +3,12 @@
     margin-top: 2%;
     margin-left: 3%;
 }
-.article{
+.section{
     margin-left:20px;
     border: 1px solid #d7d7d7;
     box-shadow: 0 0 1px 0 #888888
 }
-.article span{
+.section span{
     font-size: 13px;
     margin-right: 15px;
     padding: 5px 10px;
@@ -22,15 +22,15 @@
     border: 2px solid #007ced;
     border-radius: 19px;
 }
-.article h6{
+.section h6{
     font-size: 14px;
     color: #575757;
 }
-.article h5{
+.section h5{
     font-weight: bold;
     font-size: 16px;
 }
-.article p{
+.section p{
     color: #007ced;
     font-size: 14px;
 }

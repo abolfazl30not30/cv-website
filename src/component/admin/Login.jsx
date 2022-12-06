@@ -17,7 +17,7 @@ function Login() {
                             <form className="login">
                                 <div className="login__field">
                                     <i className="login__icon fas fa-user"/>
-                                    <input type="text" className="login__input" placeholder="Email"/>
+                                    <input type="text" className="login__input" placeholder="Username"/>
                                 </div>
                                 <div className="login__field">
                                     <i className="login__icon fas fa-lock"/>

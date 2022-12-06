@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
-import "./../../../style/editArticle.css"
+import "../../../style/editPages.css"
 // import '../../../style/home.css'
 import {HiOutlineXMark} from "react-icons/hi2";
 import {IconButton} from "@mui/material";
@@ -25,14 +25,14 @@ function EditArticles () {
 
     return (
         <>
-            <div>
+            <div className={"w-100"}>
                 <div className="page-title">
                     <h3>{t("articles")}</h3>
                 </div>
                 <div className="mt-5 mx-3" style={{overflowY: "scroll", height: window.innerHeight*0.80}}>
                     {
                         articles.map((p) => (
-                            <div className="mb-4 article p-3" style={{borderRadius: "10px", backgroundColor: "#fff"}}>
+                            <div className="mb-4 section p-3" style={{borderRadius: "10px", backgroundColor: "#fff"}}>
                                 <div className="d-flex align-items-center mb-2">
                                     <span>
                                         {p.year}

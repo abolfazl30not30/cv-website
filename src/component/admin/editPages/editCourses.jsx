@@ -135,8 +135,8 @@ function EditCourses() {
     }
 
     return (
-        <div>
-            <div className="main-title">
+        <div className={"w-100"}>
+            <div className="page-title">
                 <h3>{t("courses")}</h3>
             </div>
             <div className={'d-flex justify-content-center'}>
@@ -144,7 +144,7 @@ function EditCourses() {
                     <IoIosAddCircle size={50}/>
                 </IconButton>
             </div>
-            <div className="mt-5 mx-4 mb-5">
+            <div className="mt-5 mx-4 mb-5" style={{overflowX: "hidden", overflowY: "scroll", height: window.innerHeight*0.7}}>
                 <div className="">
                     <div className="d-flex px-4 row">
                         {
