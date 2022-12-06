@@ -14,6 +14,7 @@ import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
 import {t} from "i18next";
 import Hamburger from 'hamburger-react';
+import EditMainPage from "./editPages/editMainPage";
 
 function Dashboard () {
     const [activeMenu, setActiveMenu] = useState(false)
@@ -32,6 +33,7 @@ function Dashboard () {
                             <li><button style={{width: "300px", textAlign: "left"}} className="menu__item" onClick={() => setSelectedLink('books')}>Books</button></li>
                             <li><button style={{width: "300px", textAlign: "left"}} className="menu__item" onClick={() => setSelectedLink('courses')}>Courses</button></li>
                             <li><button style={{width: "300px", textAlign: "left"}} className="menu__item" onClick={() => setSelectedLink('conferences')}>Conferences</button></li>
+                            <li><button style={{width: "300px", textAlign: "left"}} className="menu__item" onClick={() => setSelectedLink('mainPage')}>Main Page</button></li>
                         </ul>
                     </div>
                     <div>
@@ -44,6 +46,8 @@ function Dashboard () {
                                 ? <EditCourses />
                                     : selectedLink === "conferences"
                                 ? <EditConferences />
+                                    : selectedLink === "mainPage"
+                                ? <EditMainPage />
                                     : null
                         }
                     </div>

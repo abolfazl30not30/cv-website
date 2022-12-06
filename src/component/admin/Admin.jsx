@@ -13,7 +13,7 @@ function Admin() {
                 <Routes>
                     <Route exact path="/" element={(<Login />)} />
                     <Route path="/dashboard" element={(<Dashboard />)} />
-                    <Route path="/dashboard/*" element={(<Main />)} />
+                    {/*<Route path="/dashboard/*" element={(<Main />)} />*/}
                 </Routes>
             </div>
         </div>
