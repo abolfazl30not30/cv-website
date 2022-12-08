@@ -232,3 +232,45 @@
         margin: auto;
     }
 }
+.edit-text button {
+    background-color: #55a0ef;
+    margin-right: 5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+}
+.edit-cv-title button {
+    background-color: #FFFFFF;
+}
+
+.edit-cv-name button::before {
+    position: absolute;
+    top: -2%;
+    left: 10.5%
+}
+.mainImg-overlay {
+    border-radius: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #008CBA;
+}
+img-edit-container {
+    width: 320px;
+    height: 320px;
+    border-radius: 100%;
+}
+.mainImgContain:hover .mainImg-overlay {
+    opacity: 0.7;
+}
+.mainImg-overlay label:hover {
+    border-radius: 5px;
+    padding: 2px;
+    background-color: #fff;
+}

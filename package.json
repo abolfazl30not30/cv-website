@@ -33,6 +33,7 @@
     "react-scroll-motion": "^0.3.0",
     "sass-loader": "^13.2.0",
     "scss-loader": "^0.0.1",
+    "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
