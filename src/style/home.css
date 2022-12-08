@@ -239,14 +239,11 @@
     height: 40px;
     border-radius: 50px;
 }
-.edit-cv-title button {
-    background-color: #FFFFFF;
-}
 
-.edit-cv-name button::before {
+.edit-journal-title button::before {
     position: absolute;
-    top: -2%;
-    left: 10.5%
+    top: 7.5%;
+    left: 22%
 }
 .mainImg-overlay {
     border-radius: 100%;

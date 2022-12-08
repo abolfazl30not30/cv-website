@@ -21,6 +21,8 @@ import Tooltip from 'react-bootstrap/Tooltip';
 import {Overlay} from "react-bootstrap";
 import file from "../../file/Kourosh Parand CV.pdf"
 function Home() {
+    const [sections, setSections] = useState([])
+
     const {t} = useTranslation();
     const [education, setEducation] = useState([]);
     const [cooperation, setCooperation] = useState([]);
@@ -29,20 +31,23 @@ function Home() {
     const [journal2, setjournal2] = useState([]);
 
     useEffect(() => {
-        let educationList = i18next.t('education',{ returnObjects: true })
-        setEducation(educationList);
+        // let educationList = i18next.t('education',{ returnObjects: true })
+        // setEducation(educationList);
+        //
+        // let cooperationList = i18next.t('cooperation', {returnObjects: true});
+        // setCooperation(cooperationList);
+        //
+        // let journalList1 = i18next.t('journal1', {returnObjects: true});
+        // setjournal1(journalList1);
+        //
+        // let journalList2 = i18next.t('journal2', {returnObjects: true});
+        // setjournal2(journalList2);
+        //
+        // let awardList = i18next.t('award', {returnObjects: true});
+        // setAward(awardList);
 
-        let cooperationList = i18next.t('cooperation', {returnObjects: true});
-        setCooperation(cooperationList);
-
-        let journalList1 = i18next.t('journal1', {returnObjects: true});
-        setjournal1(journalList1);
-
-        let journalList2 = i18next.t('journal2', {returnObjects: true});
-        setjournal2(journalList2);
-
-        let awardList = i18next.t('award', {returnObjects: true});
-        setAward(awardList);
+        fetch('http://localhost:8089/api/v1/public/mainPage').then((response) => response.json())
+            .then((data) => setSections(data));
     },[]);
 
     return (
@@ -101,79 +106,28 @@ function Home() {
                     <h3>Interested In</h3>
                 </div>
                     <div className="row">
-                        <div className="col-md-3 col-sm-6 col-xs-12">
-                            <div className="interested-card">
-                                <div className="icon">
-                                    <TbCloudComputing/>
+                        {
+                            sections.map((section) => (
+                                section.header === 'InterestedIn'
+                                ?
+                                <div className="col-md-3 col-sm-6 col-xs-12">
+                                    <div className="interested-card">
+                                        <div className="icon">
+                                            <TbCloudComputing/>
+                                        </div>
+                                        <div className="title">
+                                            <h4>{section.title}</h4>
+                                        </div>
+                                        <div className="text">
+                                            <p>
+                                                {section.text}
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="title">
-                                    <h4>Scientific Computing</h4>
-                                </div>
-                                <div className="text">
-                                    <p>
-                                        is a rapidly growing multidisciplinary field that uses advanced computing
-                                        capabilities
-                                        to understand and solve complex problems.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-3 col-sm-6 col-xs-12 ">
-                            <div className='interested-card'>
-                                <div className="icon">
-                                    <TfiPencil/>
-                                </div>
-                                <div className="title">
-                                    <h4>Spectral Methods</h4>
-                                </div>
-                                <div className="text">
-                                    <p>
-                                        are a class of techniques used in apply mathemathic and scientific computing to
-                                        numerically solve certain differential equations, potentially involving the use
-                                        of
-                                        the
-                                        Fast Fourier Transform.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-3 col-sm-6 col-xs-12">
-                            <div className="interested-card">
-                                <div className="icon">
-                                    <TbMathFunction/>
-                                </div>
-                                <div className="title">
-                                    <h4>Meshless methods</h4>
-                                </div>
-                                <div className="text">
-                                    <p>
-                                        are uniquely simple, yet provide solution accuracies for certain classes of
-                                        equations
-                                        that rival those of finite elements and boundary elements, without requiring the
-                                        need
-                                        for mesh connectivity.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-3 col-sm-6 col-xs-12">
-                            <div className="interested-card">
-                                <div className="icon">
-                                    <IoIosGitNetwork/>
-                                </div>
-                                <div className="title">
-                                    <h4>Neuroscience Modeling</h4>
-                                </div>
-                                <div className="text">
-                                    <p>
-                                        is a branch of neuroscience which employs mathematical models, theoretical
-                                        analysis
-                                        and
-                                        abstractions of the brain to understand the principles of the nervous system.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                                    : null
+                            ))
+                        }
                     </div>
             </div>
 
@@ -184,58 +138,26 @@ function Home() {
 
                 <AnimationOnScroll animateIn="animate__zoomIn">
                     <div className="row">
-                        <div className="col-md-3 col-sm-6 col-xs-12">
-                            <div className="activities-card">
-                                <div className="icon">
-                                    <RiArticleLine/>
+                        {
+                            sections.map((section) => (
+                                section.header === 'MyActivities'
+                                ?
+                                <div className="col-md-3 col-sm-6 col-xs-12">
+                                    <div className="activities-card">
+                                        <div className="icon">
+                                            <RiArticleLine/>
+                                        </div>
+                                        <div className="title p-1">
+                                            <h4>{section.title}</h4>
+                                        </div>
+                                        <div className="text">
+                                            <span>{section.text}</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="title p-1">
-                                    <h4>Articles</h4>
-                                </div>
-                                <div className="text">
-                                    <span>247</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-3 col-sm-6 col-xs-12">
-                            <div className='activities-card'>
-                                <div className="icon">
-                                    <BiChalkboard/>
-                                </div>
-                                <div className="title ">
-                                    <h4>Conferances</h4>
-                                </div>
-                                <div className="text">
-                                    <span></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-3 col-sm-6 col-xs-12">
-                            <div className="activities-card">
-                                <div className="icon">
-                                    <RiBookMarkLine/>
-                                </div>
-                                <div className="title">
-                                    <h4>Books</h4>
-                                </div>
-                                <div className="text">
-                                    <span></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-3 col-sm-6 col-xs-12">
-                            <div className="activities-card">
-                                <div className="icon">
-                                    <BsPeople/>
-                                </div>
-                                <div className="title">
-                                    <h4>Phd & Msc</h4>
-                                </div>
-                                <div className="text">
-                                    <span></span>
-                                </div>
-                            </div>
-                        </div>
+                                    : null
+                            ))
+                        }
                     </div>
                 </AnimationOnScroll>
             </div>
@@ -247,14 +169,17 @@ function Home() {
                                 <h3>Education</h3>
                             </div>
                             <div>
-                                {education.map((edu) => (
+                                {sections.map((section) => (
+                                    section.header === 'Education'
+                                    ?
                                     <div className="education-box">
                                         <div className="d-flex align-items-center">
-                                            <span>{edu.year}</span>
-                                            <h6>{edu.country}</h6>
+                                            <span>{section.year}</span>
+                                            <h6>{section.title}</h6>
                                         </div>
-                                        <h4>{edu.university}</h4>
+                                        <h4>{section.text}</h4>
                                     </div>
+                                        : null
                                 ))}
                             </div>
                         </div>
@@ -264,18 +189,19 @@ function Home() {
                                 <h3>Teaching</h3>
                             </div>
                             <div className="teaching-box">
-                                <div>
-                                    <h4>Graduate</h4>
-                                    <p>
-                                        {t("teachGraduate")}
-                                    </p>
-                                </div>
-                                <div>
-                                    <h4>Undergraduate</h4>
-                                    <p>
-                                        {t("teachUndergraduate")}
-                                    </p>
-                                </div>
+                                {
+                                    sections.map((section) => (
+                                        section.header === 'Teaching'
+                                        ?
+                                        <div>
+                                            <h4>{section.title}</h4>
+                                            <p>
+                                                {section.text}
+                                            </p>
+                                        </div>
+                                            : null
+                                    ))
+                                }
                             </div>
                         </div>
                     </div>
@@ -289,12 +215,15 @@ function Home() {
                                 <h3 style={{fontSize: "21px"}}>Cooperation with international organizations</h3>
                             </div>
                             <div>
-                                {cooperation.map((co) => (
+                                {sections.map((section) => (
+                                    section.header === 'CooperationWithInternationalOrganizations'
+                                    ?
                                     <div className="cooperation-box d-flex align-items-center">
                                         <GoPrimitiveDot color="#007ced"/>
-                                        <h5>{co.name}</h5>
-                                        <h6>{co.description}</h6>
+                                        <h5>{section.title}</h5>
+                                        <h6>{section.text}</h6>
                                     </div>
+                                        :null
                                 ))}
                             </div>
                         </div>
@@ -302,12 +231,18 @@ function Home() {
                             <div className="activities-title">
                                 <h3>Postdoc</h3>
                             </div>
-                            <div>
-                                <div className="postdoc-box">
-                                    <h4>{t("postdoc.title")}</h4>
-                                    <p>{t("postdoc.students")}</p>
-                                </div>
-                            </div>
+                            {
+                                sections.map((section) => (
+                                    section.header === 'Postdoc'
+                                    ? <div>
+                                            <div className="postdoc-box">
+                                                <h4>{section.title}</h4>
+                                                <p>{section.text}</p>
+                                            </div>
+                                        </div>
+                                        : null
+                                ))
+                            }
                         </div>
                     </div>
                 </AnimationOnScroll>
@@ -320,39 +255,25 @@ function Home() {
                             <div className="activities-title">
                                 <h3>In the following journal</h3>
                             </div>
-                            <div>
-                                <h5>Editor-in-Chief:</h5>
-                            </div>
-                            <div className="teaching-box">
-                                <div className="d-flex align-items-center my-4">
-                                    <GoPrimitiveDot color="#007ced"/>
-                                    <a href="https://cmcma.sbu.ac.ir/" target="_blank"
-                                       style={{fontSize: '13px', textDecoration: "none"}}>Computational Mathematics and
-                                        Computer Modeling with
-                                        Applications (CMCMA)</a>
-                                </div>
-                                <h5>Managing Editor:</h5>
-                                {
-                                    journal1.map((p) => (
-                                        <div className="d-flex align-items-center my-4">
-                                            <GoPrimitiveDot color="#007ced"/>
-                                            <h4 style={{fontSize: '13px'}}>{p.title}</h4>
-                                        </div>
-                                    ))
-                                }
-                            </div>
-                        </div>
-                        <div className="col-md-6 col-sm-6 col-xs-12 mt-sm-5">
-                            <div className="teaching-box mt-sm-5">
-                                {
-                                    journal2.map((p) => (
-                                        <div className="d-flex align-items-center my-4">
-                                            <GoPrimitiveDot color="#007ced"/>
-                                            <h4 style={{fontSize: '13px'}}>{p.title}</h4>
-                                        </div>
-                                    ))
-                                }
-                            </div>
+                            {
+                                sections.map((section) => (
+                                    section.header === 'InTheFollowingJournal'
+                                    ? <>
+                                            <div>
+                                                <h5>{section.title}</h5>
+                                            </div>
+                                            <div className="teaching-box">
+                                                <div className="d-flex align-items-center my-4">
+                                                    <GoPrimitiveDot color="#007ced"/>
+                                                    <h4>
+                                                        {section.text}
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                      </>
+                                        : null
+                                ))
+                            }
                         </div>
                     </div>
                 </AnimationOnScroll>
@@ -367,11 +288,14 @@ function Home() {
                             </div>
                             <div className="teaching-box">
                                 {
-                                    award.map((p) => (
+                                    sections.map((section) => (
+                                        section.header === 'HonorsAndAwards'
+                                        ?
                                         <div className="d-flex align-items-center my-4">
                                             <GoPrimitiveDot color="#007ced"/>
-                                            <h4 style={{fontSize: '13px'}}>{p.title}</h4>
+                                            <h4 style={{fontSize: '13px'}}>{section.text}</h4>
                                         </div>
+                                            : null
                                     ))
                                 }
                             </div>

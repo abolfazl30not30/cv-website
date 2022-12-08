@@ -35,19 +35,14 @@ function EditMainPage() {
         header: '',
         title: '',
         text: '',
-        picture: ''
+        picture: {
+            name: '',
+            fileId: ''
+        }
     })
 
     //headers
-    const [sections, setSections] = useState([
-        {
-            year: '',
-            header: '',
-            title: '',
-            text: '',
-            picture: ''
-        }
-    ])
+    const [sections, setSections] = useState([])
 
     const {t} = useTranslation();
     const [education, setEducation] = useState([]);
@@ -57,42 +52,104 @@ function EditMainPage() {
     const [journal2, setjournal2] = useState([]);
 
     useEffect(() => {
-        let educationList = i18next.t('education',{ returnObjects: true })
-        setEducation(educationList);
+        // let educationList = i18next.t('education',{ returnObjects: true })
+        // setEducation(educationList);
+        //
+        // let cooperationList = i18next.t('cooperation', {returnObjects: true});
+        // setCooperation(cooperationList);
+        //
+        // let journalList1 = i18next.t('journal1', {returnObjects: true});
+        // setjournal1(journalList1);
+        //
+        // let journalList2 = i18next.t('journal2', {returnObjects: true});
+        // setjournal2(journalList2);
+        //
+        // let awardList = i18next.t('award', {returnObjects: true});
+        // setAward(awardList);
+        fetch('http://localhost:8089/api/v1/public/mainPage').then((response) => response.json())
+            .then((data) => setSections(data));
+        },[]);
 
-        let cooperationList = i18next.t('cooperation', {returnObjects: true});
-        setCooperation(cooperationList);
+    const handleSubmitModal = async () => {
+        await fetch(`http://localhost:8089/api/v1/admin/save/mainPage`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                year: tempFields.year,
+                header: tempFields.header,
+                title: tempFields.title,
+                text: tempFields.text,
+                picture: tempFields.picture
+            })
+        }).then((response) => response.json()).then((data) => {
+            let updateSections = [...sections];
+            updateSections.push({
+                id: data.id,
+                year: tempFields.year,
+                header: tempFields.header,
+                title: tempFields.title,
+                text: tempFields.text,
+                picture: tempFields.picture
+            })
 
-        let journalList1 = i18next.t('journal1', {returnObjects: true});
-        setjournal1(journalList1);
-
-        let journalList2 = i18next.t('journal2', {returnObjects: true});
-        setjournal2(journalList2);
-
-        let awardList = i18next.t('award', {returnObjects: true});
-        setAward(awardList);
-    },[]);
-
-    const handleSubmitModal = () => {
-        let updateSections = [...sections];
-        updateSections.push({
-            year: tempFields.year,
-            header: tempFields.header,
-            title: tempFields.title,
-            text: tempFields.text,
-            picture: tempFields.picture
-        })
-
-        setSections(updateSections)
+            setSections(updateSections)
+        });
 
         setTempFields({
             year: '',
             header: '',
             title: '',
             text: '',
-            picture: ''
+            picture: {
+                name: '',
+                fileId: ''
+            }
         })
-        handleCloseModal()
+        handleCloseModal();
+    }
+
+    const handleDelete = async (section) => {
+        console.log(section)
+        await fetch(`http://localhost:8089/api/v1/admin/delete/mainPage/${section.id}`, {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+        }).then(() => {
+            let updateSections = [...sections];
+            updateSections = updateSections.filter((s) => s.id !== section.id)
+
+            setSections(updateSections)
+        });
+    }
+
+    const handlePatch = async (section, value, FieldName) => {
+        console.log(value)
+        await fetch(`http://localhost:8089/api/v1/admin/patch/mainPage/${section.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                [FieldName]: value
+            })
+        }).then(() => {
+            console.log("Success")
+            let updateSections = [...sections];
+
+            for (let i = 0; i < updateSections; i++) {
+                if (updateSections[i].id === section.id) {
+                    updateSections[i][FieldName] = value
+                }
+            }
+
+            setSections(updateSections)
+        });
     }
 
     //-------------------------------------------OPEN MODALS FUNCTIONS--------------------------------------------------
@@ -144,73 +201,19 @@ function EditMainPage() {
                     className="d-flex justify-content-center align-items-start mt-5 card-contain animate__animated animate__fadeInDown">
                     <div className="mainImgContain">
                         <img src={mainImg} className="mainImg"/>
-                        <div className={"mainImg-overlay d-flex justify-content-center align-items-center"}>
-                            <input id={"mainImg-upload"} style={{width: 0, opacity: 0}} type={"file"}/>
-                            <label htmlFor={"mainImg-upload"}>
-                                Click To Upload New Photo
-                            </label>
-                        </div>
                     </div>
                     <div className="cv-text mt-4">
-                        <h5>
-                            <div className={"edit-cv-title"}>
-                                <EdiText
-                                    className={"edit-text"}
-                                    viewProps={{
-                                        style: {borderRadius: 10}
-                                    }}
-                                    type='text'
-                                    buttonsAlign='before'
-                                    value="Spectral Methods, ODEs, PDEs And Scientific Computing"
-                                    // onSave={}
-                                />
-                            </div>
-                        </h5>
-                        <h2 className="my-4">
-                            <div className={"edit-cv-name"}>
-                                <EdiText
-                                    className={"edit-text"}
-                                    viewProps={{
-                                        style: {borderRadius: 10}
-                                    }}
-                                    type='text'
-                                    buttonsAlign='before'
-                                    value={t("title")}
-                                    // onSave={}
-                                />
-                            </div></h2>
+                        <h5>Spectral Methods, ODEs, PDEs And Scientific Computing</h5>
+                        <h2 className="my-4">{t("title")}</h2>
                         <h6>
-                            <div>
-                                <EdiText
-                                    className={"edit-text"}
-                                    viewProps={{
-                                        style: {borderRadius: 10}
-                                    }}
-                                    type='text'
-                                    buttonsAlign='before'
-                                    value={"I am Professor @ Department of Computer and Data Sciences,\n" +
-                                        "                            Faculty of Mathematical Sciences, Shahid Beheshti University"}
-                                    // onSave={}
-                                />
-                            </div>
+                            I am Professor @ Department of Computer and Data Sciences,
+                            Faculty of Mathematical Sciences, Shahid Beheshti University
                         </h6>
                         <p>
-                            <div>
-                                <EdiText
-                                    className={"edit-text"}
-                                    viewProps={{
-                                        style: {borderRadius: 10}
-                                    }}
-                                    type='text'
-                                    buttonsAlign='before'
-                                    value={"My main research field is Scientific Computing, Spectral Methods, Meshless methods, Ordinary\n"+
-                                        "Differential Equations(ODEs), Partial Differential Equations(PDEs),Data Mining,Machine Learning\n"+
-                                        "and Computational\n"+
-                                        "Neuroscience Modeling."}
-                                    // onSave={}
-                                />
-                            </div>
-
+                            My main research field is Scientific Computing, Spectral Methods, Meshless methods, Ordinary
+                            Differential Equations(ODEs), Partial Differential Equations(PDEs),Data Mining,Machine Learning
+                            and Computational
+                            Neuroscience Modeling.
                         </p>
                         <div className="d-flex justify-content-center align-items-center">
                             <a href={file} className="cv-btn">Download CV</a>
@@ -271,7 +274,7 @@ function EditMainPage() {
                                     ? <div className="col-md-3 col-sm-6 col-xs-12">
                                         <div className="interested-card">
                                             <div className={"w-100 d-flex justify-content-end"}>
-                                                <IconButton>
+                                                <IconButton onClick={() => handleDelete(section)}>
                                                     <IoIosRemoveCircle color={"red"} size={35}/>
                                                 </IconButton>
                                             </div>
@@ -288,7 +291,7 @@ function EditMainPage() {
                                                     type='text'
                                                     buttonsAlign='before'
                                                     value={section.title}
-                                                    // onSave={}
+                                                    onSave={(value) => handlePatch(section, value, 'title')}
                                                 />
                                             </div>
                                             <div className="text">
@@ -300,7 +303,7 @@ function EditMainPage() {
                                                     type='text'
                                                     buttonsAlign='before'
                                                     value={section.text}
-                                                    // onSave={}
+                                                    onSave={(value) => handlePatch(section, value, 'text')}
                                                 />
                                             </div>
                                         </div>
@@ -339,7 +342,7 @@ function EditMainPage() {
                                         <div className="activities-card"  style={{minHeight: '320px'}}>
                                             <div className={"w-100 d-flex justify-content-end"} style={{marginTop: "-10px"}}>
                                                 <h4>
-                                                    <IconButton >
+                                                    <IconButton onClick={() => handleDelete(section)}>
                                                         <IoIosRemoveCircle color={"red"} size={35}/>
                                                     </IconButton>
                                                 </h4>
@@ -357,7 +360,7 @@ function EditMainPage() {
                                                         type='text'
                                                         buttonsAlign='before'
                                                         value={section.title}
-                                                        // onSave={}
+                                                        onSave={(value) => handlePatch(section, value, 'title')}
                                                     />
                                                 </h4>
                                             </div>
@@ -372,7 +375,7 @@ function EditMainPage() {
                                                         type='text'
                                                         buttonsAlign='before'
                                                         value={section.text}
-                                                        // onSave={}
+                                                        onSave={(value) => handlePatch(section, value, 'text')}
                                                     />
                                                 </p>
                                             </div>
@@ -408,7 +411,7 @@ function EditMainPage() {
                                         section.header === 'Education'
                                         ? <div className={"d-flex"}>
                                                 <div>
-                                                    <IconButton>
+                                                    <IconButton onClick={() => handleDelete(section)}>
                                                         <IoIosRemoveCircle color={"red"} size={35}/>
                                                     </IconButton>
                                                 </div>
@@ -426,7 +429,7 @@ function EditMainPage() {
                                                                     type='text'
                                                                     buttonsAlign='before'
                                                                     value={section.year}
-                                                                    // onSave={}
+                                                                    onSave={(value) => handlePatch(section, value, 'year')}
                                                                 />
                                                             </div>
                                                         </span>
@@ -440,7 +443,7 @@ function EditMainPage() {
                                                                     type='text'
                                                                     buttonsAlign='before'
                                                                     value={section.title}
-                                                                    // onSave={}
+                                                                    onSave={(value) => handlePatch(section, value, 'title')}
                                                                 />
                                                             </div>
                                                         </h6>
@@ -455,7 +458,7 @@ function EditMainPage() {
                                                                 type='text'
                                                                 buttonsAlign='before'
                                                                 value={section.text}
-                                                                // onSave={}
+                                                                onSave={(value) => handlePatch(section, value, 'text')}
                                                             />
                                                         </div>
                                                     </h4>
@@ -487,8 +490,8 @@ function EditMainPage() {
                                             section.header === 'Teaching'
                                             ? <div>
                                                     <div className={"d-flex align-items-center "}>
-                                                        <IconButton className={"mb-1"}>
-                                                            <IoIosRemoveCircle color={"red"} size={35} color={"red"}/>
+                                                        <IconButton className={"mb-1"} onClick={() => handleDelete(section)}>
+                                                            <IoIosRemoveCircle size={35} color={"red"}/>
                                                         </IconButton>
                                                         <div>
                                                             <h4>
@@ -501,7 +504,7 @@ function EditMainPage() {
                                                                         type='text'
                                                                         buttonsAlign='before'
                                                                         value={section.title}
-                                                                        // onSave={}
+                                                                        onSave={(value) => handlePatch(section, value, 'title')}
                                                                     />
                                                                 </div>
                                                             </h4>
@@ -515,7 +518,7 @@ function EditMainPage() {
                                                                         type='text'
                                                                         buttonsAlign='before'
                                                                         value={section.text}
-                                                                        // onSave={}
+                                                                        onSave={(value) => handlePatch(section, value, 'text')}
                                                                     />
                                                                 </div>
                                                             </p>
@@ -553,8 +556,8 @@ function EditMainPage() {
                                         section.header === 'CooperationWithInternationalOrganizations'
                                         ? <div className="cooperation-box d-flex align-items-center">'
                                             <GoPrimitiveDot color="#007ced"/>
-                                                <IconButton className={"mb-1"}>
-                                                    <IoIosRemoveCircle color={"red"} size={35} color={"red"}/>
+                                                <IconButton className={"mb-1"} onClick={() => handleDelete(section)}>
+                                                    <IoIosRemoveCircle size={35} color={"red"}/>
                                                 </IconButton>
                                                 <h5>
                                                 <div>
@@ -566,7 +569,7 @@ function EditMainPage() {
                                                         type='text'
                                                         buttonsAlign='before'
                                                         value={section.title}
-                                                        // onSave={}
+                                                        onSave={(value) => handlePatch(section, value, 'title')}
                                                     />
                                                 </div>
                                             </h5>
@@ -580,7 +583,7 @@ function EditMainPage() {
                                                         type='text'
                                                         buttonsAlign='before'
                                                         value={section.text}
-                                                        // onSave={}
+                                                        onSave={(value) => handlePatch(section, value, 'text')}
                                                     />
                                                 </div>
                                             </h6>
@@ -609,8 +612,8 @@ function EditMainPage() {
                                         section.header === 'Postdoc'
                                         ?  <div>
                                                 <div className="postdoc-box d-flex align-items-center">
-                                                    <IconButton className={"mb-1"}>
-                                                        <IoIosRemoveCircle color={"red"} size={35} color={"red"}/>
+                                                    <IconButton className={"mb-1"} onClick={() => handleDelete(section)}>
+                                                        <IoIosRemoveCircle size={35} color={"red"}/>
                                                     </IconButton>
                                                     <div>
                                                         <h4>
@@ -623,7 +626,7 @@ function EditMainPage() {
                                                                     type='text'
                                                                     buttonsAlign='before'
                                                                     value={section.title}
-                                                                    // onSave={}
+                                                                    onSave={(value) => handlePatch(section, value, 'title')}
                                                                 />
                                                             </div>
                                                         </h4>
@@ -637,7 +640,7 @@ function EditMainPage() {
                                                                     type='text'
                                                                     buttonsAlign='before'
                                                                     value={section.text}
-                                                                    // onSave={}
+                                                                    onSave={(value) => handlePatch(section, value, 'text')}
                                                                 />
                                                             </div>
                                                         </p>
@@ -670,80 +673,127 @@ function EditMainPage() {
                                         </IconButton>
                                     </div>
                                 </div>
-                                <div>
-                                    <h5>Editor-in-Chief:</h5>
-                                </div>
-                                <div className="teaching-box">
-                                    <div className="d-flex align-items-center my-4">
-                                        <GoPrimitiveDot color="#007ced"/>
-                                        <div className={"d-flex align-items-center"}>
-                                            <IconButton className={"mb-1"}>
-                                                <IoIosRemoveCircle color={"red"} size={35} color={"red"}/>
-                                            </IconButton>
-                                            <a href="https://cmcma.sbu.ac.ir/" target="_blank"
-                                               style={{fontSize: '13px', textDecoration: "none"}}>Computational Mathematics and
-                                                Computer Modeling with
-                                                Applications (CMCMA)
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h5>Managing Editor:</h5>
-                                    </div>
-                                    {
-                                        journal1.map((p) => (
-                                            <div className="d-flex align-items-center my-4">
-                                                <GoPrimitiveDot color="#007ced"/>
-                                                <h4 style={{fontSize: '13px'}}>
-                                                    <div className={"d-flex align-items-center"}>
-                                                        <IconButton className={"mb-1"}>
-                                                            <IoIosRemoveCircle color={"red"} size={35} color={"red"}/>
-                                                        </IconButton>
+                                {
+                                    sections.map((section) => (
+                                        section.header === 'InTheFollowingJournal'
+                                        ?
+                                            <>
+                                                <div className={"d-flex align-items-center"}>
+                                                    <IconButton className={"mb-1"} onClick={() => handleDelete(section)}>
+                                                        <IoIosRemoveCircle color={"red"} size={40}/>
+                                                    </IconButton>
+                                                    <h5>
                                                         <EdiText
-                                                            className={"edit-text"}
+                                                            className={"edit-journal-title edit-text"}
                                                             viewProps={{
                                                                 style: {borderRadius: 10}
                                                             }}
                                                             type='text'
                                                             buttonsAlign='before'
-                                                            value={p.title}
-                                                            // onSave={}
+                                                            value={section.title}
+                                                            onSave={(value) => handlePatch(section, value, 'title')}
                                                         />
+                                                    </h5>
+                                                </div>
+                                                <div className="teaching-box" style={{borderBottom: "solid 1px rgb(42, 153, 255)"}}>
+                                                    <div className="d-flex align-items-center my-4">
+                                                        <GoPrimitiveDot color="#007ced"/>
+                                                        <div className={"d-flex align-items-center"}>
+                                                            <h4 style={{fontSize: '13px'}}>
+                                                                <div className={"d-flex align-items-center"}>
+                                                                    <EdiText
+                                                                        className={"edit-text"}
+                                                                        viewProps={{
+                                                                            style: {borderRadius: 10}
+                                                                        }}
+                                                                        type='text'
+                                                                        buttonsAlign='before'
+                                                                        value={section.text}
+                                                                        onSave={(value) => handlePatch(section, value, 'text')}
+                                                                    />
+                                                                </div>
+                                                            </h4>
+                                                        </div>
                                                     </div>
-                                                </h4>
-                                            </div>
-                                        ))
-                                    }
-                                </div>
+                                                </div>
+                                            </>
+                                            : null
+                                    ))
+                                }
+                                {/*<div>*/}
+                                {/*    <h5>Editor-in-Chief:</h5>*/}
+                                {/*</div>*/}
+                                {/*<div className="teaching-box">*/}
+                                {/*    <div className="d-flex align-items-center my-4">*/}
+                                {/*        <GoPrimitiveDot color="#007ced"/>*/}
+                                {/*        <div className={"d-flex align-items-center"}>*/}
+                                {/*            <IconButton className={"mb-1"}>*/}
+                                {/*                <IoIosRemoveCircle color={"red"} size={35} color={"red"}/>*/}
+                                {/*            </IconButton>*/}
+                                {/*            <a href="https://cmcma.sbu.ac.ir/" target="_blank"*/}
+                                {/*               style={{fontSize: '13px', textDecoration: "none"}}>Computational Mathematics and*/}
+                                {/*                Computer Modeling with*/}
+                                {/*                Applications (CMCMA)*/}
+                                {/*            </a>*/}
+                                {/*        </div>*/}
+                                {/*    </div>*/}
+                                {/*    <div>*/}
+                                {/*        <h5>Managing Editor:</h5>*/}
+                                {/*    </div>*/}
+                                {/*    {*/}
+                                {/*        journal1.map((p) => (*/}
+                                {/*            <div className="d-flex align-items-center my-4">*/}
+                                {/*                <GoPrimitiveDot color="#007ced"/>*/}
+                                {/*                <h4 style={{fontSize: '13px'}}>*/}
+                                {/*                    <div className={"d-flex align-items-center"}>*/}
+                                {/*                        <IconButton className={"mb-1"}>*/}
+                                {/*                            <IoIosRemoveCircle color={"red"} size={35} color={"red"}/>*/}
+                                {/*                        </IconButton>*/}
+                                {/*                        <EdiText*/}
+                                {/*                            className={"edit-text"}*/}
+                                {/*                            viewProps={{*/}
+                                {/*                                style: {borderRadius: 10}*/}
+                                {/*                            }}*/}
+                                {/*                            type='text'*/}
+                                {/*                            buttonsAlign='before'*/}
+                                {/*                            value={p.title}*/}
+                                {/*                            // onSave={}*/}
+                                {/*                        />*/}
+                                {/*                    </div>*/}
+                                {/*                </h4>*/}
+                                {/*            </div>*/}
+                                {/*        ))*/}
+                                {/*    }*/}
+                                {/*</div>*/}
                             </div>
-                            <div className="col-md-6 col-sm-6 col-xs-12 mt-sm-5">
-                                <div className="teaching-box mt-sm-5">
-                                    {
-                                        journal2.map((p) => (
-                                            <div className="d-flex align-items-center my-4">
-                                                <GoPrimitiveDot color="#007ced"/>
-                                                <h4 style={{fontSize: '13px'}}>
-                                                    <div className={"d-flex align-items-center"}>
-                                                        <IconButton className={"mb-1"}>
-                                                            <IoIosRemoveCircle color={"red"} size={35} color={"red"}/>
-                                                        </IconButton>
-                                                        <EdiText
-                                                            className={"edit-text"}
-                                                            viewProps={{
-                                                                style: {borderRadius: 10}
-                                                            }}
-                                                            type='text'
-                                                            buttonsAlign='before'
-                                                            value={p.title}
-                                                            // onSave={}
-                                                        />
-                                                    </div>
-                                                </h4>
-                                            </div>
-                                        ))
-                                    }
-                                </div>
-                            </div>
+                            {/*<div className="col-md-6 col-sm-6 col-xs-12 mt-sm-5">*/}
+                            {/*    <div className="teaching-box mt-sm-5">*/}
+                            {/*        {*/}
+                            {/*            journal2.map((p) => (*/}
+                            {/*                <div className="d-flex align-items-center my-4">*/}
+                            {/*                    <GoPrimitiveDot color="#007ced"/>*/}
+                            {/*                    <h4 style={{fontSize: '13px'}}>*/}
+                            {/*                        <div className={"d-flex align-items-center"}>*/}
+                            {/*                            <IconButton className={"mb-1"}>*/}
+                            {/*                                <IoIosRemoveCircle color={"red"} size={35} color={"red"}/>*/}
+                            {/*                            </IconButton>*/}
+                            {/*                            <EdiText*/}
+                            {/*                                className={"edit-text"}*/}
+                            {/*                                viewProps={{*/}
+                            {/*                                    style: {borderRadius: 10}*/}
+                            {/*                                }}*/}
+                            {/*                                type='text'*/}
+                            {/*                                buttonsAlign='before'*/}
+                            {/*                                value={p.title}*/}
+                            {/*                                // onSave={}*/}
+                            {/*                            />*/}
+                            {/*                        </div>*/}
+                            {/*                    </h4>*/}
+                            {/*                </div>*/}
+                            {/*            ))*/}
+                            {/*        }*/}
+                            {/*    </div>*/}
+                            {/*</div>*/}
                         </div>
                     </div>
                 </div>
@@ -774,8 +824,8 @@ function EditMainPage() {
                                                 <GoPrimitiveDot color="#007ced"/>
                                                 <h4 style={{fontSize: '13px'}}>
                                                     <div className={"d-flex align-items-center"}>
-                                                        <IconButton className={"mb-1"}>
-                                                            <IoIosRemoveCircle color={"red"} size={35} color={"red"}/>
+                                                        <IconButton className={"mb-1"} onClick={() => handleDelete(section)}>
+                                                            <IoIosRemoveCircle size={35} color={"red"}/>
                                                         </IconButton>
                                                         <EdiText
                                                             className={"edit-text"}
@@ -785,7 +835,7 @@ function EditMainPage() {
                                                             type='text'
                                                             buttonsAlign='before'
                                                             value={section.text}
-                                                            // onSave={}
+                                                            onSave={(value) => handlePatch(section, value, 'text')}
                                                         />
                                                     </div>
                                                 </h4>
