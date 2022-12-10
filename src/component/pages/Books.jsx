@@ -29,7 +29,7 @@ function Books() {
                                 <div>
                                     <h5 style={{fontWeight:"bold"}}>{p.title}</h5>
                                     <p>
-                                        {p.writer}
+                                        {p.authors}
                                     </p>
                                 </div>
                                 <div className="d-flex align-items-center mb-2">
@@ -37,7 +37,7 @@ function Books() {
                                          {p.year}
                                     </span>
                                     <h6>
-                                        {p.description}
+                                        {p.details}
                                     </h6>
                                 </div>
                             </div>

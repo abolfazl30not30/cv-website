@@ -185,7 +185,7 @@ function EditCourses() {
 
             <Modal centered show={showAddModal} onHide={() => handleCloseType()}>
                 <Modal.Header closeButton>
-                    Add Book
+                    Add Course
                 </Modal.Header>
                 <Modal.Body>
                     <Form.Group className="mb-3" controlId="formBasicEmail">

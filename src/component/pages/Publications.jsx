@@ -36,7 +36,7 @@ function Publications() {
                                 <div>
                                     <h5>{p.title}</h5>
                                     <p>
-                                        {p.writer}
+                                        {p.authors}
                                     </p>
                                 </div>
                             </div>

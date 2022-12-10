@@ -158,7 +158,7 @@ function EditBooks() {
                                     <div>
                                         <h5 style={{fontWeight:"bold"}}>{b.title}</h5>
                                         <p>
-                                            {b.writer}
+                                            {b.authors}
                                         </p>
                                     </div>
                                     <div className="d-flex align-items-center mb-2">
@@ -166,7 +166,7 @@ function EditBooks() {
                                          {b.year}
                                     </span>
                                         <h6>
-                                            {b.description}
+                                            {b.details}
                                         </h6>
                                     </div>
                                 </div>
