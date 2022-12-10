@@ -38,7 +38,8 @@ function EditMainPage() {
         picture: {
             name: '',
             fileId: ''
-        }
+        },
+        dateValue: ''
     })
 
     //headers
@@ -106,7 +107,8 @@ function EditMainPage() {
             picture: {
                 name: '',
                 fileId: ''
-            }
+            },
+            dateValue: ''
         })
         handleCloseModal();
     }
@@ -191,6 +193,14 @@ function EditMainPage() {
         let updatedTempFields = {...tempFields};
         updatedTempFields[fieldName] = value
         setTempFields(updatedTempFields);
+    }
+
+    const handleDate = (e) => {
+        let updatedTempFields = {...tempFields};
+        updatedTempFields.year = e.year;
+
+        setTempFields(updatedTempFields);
+
     }
 
     return (
@@ -720,80 +730,7 @@ function EditMainPage() {
                                             : null
                                     ))
                                 }
-                                {/*<div>*/}
-                                {/*    <h5>Editor-in-Chief:</h5>*/}
-                                {/*</div>*/}
-                                {/*<div className="teaching-box">*/}
-                                {/*    <div className="d-flex align-items-center my-4">*/}
-                                {/*        <GoPrimitiveDot color="#007ced"/>*/}
-                                {/*        <div className={"d-flex align-items-center"}>*/}
-                                {/*            <IconButton className={"mb-1"}>*/}
-                                {/*                <IoIosRemoveCircle color={"red"} size={35} color={"red"}/>*/}
-                                {/*            </IconButton>*/}
-                                {/*            <a href="https://cmcma.sbu.ac.ir/" target="_blank"*/}
-                                {/*               style={{fontSize: '13px', textDecoration: "none"}}>Computational Mathematics and*/}
-                                {/*                Computer Modeling with*/}
-                                {/*                Applications (CMCMA)*/}
-                                {/*            </a>*/}
-                                {/*        </div>*/}
-                                {/*    </div>*/}
-                                {/*    <div>*/}
-                                {/*        <h5>Managing Editor:</h5>*/}
-                                {/*    </div>*/}
-                                {/*    {*/}
-                                {/*        journal1.map((p) => (*/}
-                                {/*            <div className="d-flex align-items-center my-4">*/}
-                                {/*                <GoPrimitiveDot color="#007ced"/>*/}
-                                {/*                <h4 style={{fontSize: '13px'}}>*/}
-                                {/*                    <div className={"d-flex align-items-center"}>*/}
-                                {/*                        <IconButton className={"mb-1"}>*/}
-                                {/*                            <IoIosRemoveCircle color={"red"} size={35} color={"red"}/>*/}
-                                {/*                        </IconButton>*/}
-                                {/*                        <EdiText*/}
-                                {/*                            className={"edit-text"}*/}
-                                {/*                            viewProps={{*/}
-                                {/*                                style: {borderRadius: 10}*/}
-                                {/*                            }}*/}
-                                {/*                            type='text'*/}
-                                {/*                            buttonsAlign='before'*/}
-                                {/*                            value={p.title}*/}
-                                {/*                            // onSave={}*/}
-                                {/*                        />*/}
-                                {/*                    </div>*/}
-                                {/*                </h4>*/}
-                                {/*            </div>*/}
-                                {/*        ))*/}
-                                {/*    }*/}
-                                {/*</div>*/}
                             </div>
-                            {/*<div className="col-md-6 col-sm-6 col-xs-12 mt-sm-5">*/}
-                            {/*    <div className="teaching-box mt-sm-5">*/}
-                            {/*        {*/}
-                            {/*            journal2.map((p) => (*/}
-                            {/*                <div className="d-flex align-items-center my-4">*/}
-                            {/*                    <GoPrimitiveDot color="#007ced"/>*/}
-                            {/*                    <h4 style={{fontSize: '13px'}}>*/}
-                            {/*                        <div className={"d-flex align-items-center"}>*/}
-                            {/*                            <IconButton className={"mb-1"}>*/}
-                            {/*                                <IoIosRemoveCircle color={"red"} size={35} color={"red"}/>*/}
-                            {/*                            </IconButton>*/}
-                            {/*                            <EdiText*/}
-                            {/*                                className={"edit-text"}*/}
-                            {/*                                viewProps={{*/}
-                            {/*                                    style: {borderRadius: 10}*/}
-                            {/*                                }}*/}
-                            {/*                                type='text'*/}
-                            {/*                                buttonsAlign='before'*/}
-                            {/*                                value={p.title}*/}
-                            {/*                                // onSave={}*/}
-                            {/*                            />*/}
-                            {/*                        </div>*/}
-                            {/*                    </h4>*/}
-                            {/*                </div>*/}
-                            {/*            ))*/}
-                            {/*        }*/}
-                            {/*    </div>*/}
-                            {/*</div>*/}
                         </div>
                     </div>
                 </div>
@@ -856,8 +793,9 @@ function EditMainPage() {
                 handleCloseModal={handleCloseModal}
                 sectionName={tempSectionName}
                 tempTitle={tempFields.title}
-                tempYear={tempFields.year}
-                tempText={tempFields.text}
+                tempYear={tempFields.dateValue}
+                tmpDateValue={tempFields.dateValue}
+                handleDate={handleDate}
                 handleTempValues={handleTempValues}
                 handleSubmitModal={handleSubmitModal}
                 titleShow={!hiddenItems.titleShow}

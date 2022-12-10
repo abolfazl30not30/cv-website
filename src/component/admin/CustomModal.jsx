@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import {Modal} from "react-bootstrap";
 import Form from "react-bootstrap/Form";
+import DatePicker from "react-multi-date-picker"
+import InputIcon from "react-multi-date-picker/components/input_icon"
 
 class CustomModal extends Component {
     render() {
@@ -10,18 +12,6 @@ class CustomModal extends Component {
                     Add New "{this.props.sectionName}"
                 </Modal.Header>
                 <Modal.Body>
-                    {/*<Form.Group className="mb-3" controlId="formBasicEmail">*/}
-                        {/*<Form.Label>header :</Form.Label>*/}
-                        {/*<Form.Control*/}
-                        {/*    value={this.props.tempHeader}*/}
-                        {/*    // className={`${validation.yearReg === false ? "is-invalid" : ""}`}*/}
-                        {/*    type="text"*/}
-                        {/*    onChange={(e) =>*/}
-                        {/*        this.props.handleTempValues(e.target.value, 'header')*/}
-                        {/*    }*/}
-                        {/*/>*/}
-                    {/*</Form.Group>*/}
-
                     <div hidden={this.props.titleShow}>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>title :</Form.Label>
@@ -35,16 +25,18 @@ class CustomModal extends Component {
                             />
                         </Form.Group>
                     </div>
-                    <div hidden={this.props.yearShow}>
+                    <div hidden={this.props.yearShow} className="input-group-register col-md-4 col-12 w-100">
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>year :</Form.Label>
-                            <Form.Control
+                            <DatePicker
+                                onlyYearPicker
+                                containerStyle={{
+                                    width: "100%"
+                                }}
+                                inputClass={`input form-control`}
+                                format={'YYYY'}
                                 value={this.props.tempYear}
-                                // className={`${validation.authorsReg === false ? "is-invalid" : ""}`}
-                                type="text"
-                                onChange={(e) =>
-                                    this.props.handleTempValues(e.target.value, 'year')
-                                }
+                                onChange={(e) => this.props.handleDate(e)}
                             />
                         </Form.Group>
                     </div>

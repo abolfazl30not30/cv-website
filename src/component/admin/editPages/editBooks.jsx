@@ -8,6 +8,7 @@ import { IoIosAddCircle } from "react-icons/io";
 import Form from "react-bootstrap/Form";
 import { IoClose } from "react-icons/io5";
 import "./../../../style/editPages.css";
+import DatePicker from "react-multi-date-picker";
 
 function EditBooks() {
 
@@ -16,6 +17,7 @@ function EditBooks() {
     const [showAddModal, setShowAddModal] = useState(false);
 
     const [year, setYear] = useState('');
+    const [yearDateValue, setYearDateValue] = useState('');
     const [title, setTitle] = useState('');
     const [details, setDetails] = useState('');
     const [authors, setAuthors] = useState('');
@@ -75,6 +77,7 @@ function EditBooks() {
         setYear('')
         setTitle('')
         setDetails('')
+        setYearDateValue('')
 
         setValidation({
             ...validation,
@@ -183,11 +186,18 @@ function EditBooks() {
                 <Modal.Body>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>year :</Form.Label>
-                        <Form.Control
-                            value={year}
-                            className={`${validation.yearReg === false ? "is-invalid" : ""}`}
-                            type="text"
-                            onChange={(e) => setYear(e.target.value)}
+                        <DatePicker
+                            onlyYearPicker
+                            containerStyle={{
+                                width: "100%"
+                            }}
+                            inputClass={`input form-control ${validation.yearReg === false ? "is-invalid" : ""}`}
+                            format={'YYYY'}
+                            value={yearDateValue}
+                            onChange={(e) => {
+                                setYearDateValue(e);
+                                setYear(e.year)
+                            }}
                         />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
