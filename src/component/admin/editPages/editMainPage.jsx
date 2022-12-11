@@ -564,7 +564,7 @@ function EditMainPage() {
                                 <div>
                                     {sections.map((section) => (
                                         section.header === 'CooperationWithInternationalOrganizations'
-                                        ? <div className="cooperation-box d-flex align-items-center">'
+                                        ? <div className="cooperation-box d-flex align-items-center">
                                             <GoPrimitiveDot color="#007ced"/>
                                                 <IconButton className={"mb-1"} onClick={() => handleDelete(section)}>
                                                     <IoIosRemoveCircle size={35} color={"red"}/>
