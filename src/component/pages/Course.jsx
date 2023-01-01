@@ -16,8 +16,8 @@ function Conferences() {
         // let conferencesList = t('conferences-list', {returnObjects: true})
         // setConferences(conferencesList)
 
-        const getCourses = fetch('http://localhost:8089/api/v1/public/course').then((response) => response.json())
-            .then((data) => setCourses(data));
+        // const getCourses = fetch('http://localhost:8089/api/v1/public/course').then((response) => response.json())
+        //     .then((data) => setCourses(data));
     }, []);
 
     return (

@@ -12,8 +12,8 @@ function Conferences() {
         // let conferencesList = t('conferences-list', {returnObjects: true})
         // setConferences(conferencesList)
 
-        const getConferences = fetch('http://localhost:8089/api/v1/public/conference').then((response) => response.json())
-            .then((data) => setConferences(data));
+        // const getConferences = fetch('http://localhost:8089/api/v1/public/conference').then((response) => response.json())
+        //     .then((data) => setConferences(data));
 
     },[]);
     return (

@@ -30,8 +30,8 @@ function EditCourses() {
         // let conferencesList = t('courses-list', {returnObjects: true})
         // setCourses(conferencesList)
 
-        const getCourses = fetch('http://localhost:8089/api/v1/public/course').then((response) => response.json())
-            .then((data) => setCourses(data));
+        // const getCourses = fetch('http://localhost:8089/api/v1/public/course').then((response) => response.json())
+        //     .then((data) => setCourses(data));
 
     }, []);
 
@@ -90,43 +90,43 @@ function EditCourses() {
    }
 
     const postCourse = async () => {
-        await fetch('http://localhost:8089/api/v1/admin/save/course', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                url: url,
-                title: title,
-                text: text,
-            })
-        }).then((response) => response.json()).then((response) => {
-            handleCloseType();
-
-            let updatedCourses = [...courses];
-            updatedCourses.push({
-                id: response.id,
-                url: url,
-                title: title,
-                text: text
-            })
-            setCourses(updatedCourses)
-        });
+        // await fetch('http://localhost:8089/api/v1/admin/save/course', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({
+        //         url: url,
+        //         title: title,
+        //         text: text,
+        //     })
+        // }).then((response) => response.json()).then((response) => {
+        //     handleCloseType();
+        //
+        //     let updatedCourses = [...courses];
+        //     updatedCourses.push({
+        //         id: response.id,
+        //         url: url,
+        //         title: title,
+        //         text: text
+        //     })
+        //     setCourses(updatedCourses)
+        // });
     }
 
     const handleDeleteCourse = async (course) => {
-        await fetch(`http://localhost:8089/api/v1/admin/delete/course/${course.id}`, {
-            method: 'DELETE',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-        }).then(() => {
-            let updatedCourses = [...courses];
-            updatedCourses = updatedCourses.filter((c) => c.id !== course.id)
-            setCourses(updatedCourses)
-        });
+        // await fetch(`http://localhost:8089/api/v1/admin/delete/course/${course.id}`, {
+        //     method: 'DELETE',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json'
+        //     },
+        // }).then(() => {
+        //     let updatedCourses = [...courses];
+        //     updatedCourses = updatedCourses.filter((c) => c.id !== course.id)
+        //     setCourses(updatedCourses)
+        // });
 
         // const getCourse = fetch('http://localhost:8089/api/v1/public/conference').then((response) => response.json())
         //     .then((data) => setCourses(data));

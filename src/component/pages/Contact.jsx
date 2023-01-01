@@ -50,19 +50,19 @@ function Contact() {
 
     const postMessage = async () => {
 
-        const postMessage = await fetch('http://localhost:8089/api/v1/public/save/message', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                fullName: fullName,
-                textMessage:  textMessage,
-                emailAddress: emailAddress,
-                subject: subject,
-            })
-        });
+        // const postMessage = await fetch('http://localhost:8089/api/v1/public/save/message', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({
+        //         fullName: fullName,
+        //         textMessage:  textMessage,
+        //         emailAddress: emailAddress,
+        //         subject: subject,
+        //     })
+        // });
     }
 
     const {t} = useTranslation();

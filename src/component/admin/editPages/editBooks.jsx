@@ -33,8 +33,8 @@ function EditBooks() {
         // let booksList = t('books-list', {returnObjects: true})
         // setBooks(booksList)
 
-        const getData = fetch('http://localhost:8089/api/v1/public/book').then((response) => response.json())
-            .then((data) => setBooks(data));
+        // const getData = fetch('http://localhost:8089/api/v1/public/book').then((response) => response.json())
+        //     .then((data) => setBooks(data));
 
         // const {data} = axios.get(`http://localhost:8089/api/v1/public/book`);
         // setBooks(data);
@@ -90,48 +90,48 @@ function EditBooks() {
     }
 
     const postBook = async () => {
-        await fetch('http://localhost:8089/api/v1/admin/save/book', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                year: year,
-                title: title,
-                details: details,
-                authors: authors,
-            })
-        }).then((response) => response.json()).then((response) => {
-            handleCloseType();
-
-            let updatedBooks = [...books];
-            updatedBooks.push({
-                id: response.id,
-                year: year,
-                title: title,
-                details: details,
-                authors: authors
-            })
-            setBooks(updatedBooks)
-        });
+        // await fetch('http://localhost:8089/api/v1/admin/save/book', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({
+        //         year: year,
+        //         title: title,
+        //         details: details,
+        //         authors: authors,
+        //     })
+        // }).then((response) => response.json()).then((response) => {
+        //     handleCloseType();
+        //
+        //     let updatedBooks = [...books];
+        //     updatedBooks.push({
+        //         id: response.id,
+        //         year: year,
+        //         title: title,
+        //         details: details,
+        //         authors: authors
+        //     })
+        //     setBooks(updatedBooks)
+        // });
 
         // const getBook = fetch('http://localhost:8089/api/v1/public/conference').then((response) => response.json())
         //     .then((data) => setBooks(data));
     }
 
     const handleDeleteBook = async (book) => {
-        await fetch(`http://localhost:8089/api/v1/admin/delete/book/${book.id}`, {
-            method: 'DELETE',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-        }).then(() => {
-            let updatedBooks = [...books];
-            updatedBooks = updatedBooks.filter((b) => b.id !== book.id)
-            setBooks(updatedBooks)
-        });
+        // await fetch(`http://localhost:8089/api/v1/admin/delete/book/${book.id}`, {
+        //     method: 'DELETE',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json'
+        //     },
+        // }).then(() => {
+        //     let updatedBooks = [...books];
+        //     updatedBooks = updatedBooks.filter((b) => b.id !== book.id)
+        //     setBooks(updatedBooks)
+        // });
 
         // const getBook = fetch('http://localhost:8089/api/v1/public/conference').then((response) => response.json())
         //     .then((data) => setBooks(data));

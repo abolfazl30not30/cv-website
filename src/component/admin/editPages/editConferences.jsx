@@ -31,8 +31,8 @@ function EditConferences() {
         // let conferencesList = t('conferences-list', {returnObjects: true})
         // setConferences(conferencesList)
 
-        const getConference = fetch('http://localhost:8089/api/v1/public/conference').then((response) => response.json())
-            .then((data) => setConferences(data));
+        // const getConference = fetch('http://localhost:8089/api/v1/public/conference').then((response) => response.json())
+        //     .then((data) => setConferences(data));
     },[]);
 
     const handleOpenType = () => {
@@ -93,43 +93,43 @@ function EditConferences() {
     }
 
     const postConference = async () => {
-        await fetch('http://localhost:8089/api/v1/admin/save/conference', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                year: year,
-                title: title,
-                authors: authors,
-            })
-        }).then((response) => response.json()).then((response) => {
-            handleCloseType();
-
-            let updatedConferences = [...conferences];
-            updatedConferences.push({
-                id: response.id,
-                year: year,
-                title: title,
-                authors: authors
-            })
-            setConferences(updatedConferences)
-        });
+        // await fetch('http://localhost:8089/api/v1/admin/save/conference', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({
+        //         year: year,
+        //         title: title,
+        //         authors: authors,
+        //     })
+        // }).then((response) => response.json()).then((response) => {
+        //     handleCloseType();
+        //
+        //     let updatedConferences = [...conferences];
+        //     updatedConferences.push({
+        //         id: response.id,
+        //         year: year,
+        //         title: title,
+        //         authors: authors
+        //     })
+        //     setConferences(updatedConferences)
+        // });
     }
 
     const handleDeleteConference = async (conference) => {
-        await fetch(`http://localhost:8089/api/v1/admin/delete/conference/${conference.id}`, {
-            method: 'DELETE',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-        }).then(() => {
-            let updatedConferences = [...conferences];
-            updatedConferences = updatedConferences.filter((c) => c.id !== conference.id)
-            setConferences(updatedConferences)
-        });
+        // await fetch(`http://localhost:8089/api/v1/admin/delete/conference/${conference.id}`, {
+        //     method: 'DELETE',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json'
+        //     },
+        // }).then(() => {
+        //     let updatedConferences = [...conferences];
+        //     updatedConferences = updatedConferences.filter((c) => c.id !== conference.id)
+        //     setConferences(updatedConferences)
+        // });
     }
     return (
         <>

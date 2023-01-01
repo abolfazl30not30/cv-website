@@ -46,8 +46,8 @@ function Home() {
         // let awardList = i18next.t('award', {returnObjects: true});
         // setAward(awardList);
 
-        fetch('http://localhost:8089/api/v1/public/mainPage').then((response) => response.json())
-            .then((data) => setSections(data));
+        // fetch('http://localhost:8089/api/v1/public/mainPage').then((response) => response.json())
+        //     .then((data) => setSections(data));
     },[]);
 
     return (

@@ -18,7 +18,7 @@ import EditMainPage from "./editPages/editMainPage";
 
 function Dashboard () {
     const [activeMenu, setActiveMenu] = useState(false)
-    const [selectedLink, setSelectedLink] = useState('articles')
+    const [selectedLink, setSelectedLink] = useState('mainPage')
 
         return (
             <>

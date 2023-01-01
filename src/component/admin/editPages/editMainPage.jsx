@@ -18,7 +18,7 @@ import {Icon, IconButton} from "@mui/material";
 import CustomModal from "../CustomModal";
 import EdiText from 'react-editext';
 import {MdEdit} from "react-icons/md";
-
+import axios from 'axios';
 
 function EditMainPage() {
 
@@ -67,37 +67,65 @@ function EditMainPage() {
         //
         // let awardList = i18next.t('award', {returnObjects: true});
         // setAward(awardList);
-        fetch('http://localhost:8089/api/v1/public/mainPage').then((response) => response.json())
-            .then((data) => setSections(data));
+
+        // fetch('http://localhost:8089/api/v1/public/mainPage').then((response) => response.json())
+        //     .then((data) => setSections(data));
+
+        // axios.get('http://localhost:8089/api/v1/public/mainPage', {
+        //     headers: {
+        //         'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtb2hzZW4iLCJyb2xlcyI6WyJBRE1JTiJdLCJpc3MiOiIvbG9naW4iLCJleHAiOjE2NzA3OTk3Njh9.kCOO0KCMfvSbbH3ftahB0EqeGBEWTbzBFIDOLKWK3Lw'
+        //     }
+        // })
+        //     .then(res => {
+        //         setSections(res.data);
+        //         console.log(res.data)
+        //         }
+        //     ).catch(err => {
+        //     console.log(err)
+        // })
         },[]);
 
-    const handleSubmitModal = async () => {
-        await fetch(`http://localhost:8089/api/v1/admin/save/mainPage`, {
-            method: 'POST',
+    const getFromAPI = () => {
+        axios.get('http://localhost:8089/api/v1/public/mainPage', {
             headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                year: tempFields.year,
-                header: tempFields.header,
-                title: tempFields.title,
-                text: tempFields.text,
-                picture: tempFields.picture
-            })
-        }).then((response) => response.json()).then((data) => {
-            let updateSections = [...sections];
-            updateSections.push({
-                id: data.id,
-                year: tempFields.year,
-                header: tempFields.header,
-                title: tempFields.title,
-                text: tempFields.text,
-                picture: tempFields.picture
-            })
-
-            setSections(updateSections)
-        });
+                'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIkFETUlOIl0sImlzcyI6Ii9sb2dpbiIsImV4cCI6MTY3MjI2MDc4M30.2_4aqB4NbSnNg9vsCNQcHcVxW8GifSGwqpe_bP7cyF8',
+                "Access-Control-Allow-Origin": "http://localhost:8089",
+            }
+        })
+            .then(res => {
+                    console.log(res.data);
+                }
+            ).catch(err => {
+            console.log(err)
+        })
+    }
+    const handleSubmitModal = async () => {
+        // await fetch(`http://localhost:8089/api/v1/admin/save/mainPage`, {
+        //     method: 'POST',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({
+        //         year: tempFields.year,
+        //         header: tempFields.header,
+        //         title: tempFields.title,
+        //         text: tempFields.text,
+        //         picture: tempFields.picture
+        //     })
+        // }).then((response) => response.json()).then((data) => {
+        //     let updateSections = [...sections];
+        //     updateSections.push({
+        //         id: data.id,
+        //         year: tempFields.year,
+        //         header: tempFields.header,
+        //         title: tempFields.title,
+        //         text: tempFields.text,
+        //         picture: tempFields.picture
+        //     })
+        //
+        //     setSections(updateSections)
+        // });
 
         setTempFields({
             year: '',
@@ -115,43 +143,43 @@ function EditMainPage() {
 
     const handleDelete = async (section) => {
         console.log(section)
-        await fetch(`http://localhost:8089/api/v1/admin/delete/mainPage/${section.id}`, {
-            method: 'DELETE',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-        }).then(() => {
-            let updateSections = [...sections];
-            updateSections = updateSections.filter((s) => s.id !== section.id)
-
-            setSections(updateSections)
-        });
+        // await fetch(`http://localhost:8089/api/v1/admin/delete/mainPage/${section.id}`, {
+        //     method: 'DELETE',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json'
+        //     },
+        // }).then(() => {
+        //     let updateSections = [...sections];
+        //     updateSections = updateSections.filter((s) => s.id !== section.id)
+        //
+        //     setSections(updateSections)
+        // });
     }
 
     const handlePatch = async (section, value, FieldName) => {
         console.log(value)
-        await fetch(`http://localhost:8089/api/v1/admin/patch/mainPage/${section.id}`, {
-            method: 'PATCH',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                [FieldName]: value
-            })
-        }).then(() => {
-            console.log("Success")
-            let updateSections = [...sections];
-
-            for (let i = 0; i < updateSections; i++) {
-                if (updateSections[i].id === section.id) {
-                    updateSections[i][FieldName] = value
-                }
-            }
-
-            setSections(updateSections)
-        });
+        // await fetch(`http://localhost:8089/api/v1/admin/patch/mainPage/${section.id}`, {
+        //     method: 'PATCH',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({
+        //         [FieldName]: value
+        //     })
+        // }).then(() => {
+        //     console.log("Success")
+        //     let updateSections = [...sections];
+        //
+        //     for (let i = 0; i < updateSections; i++) {
+        //         if (updateSections[i].id === section.id) {
+        //             updateSections[i][FieldName] = value
+        //         }
+        //     }
+        //
+        //     setSections(updateSections)
+        // });
     }
 
     //-------------------------------------------OPEN MODALS FUNCTIONS--------------------------------------------------
@@ -207,6 +235,9 @@ function EditMainPage() {
         <>
 
             <div style={{overflowY: "scroll", height: window.innerHeight*0.92, overflowX: "hidden"}}>
+                <button onClick={() => getFromAPI()}>
+                    asdasd
+                </button>
                 <div
                     className="d-flex justify-content-center align-items-start mt-5 card-contain animate__animated animate__fadeInDown">
                     <div className="mainImgContain">
