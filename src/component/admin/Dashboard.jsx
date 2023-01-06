@@ -1,18 +1,10 @@
 import React, {Component, useState} from 'react';
 import backSvg from "../../img/background.svg";
-import {NavLink, Route, Routes} from "react-router-dom";
 import "./../../style/hamburgerMenu.css"
-import MainPage from "../mainPage";
-import Main from "./Main";
 import EditArticles from "./editPages/editArticles";
 import EditBooks from "./editPages/editBooks";
 import EditCourses from "./editPages/editCourses";
 import EditConferences from "./editPages/editConferences";
-import NavbarForEdit from "./NavbarForEdit";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import Form from "react-bootstrap/Form";
-import {t} from "i18next";
 import Hamburger from 'hamburger-react';
 import EditMainPage from "./editPages/editMainPage";
 
@@ -51,8 +43,6 @@ function Dashboard () {
                                     : null
                         }
                     </div>
-
-                    {/*<Main />*/}
                 </div>
             </>
         );

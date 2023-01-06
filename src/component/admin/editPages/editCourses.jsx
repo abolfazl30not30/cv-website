@@ -10,6 +10,7 @@ import {Modal} from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import {IoClose} from "react-icons/io5";
 import {AiOutlineLink} from "react-icons/ai"
+import axios from "axios";
 
 function EditCourses() {
     const {t} = useTranslation();
@@ -30,8 +31,8 @@ function EditCourses() {
         // let conferencesList = t('courses-list', {returnObjects: true})
         // setCourses(conferencesList)
 
-        // const getCourses = fetch('http://localhost:8089/api/v1/public/course').then((response) => response.json())
-        //     .then((data) => setCourses(data));
+        axios.get('http://localhost:8089/api/v1/public/course').then((response) => response.data)
+            .then((data) => setCourses(data));
 
     }, []);
 
@@ -72,66 +73,60 @@ function EditCourses() {
        if (urlReg && titleReg && textReg) {
            postCourse();
            setShowAddModal(false);
-
-           let updatedCourses = [...courses]
-
-           updatedCourses.push({
-               url: url,
-               title: title,
-               text: text
-           })
-
-           setCourses(updatedCourses)
-
-           // console.log(textMessage, emailAddress, subject, fullName)
        }
 
        return urlReg && titleReg && textReg;
    }
 
     const postCourse = async () => {
-        // await fetch('http://localhost:8089/api/v1/admin/save/course', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({
-        //         url: url,
-        //         title: title,
-        //         text: text,
-        //     })
-        // }).then((response) => response.json()).then((response) => {
-        //     handleCloseType();
-        //
-        //     let updatedCourses = [...courses];
-        //     updatedCourses.push({
-        //         id: response.id,
-        //         url: url,
-        //         title: title,
-        //         text: text
-        //     })
-        //     setCourses(updatedCourses)
-        // });
+        axios.post(`http://localhost:8089/api/v1/admin/save/course`, {
+            title: title,
+            url: url,
+            text: text
+        }, {
+            headers: {
+                // "content-type": "application/x-www-form-urlencoded",
+                'Authorization': localStorage.getItem('token'),
+                "Access-Control-Allow-Origin": "http://localhost:8089",
+            }
+        }).then((response) => response.data).then((response) => {
+            handleCloseType();
+
+            let updatedCourses = [...courses];
+            updatedCourses.push({
+                id: response.id,
+                title: title,
+                url: url,
+                text: text
+            })
+            setCourses(updatedCourses)
+            setShowAddModal(false)
+        }).catch(() => {
+            setShowAddModal(false)
+            window.location = "/admin/"
+        });
+
+        axios.get('http://localhost:8089/api/v1/public/course').then((response) => response.data)
+            .then((data) => setCourses(data));
     }
 
     const handleDeleteCourse = async (course) => {
-        // await fetch(`http://localhost:8089/api/v1/admin/delete/course/${course.id}`, {
-        //     method: 'DELETE',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //     },
-        // }).then(() => {
-        //     let updatedCourses = [...courses];
-        //     updatedCourses = updatedCourses.filter((c) => c.id !== course.id)
-        //     setCourses(updatedCourses)
-        // });
+        axios.delete(`http://localhost:8089/api/v1/admin/delete/course/${course.id}`, null, {
+            headers: {
+                // "content-type": "application/x-www-form-urlencoded",
+                'Authorization': localStorage.getItem('token'),
+                "Access-Control-Allow-Origin": "http://localhost:8089",
+            }
+        }).then(() => {
+            let updatedCourses = [...courses];
+            updatedCourses = updatedCourses.filter((c) => c.id !== course.id)
+            setCourses(updatedCourses)
+        }).catch(() => {
+            window.location = "/admin/"
+        });
 
-        // const getCourse = fetch('http://localhost:8089/api/v1/public/conference').then((response) => response.json())
-        //     .then((data) => setCourses(data));
-
-        console.log(course)
+        axios.get('http://localhost:8089/api/v1/public/conferences').then((response) => response.data)
+            .then((data) => setCourses(data));
     }
 
     return (
@@ -153,11 +148,11 @@ function EditCourses() {
                                     <div className={''}>
                                         <div className='card' style={{backgroundImage: `url(${img})`}}>
                                             <div className={'d-flex justify-content-between'}>
-                                                <Link>
+                                                <a href={course.url}>
                                                     <IconButton color={'info'}>
                                                         <AiOutlineLink size={30}/>
                                                     </IconButton>
-                                                </Link>
+                                                </a>
                                                 <div className={''}>
                                                     <IconButton color={'warning'} onClick={() => handleDeleteCourse(course)}>
                                                         <IoClose size={20}/>
@@ -166,10 +161,6 @@ function EditCourses() {
                                             </div>
                                             <div className='info'>
                                                 <h1 className='title'>{course.title}</h1>
-                                                {/*<p className='description'>Familiarizing the student with the basic concepts of*/}
-                                                {/*    machine learning, in-depth knowledge of the support vector machine model and its*/}
-                                                {/*    types, the kernel trick and its importance, introducing support vector*/}
-                                                {/*    regression and least squares regression/support vector machine.</p>*/}
                                                 <p className='description'>
                                                     {course.text}
                                                 </p>

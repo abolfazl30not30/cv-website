@@ -28,6 +28,8 @@ body {
 }
 
 .screen__content {
+  display: flex;
+  align-content: center;
   z-index: 1;
   position: relative;
   height: 100%;

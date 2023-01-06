@@ -9,6 +9,7 @@ import Form from "react-bootstrap/Form";
 import { IoClose } from "react-icons/io5";
 import "./../../../style/editPages.css";
 import DatePicker from "react-multi-date-picker";
+import axios from "axios";
 
 function EditBooks() {
 
@@ -33,11 +34,8 @@ function EditBooks() {
         // let booksList = t('books-list', {returnObjects: true})
         // setBooks(booksList)
 
-        // const getData = fetch('http://localhost:8089/api/v1/public/book').then((response) => response.json())
-        //     .then((data) => setBooks(data));
-
-        // const {data} = axios.get(`http://localhost:8089/api/v1/public/book`);
-        // setBooks(data);
+        axios.get('http://localhost:8089/api/v1/public/book').then((response) => response.data)
+            .then((data) => setBooks(data));
 
     },[]);
 
@@ -60,7 +58,6 @@ function EditBooks() {
 
         if (yearReg && titleReg && detailsReg && authorsReg) {
             postBook();
-            // console.log(textMessage, emailAddress, subject, fullName)
         }
 
         return yearReg && titleReg && detailsReg && authorsReg;
@@ -90,51 +87,56 @@ function EditBooks() {
     }
 
     const postBook = async () => {
-        // await fetch('http://localhost:8089/api/v1/admin/save/book', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({
-        //         year: year,
-        //         title: title,
-        //         details: details,
-        //         authors: authors,
-        //     })
-        // }).then((response) => response.json()).then((response) => {
-        //     handleCloseType();
-        //
-        //     let updatedBooks = [...books];
-        //     updatedBooks.push({
-        //         id: response.id,
-        //         year: year,
-        //         title: title,
-        //         details: details,
-        //         authors: authors
-        //     })
-        //     setBooks(updatedBooks)
-        // });
+        axios.post(`http://localhost:8089/api/v1/admin/save/book`, {
+            year: year,
+            title: title,
+            details: details,
+            authors: authors
+        }, {
+            headers: {
+                // "content-type": "application/x-www-form-urlencoded",
+                'Authorization': localStorage.getItem('token'),
+                "Access-Control-Allow-Origin": "http://localhost:8089",
+            }
+        }).then((response) => response.data).then((response) => {
+            handleCloseType();
 
-        // const getBook = fetch('http://localhost:8089/api/v1/public/conference').then((response) => response.json())
-        //     .then((data) => setBooks(data));
+            let updatedBooks = [...books];
+            updatedBooks.push({
+                id: response.id,
+                year: year,
+                title: title,
+                details: details,
+                authors: authors
+            })
+            setBooks(updatedBooks)
+            setShowAddModal(false)
+        }).catch(() => {
+            setShowAddModal(false)
+            window.location = '/admin/'
+        });
+
+        axios.get('http://localhost:8089/api/v1/public/book').then((response) => response.data)
+            .then((data) => setBooks(data));
     }
 
     const handleDeleteBook = async (book) => {
-        // await fetch(`http://localhost:8089/api/v1/admin/delete/book/${book.id}`, {
-        //     method: 'DELETE',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //     },
-        // }).then(() => {
-        //     let updatedBooks = [...books];
-        //     updatedBooks = updatedBooks.filter((b) => b.id !== book.id)
-        //     setBooks(updatedBooks)
-        // });
+        axios.delete(`http://localhost:8089/api/v1/admin/delete/book/${book.id}`, null, {
+            headers: {
+                // "content-type": "application/x-www-form-urlencoded",
+                'Authorization': localStorage.getItem('token'),
+                "Access-Control-Allow-Origin": "http://localhost:8089",
+            }
+        }).then(() => {
+            let updatedBooks = [...books];
+            updatedBooks = updatedBooks.filter((b) => b.id !== book.id)
+            setBooks(updatedBooks)
+        }).catch(() => {
+            window.location = '/admin/'
+        });
 
-        // const getBook = fetch('http://localhost:8089/api/v1/public/conference').then((response) => response.json())
-        //     .then((data) => setBooks(data));
+        axios.get('http://localhost:8089/api/v1/public/book').then((response) => response.data)
+            .then((data) => setBooks(data));
     }
 
     return (

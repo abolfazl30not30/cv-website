@@ -9,6 +9,7 @@ import Form from "react-bootstrap/Form";
 import {IoClose} from "react-icons/io5";
 import "./../../../style/editPages.css"
 import DatePicker from "react-multi-date-picker";
+import axios from "axios";
 
 function EditConferences() {
 
@@ -31,8 +32,8 @@ function EditConferences() {
         // let conferencesList = t('conferences-list', {returnObjects: true})
         // setConferences(conferencesList)
 
-        // const getConference = fetch('http://localhost:8089/api/v1/public/conference').then((response) => response.json())
-        //     .then((data) => setConferences(data));
+        axios.get('http://localhost:8089/api/v1/public/conference').then((response) => response.data)
+            .then((data) => setConferences(data));
     },[]);
 
     const handleOpenType = () => {
@@ -40,6 +41,7 @@ function EditConferences() {
 
         setAuthors('')
         setYear('')
+        setYearDateValue('')
         setTitle('')
 
         setValidation({
@@ -75,61 +77,60 @@ function EditConferences() {
 
         if (yearReg && titleReg  && authorsReg) {
             postConference();
-            setShowAddModal(false)
-
-            let updatedConferences = [...conferences]
-
-            updatedConferences.push({
-                year: year,
-                title: title,
-                authors: authors
-            })
-
-            setConferences(updatedConferences)
-
         }
 
         return yearReg && titleReg  && authorsReg;
     }
 
     const postConference = async () => {
-        // await fetch('http://localhost:8089/api/v1/admin/save/conference', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({
-        //         year: year,
-        //         title: title,
-        //         authors: authors,
-        //     })
-        // }).then((response) => response.json()).then((response) => {
-        //     handleCloseType();
-        //
-        //     let updatedConferences = [...conferences];
-        //     updatedConferences.push({
-        //         id: response.id,
-        //         year: year,
-        //         title: title,
-        //         authors: authors
-        //     })
-        //     setConferences(updatedConferences)
-        // });
+        axios.post(`http://localhost:8089/api/v1/admin/save/conference`, {
+            title: title,
+            year: year,
+            authors: authors
+        }, {
+            headers: {
+                // "content-type": "application/x-www-form-urlencoded",
+                'Authorization': localStorage.getItem('token'),
+                "Access-Control-Allow-Origin": "http://localhost:8089",
+            }
+        }).then((response) => response.data).then((response) => {
+            handleCloseType();
+
+            let updatedConferences = [...conferences];
+            updatedConferences.push({
+                id: response.id,
+                title: title,
+                year: year,
+                authors: authors
+            })
+            setConferences(updatedConferences)
+            setShowAddModal(false)
+        }).catch(() => {
+            setShowAddModal(false)
+            window.location = "/admin/"
+        });
+
+        axios.get('http://localhost:8089/api/v1/public/conference').then((response) => response.data)
+            .then((data) => setConferences(data));
     }
 
     const handleDeleteConference = async (conference) => {
-        // await fetch(`http://localhost:8089/api/v1/admin/delete/conference/${conference.id}`, {
-        //     method: 'DELETE',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //     },
-        // }).then(() => {
-        //     let updatedConferences = [...conferences];
-        //     updatedConferences = updatedConferences.filter((c) => c.id !== conference.id)
-        //     setConferences(updatedConferences)
-        // });
+        axios.delete(`http://localhost:8089/api/v1/admin/delete/conference/${conference.id}`, null, {
+            headers: {
+                // "content-type": "application/x-www-form-urlencoded",
+                'Authorization': localStorage.getItem('token'),
+                "Access-Control-Allow-Origin": "http://localhost:8089",
+            }
+        }).then(() => {
+            let updatedConferences = [...conferences];
+            updatedConferences = updatedConferences.filter((c) => c.id !== conference.id)
+            setConferences(updatedConferences)
+        }).catch(() => {
+            window.location = "/admin/"
+        });
+
+        axios.get('http://localhost:8089/api/v1/public/conference',).then((response) => response.data)
+            .then((data) => setConferences(data));
     }
     return (
         <>

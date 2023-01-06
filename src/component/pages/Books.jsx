@@ -12,8 +12,8 @@ function Books() {
         // let booksList = t('books-list', {returnObjects: true})
         // setBooks(booksList)
 
-        // const getBooks = fetch('http://localhost:8089/api/v1/public/book').then((response) => response.json())
-        //     .then((data) => setBooks(data));
+        const getBooks = fetch('http://localhost:8089/api/v1/public/book').then((response) => response.json())
+            .then((data) => setBooks(data));
 
 
 

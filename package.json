@@ -30,6 +30,7 @@
     "react-icon": "^1.0.0",
     "react-icons": "^4.7.1",
     "react-multi-date-picker": "^3.3.4",
+    "react-router": "^6.6.1",
     "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
     "react-scroll-motion": "^0.3.0",
