@@ -62,6 +62,11 @@ function Contact() {
                 emailAddress: emailAddress,
                 subject: subject,
             })
+        }).then(() => {
+            setFullName('')
+            setTextMessage('')
+            setEmailAddress('')
+            setSubject('')
         });
     }
 
@@ -100,6 +105,7 @@ function Contact() {
                                     <Form.Control
                                         className={`${validation.fullNameReg === false ? "is-invalid" : ""}`}
                                         type="text"
+                                        value={fullName}
                                         onChange={(e) => setFullName(e.target.value)}
                                     />
                                 </Form.Group>
@@ -108,6 +114,7 @@ function Contact() {
                                     <Form.Control
                                         className={`${validation.emailAddressReg === false ? "is-invalid" : ""}`}
                                         type="text"
+                                        value={emailAddress}
                                         onChange={(e) => setEmailAddress(e.target.value)}
                                     />
                                 </Form.Group>
@@ -116,6 +123,7 @@ function Contact() {
                                     <Form.Control
                                         className={`${validation.subjectReg === false ? "is-invalid" : ""}`}
                                         type="text"
+                                        value={subject}
                                         onChange={(e) => setSubject(e.target.value)}
                                     />
                                 </Form.Group>
@@ -132,6 +140,7 @@ function Contact() {
                                     <Form.Control
                                         className={`${validation.textMessageReg === false ? "is-invalid" : ""}`}
                                         as="textarea"
+                                        value={textMessage}
                                         rows={8}
                                         onChange={(e) => setTextMessage(e.target.value)}
                                     />

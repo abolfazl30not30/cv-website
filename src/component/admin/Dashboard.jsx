@@ -5,6 +5,7 @@ import EditArticles from "./editPages/editArticles";
 import EditBooks from "./editPages/editBooks";
 import EditCourses from "./editPages/editCourses";
 import EditConferences from "./editPages/editConferences";
+import Messages from "./editPages/messages";
 import Hamburger from 'hamburger-react';
 import EditMainPage from "./editPages/editMainPage";
 
@@ -25,6 +26,7 @@ function Dashboard () {
                             <li><button style={{width: "200px", textAlign: "left"}} className="menu__item" onClick={() => setSelectedLink('books')}>Books</button></li>
                             <li><button style={{width: "200px", textAlign: "left"}} className="menu__item" onClick={() => setSelectedLink('courses')}>Courses</button></li>
                             <li><button style={{width: "200px", textAlign: "left"}} className="menu__item" onClick={() => setSelectedLink('conferences')}>Conferences</button></li>
+                            <li><button style={{width: "200px", textAlign: "left"}} className="menu__item" onClick={() => setSelectedLink('messages')}>Messages</button></li>
                             <li><button style={{width: "200px", textAlign: "left"}} className="menu__item" onClick={() => setSelectedLink('mainPage')}>Main Page</button></li>
                         </ul>
                     </div>
@@ -40,6 +42,8 @@ function Dashboard () {
                                 ? <EditConferences />
                                     : selectedLink === "mainPage"
                                 ? <EditMainPage />
+                                    : selectedLink === "messages"
+                                ? <Messages />
                                     : null
                         }
                     </div>
