@@ -19,7 +19,7 @@ import {IoIosAddCircle} from "react-icons/io";
 import {Modal} from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import {IoClose} from "react-icons/io5";
-import {AiOutlineLink} from "react-icons/ai"
+import {AiFillInfoCircle} from "react-icons/ai"
 import axios from "axios";
 
 import ReactListInput from 'react-list-input'
@@ -29,7 +29,7 @@ function EditCourses() {
     const {t} = useTranslation();
     const [value, setValue] = useState([]);
     const [infoModal, setInfoModal] = useState(false);
-    const [info, setInfo] = useState({});
+    const [info, setInfo] = useState([]);
     const [courses, setCourses] = useState([]);
     const [coursesInfo, setCoursesInfo] = useState([]);
 
@@ -259,7 +259,7 @@ function EditCourses() {
                                         <div className='card' style={{backgroundImage: `url(${img})`}}>
                                             <div className={'d-flex justify-content-between'}>
                                                 <IconButton color={'info'} onClick={() => handleCourseInfo(course)}>
-                                                    <AiOutlineLink size={30}/>
+                                                    <AiFillInfoCircle size={30}/>
                                                 </IconButton>
                                                 <div className={''}>
                                                     <IconButton color={'warning'} onClick={() => handleDeleteCourse(course)}>
@@ -312,20 +312,20 @@ function EditCourses() {
                                         <TableCell align="right">{info.goal}</TableCell>
 
                                         <TableCell align="right">
-                                            <ul>
+                                            <ol>
                                             {
-                                                info.chapters.map((chapter) => (
+                                                info.chapters?.map((chapter) => (
                                                     <li>
                                                         {chapter}
                                                     </li>
                                                 ))
                                             }
-                                            </ul>
+                                            </ol>
                                         </TableCell>
                                         <TableCell align="right">
                                             <ul>
                                                 {
-                                                    info.benefits.map((benefit) => (
+                                                    info.benefits?.map((benefit) => (
                                                         <li>
                                                             {benefit}
                                                         </li>
