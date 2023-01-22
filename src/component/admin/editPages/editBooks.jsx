@@ -121,7 +121,7 @@ function EditBooks() {
     }
 
     const handleDeleteBook = async (book) => {
-        axios.delete(`http://localhost:8089/api/v1/admin/delete/book/${book.id}`, null, {
+        axios.delete(`http://localhost:8089/api/v1/admin/delete/book/${book.id}`, {
             headers: {
                 // "content-type": "application/x-www-form-urlencoded",
                 'Authorization': localStorage.getItem('token'),

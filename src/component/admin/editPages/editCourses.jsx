@@ -111,7 +111,7 @@ function EditCourses() {
     }
 
     const handleDeleteCourse = async (course) => {
-        axios.delete(`http://localhost:8089/api/v1/admin/delete/course/${course.id}`, null, {
+        await axios.delete(`http://localhost:8089/api/v1/admin/delete/course/${course.id}`, {
             headers: {
                 // "content-type": "application/x-www-form-urlencoded",
                 'Authorization': localStorage.getItem('token'),

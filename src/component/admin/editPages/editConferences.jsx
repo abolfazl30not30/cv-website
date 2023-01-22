@@ -115,7 +115,7 @@ function EditConferences() {
     }
 
     const handleDeleteConference = async (conference) => {
-        axios.delete(`http://localhost:8089/api/v1/admin/delete/conference/${conference.id}`, null, {
+        await axios.delete(`http://localhost:8089/api/v1/admin/delete/conference/${conference.id}`, {
             headers: {
                 // "content-type": "application/x-www-form-urlencoded",
                 'Authorization': localStorage.getItem('token'),

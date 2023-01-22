@@ -117,7 +117,7 @@ function EditMainPage() {
     }
 
     const handleDelete = async (section) => {
-        axios.delete(`http://localhost:8089/api/v1/admin/delete/mainPage/${section.id}`, null, {
+        await axios.delete(`http://localhost:8089/api/v1/admin/delete/mainPage/${section.id}`, {
             headers: {
                 // "content-type": "application/x-www-form-urlencoded",
                 'Authorization': localStorage.getItem('token'),
@@ -132,14 +132,14 @@ function EditMainPage() {
             window.location = "/admin/"
         })
         ;
-        axios.get('http://localhost:8089/api/v1/public/mainPage')
+        await axios.get('http://localhost:8089/api/v1/public/mainPage')
             .then(res => {
                     setSections(res.data);
                 })
     }
 
     const handlePatch = async (section, value, FieldName) => {
-        axios.patch(`http://localhost:8089/api/v1/admin/patch/mainPage/${section.id}`, {
+        await axios.patch(`http://localhost:8089/api/v1/admin/patch/mainPage/${section.id}`, {
             [FieldName]: value
         }, {
             headers: {
@@ -160,7 +160,7 @@ function EditMainPage() {
         }).catch(() => {
             window.location = "/admin/"
         });
-        axios.get('http://localhost:8089/api/v1/public/mainPage')
+        await axios.get('http://localhost:8089/api/v1/public/mainPage')
             .then(res => {
                     setSections(res.data);
                 }
